@@ -1,44 +1,40 @@
-# The Go Programming Language
+﻿# 2019.01_Quan-ly-chuoi-cung-ung-blockchain
+Xây dựng hệ thống quản lý chuỗi cung ứng trên nền tảng blockchain (Lâm Hiếu Linh, B1507376)
 
-Go is an open source programming language that makes it easy to build simple,
-reliable, and efficient software.
+# Hyperledger Fabric Sample Application
 
-![Gopher image](doc/gopher/fiveyears.jpg)
-*Gopher image by [Renee French][rf], licensed under [Creative Commons 3.0 Attributions license][cc3-by].*
+In this exercise we will set up the minimum number of nodes required to develop chaincode. It has a single peer and a single organization.
 
-Our canonical Git repository is located at https://go.googlesource.com/go.
-There is a mirror of the repository at https://github.com/golang/go.
+if getting error about running ./startFabric.sh permission 
 
-Unless otherwise noted, the Go source files are distributed under the
-BSD-style license found in the LICENSE file.
+chmod a+x startFabric.sh
 
-### Download and Install
+This code is based on code written by the Hyperledger Fabric community. Source code can be found here: (https://github.com/hyperledger/fabric-samples).
 
-#### Binary Distributions
+#Model suply chain pig-app
 
-Official binary distributions are available at https://golang.org/dl/.
+![model](https://user-images.githubusercontent.com/46451472/64616881-96b7d380-d407-11e9-9f9f-9bb41242ca86.PNG)
 
-After downloading a binary release, visit https://golang.org/doc/install
-or load [doc/install.html](./doc/install.html) in your web browser for installation
-instructions.
 
-#### Install From Source
 
-If a binary distribution is not available for your combination of
-operating system and architecture, visit
-https://golang.org/doc/install/source or load [doc/install-source.html](./doc/install-source.html)
-in your web browser for source installation instructions.
+#Progress reports
 
-### Contributing
+Week 1: Read documentation the hyperledger fabric(https://hyperledger-fabric.readthedocs.io/en/latest/tutorials.html).
+	Install prerequisites for deploying hyperledger fabric(https://hyperledger-fabric.readthedocs.io/en/latest/build_network.html).
+	Run the demo of fabric hyperledger applications.(https://github.com/hyperledger/fabric-samples and https://github.com/IBM/todo-list-fabricV1)
 
-Go is the work of thousands of contributors. We appreciate your help!
+Week 2: Read documentation about golang and nodejs language for write chaincode(smart contract) and controller.
+	Building basic network to deploy pig-app.
+	Enroll Admin user for network. Register and Enroll user to intreact with the fabric network.
 
-To contribute, please read the contribution guidelines:
-	https://golang.org/doc/contribute.html
+Week 3: Building chaincode(smart contract) 
+	-	Set & get data
 
-Note that the Go project uses the issue tracker for bug reports and
-proposals only. See https://golang.org/wiki/Questions for a list of
-places to ask questions about the Go language.
+Week 4 & 5: Building controller web service.
+	-	Query supply chain with argument(ID)
+	![queryargs1](https://user-images.githubusercontent.com/46451472/64616920-a9320d00-d407-11e9-8ce4-8d93ab510a67.png)
+	-	Add record for farm, transport, abattoir, supermarket
+	![addin4](https://user-images.githubusercontent.com/46451472/64617703-1d20e500-d409-11e9-94e0-9a1262d3e1e5.png)
 
-[rf]: https://reneefrench.blogspot.com/
-[cc3-by]: https://creativecommons.org/licenses/by/3.0/
+Week 6: Built basic qrcode scanning system
+	-	![ok](https://user-images.githubusercontent.com/46451472/64932794-a2722280-d86b-11e9-94df-5eb3ae462827.png)
