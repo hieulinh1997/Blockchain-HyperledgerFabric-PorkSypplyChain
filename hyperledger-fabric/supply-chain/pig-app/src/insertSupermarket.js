@@ -53,13 +53,13 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
     fabric_client.setCryptoSuite(crypto_suite);
 
     // get the enrolled user from persistence, this user will sign all requests
-    return fabric_client.getUserContext('user1', true);
+    return fabric_client.getUserContext('admin', true);
 }).then((user_from_store) => {
     if (user_from_store && user_from_store.isEnrolled()) {
-        console.log('Successfully loaded user1 from persistence');
+        console.log('Successfully loaded admin from persistence');
         member_user = user_from_store;
     } else {
-        throw new Error('Failed to get user1.... run registerUser.js');
+        throw new Error('Failed to get admin.... run registerUser.js');
     }
 
     // get a transaction id object based on the current user assigned to fabric client
@@ -169,7 +169,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 
     if(results && results[1] && results[1].event_status === 'VALID') {
         console.log('Successfully committed the change to the ledger by the peer');
-        res.json(tx_id.getTransactionID())
+        // res.json(tx_id.getTransactionID())
     } else {
         console.log('Transaction failed to be committed to the ledger due to ::'+results[1].event_status);
     }

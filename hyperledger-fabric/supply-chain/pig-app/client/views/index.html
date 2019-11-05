@@ -1,0 +1,411 @@
+
+<!-- <div > -->
+<!-- <body  > -->
+    <div _ngcontent-hms-c1 ng-controller="appController as tab">
+        <!-- <div ng-view></div> -->
+        <app-header-home _ngcontent-qht-c1="" _nghost-qht-c2="">
+        <nav _ngcontent-qht-c2="" class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <!-- button home -->
+            <a _ngcontent-abn-c2="" class="navbar-brand" routerlink="/home" ng-reflect-router-link="/home" href="../index.html">
+              PSC
+              <!-- <img _ngcontent-abn-c2="" alt="SCP" class="brand-image " height="25px" src="home.png" style="opacity: 1"> -->
+            </a>
+            <div _ngcontent-qht-c2="" class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul _ngcontent-qht-c2="" class="navbar-nav mr-auto">
+                <li _ngcontent-qht-c2="" class="nav-item d-none d-lg-inline-block">
+                <a _ngcontent-qht-c2="" class="nav-link">Phần mềm truy xuất nguồn gốc thịt lợn</a>
+                </li>
+    
+            </ul>
+
+            <!-- current username -->
+            <ul _ngcontent-gwf-c2="" class="nav navbar-nav ml-auto">
+                <li _ngcontent-gwf-c2="" class="nav-item ">
+                <a _ngcontent-gwf-c2="" id="clickCurrentUser" class="nav-link btn btn-outline-primary" ng-click="loadCurrentUser()" routerlink="/login"  ng-reflect-router-link="/login">
+                    <i _ngcontent-gwf-c2="" class="fa fa-sign-in mr-2"></i>
+                    <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
+                        Hi: {{message}}
+                    </span>
+                </a>
+                </li>
+                <li _ngcontent-gwf-c2="" class="nav-item">
+                    <a _ngcontent-gwf-c2="" class="nav-link btn btn-outline-primary bg-white text-dark" routerlink="/signup" style="color:#007bff!important" ng-reflect-router-link="/signup" href="#/">
+                    <span _ngcontent-gwf-c2="" translate="signup" ng-reflect-translate="signup">Logout</span>
+                    </a>
+                </li>
+            </ul>
+    
+            
+    
+            
+            </div>
+    
+        </nav>
+        
+    
+        </app-header-home>
+    
+        <div _ngcontent-hms-c1="" class="content-wrapper-search">
+    
+            <router-outlet _ngcontent-hms-c1=""></router-outlet>
+    
+            <app-home _nghost-xxd-c4="">
+                <div _ngcontent-xxd-c4="" class="row">
+                    <div _ngcontent-xxd-c4="" class="col-sm-12">
+                    <div _ngcontent-xxd-c4="" class="card card-primary">
+                        
+                        <!-- <div ng-controller="appController"> -->
+                        <!-- </div> -->
+                        <!-- <div class="col-md-6 col-md-offset-3">
+                                <form action="/" id="myLogin" name="form">
+                                    <center><label> LOGIN</label> </center> </br>
+                                    <center>
+                                    Username: <input class="form-control" type="text" name="username" id="username" ng-model="usernameLogin" required><br>
+                                    Roles: <input class="form-control" type="text" name="roles" id="roles" ng-model="rolesLogin" required><br>
+                                    <br>
+                                    <button type="button" ng-disabled="form.$invalid" ng-click="wrapLogin()" class="btn btn-primary">Login</button>
+                                    </center>
+                                </form>
+                        </div> -->
+                        
+    
+                        <ngb-tabset _ngcontent-xxd-c4="" class="nav-tab-custom-home">
+          
+                            <!-- tablist -->
+                            <ul role="tablist" class="nav nav-tabs justify-content-start">
+                             
+                                <ul class="nav nav-pills">
+                                    <li ng-class="{active:tab.isSet(1)}"><a href ng-click="tab.setTab(1)">Tra cứu theo ID</a></li>
+                                    <li ng-class="{active:tab.isSet(2)}"><a href ng-click="tab.setTab(2)">Quét mã QR lấy ID</a></li>
+                                    
+                                </ul>
+      
+                            </ul>
+                            <!-- tablist -->
+                            
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" aria-labelledby="ngb-tab-0" id="ngb-tab-0-panel" aria-expanded="true">
+                                    <div ng-show="tab.isSet(1)">
+                                        <div _ngcontent-xxd-c4="" class="intro-head pr-2 pl-2"><h2 _ngcontent-xxd-c4="" translate="home.tab-one.title" ng-reflect-translate="home.tab-one.title">
+                                            <center>Tra cứu theo ID</center></h2>
+                                        </div>
+      
+                                        
+                                        <div _ngcontent-bfd-c4="" class="search_frm pb-1">
+                                          <form _ngcontent-bfd-c4="" novalidate="" ng-reflect-form="[object Object]" class="ng-pristine ng-invalid ng-touched">
+                                            <div _ngcontent-bfd-c4="" class="row numberInfo search-widget">
+                                              <div _ngcontent-bfd-c4="" class="col-md-2">
+                                                
+                                              </div>
+                                              <div _ngcontent-bfd-c4="" class="col-md-8">
+                                                <div _ngcontent-bfd-c4="" class="row">
+                                                  <div _ngcontent-bfd-c4="" class="col-sm-8 mb-2">
+                                                    <div _ngcontent-bfd-c4="" class="input-custom">
+                                                      <input _ngcontent-bfd-c4="" formcontrolname="idCer" id="createName" placeholder="Ex: 1" ng-model="pig_id" type="text" ng-reflect-name="idCer" class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" placeholder="Nhập ID ">
+                                                      <div _ngcontent-bfd-c4="" class="input-custom-label ">
+                                                        <span _ngcontent-bfd-c4="" class="text-danger">* </span>
+                                                        <span _ngcontent-bfd-c4="" translate="home.tab-two.ccsid-label" ng-reflect-translate="home.tab-two.ccsid-label">
+                                                          ID cần tra cứu
+                                                        </span>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div _ngcontent-bfd-c4="" class="col-sm-4">
+                                                    <button _ngcontent-bfd-c4="" id="querySubmit" ng-click="queryPig()" class="btn btn-primary btn-lg btn-block" type="submit" data-toggle="modal" data-target="#myModal">
+                                                      <i _ngcontent-bfd-c4="" class="fa fa-search"></i>
+                                                      <span _ngcontent-bfd-c4="" class="btn-name-search" translate="home.btn-search" ng-reflect-translate="home.btn-search">
+                                                        Tra cứu
+                                                      </span>
+                                                    </button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div _ngcontent-bfd-c4="" class="col-md-2"></div>
+                                            </div>
+      
+                                            
+                                            
+                                            <!-- Modal view result query 1 id-->
+                                            <div class="modal fade" id="myModal" role="dialog">
+                                                <div class="modal-dialog modal-sm">
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                      <h4 class="modal-title">Thông tin</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div _ngcontent-lpg-c4="" class="row search-widget">
+                                                          
+                                                            <div >
+                                                              <table  id="query_pig" class="table" align="center">
+                                                                <tr bgcolor="#007bff" >
+                                                                  <th colspan="2" > FARM </th>
+                                                                </tr>
+                                                                </tr>
+                                                                
+                                                                <tr> 
+                                                                    <th> QRCode </th>
+                                                                    <th class="th"> 
+                                                                        <label id="text" type="text" 
+                                                                        value="{{pig_id}}" style="Width:20%"
+                                                                        onblur='generateBarCode();' > </label>
+      
+                                                                  <img id='barcode' 
+                                                                        src="https://api.qrserver.com/v1/create-qr-code/?data= Key: {{pig_id}}&amp;size=100x100" 
+                                                                        alt="" 
+                                                                        title="HELLO" 
+                                                                        width="100" 
+                                                                        height="100" />
+                                                                        
+                                                                    </th>
+                                                                </tr>
+                                                                  
+                                                                <tr> 
+                                                                  <th> Famer </th>
+                                                                  <th class="th"> {{query_pig.famer}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> Species</th>
+                                                                  <th class="th"> {{query_pig.species}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> Food</th>
+                                                                  <th class="th"> {{query_pig.food}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> Sick_Cure</th>
+                                                                  <th class="th"> {{query_pig.sick_cure}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> Location</th>
+                                                                  <th class="th"> {{query_pig.farm_location}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> Start_Date</th>
+                                                                  <th class="th"> {{query_pig.start_date_of_farming}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> End_Date</th>
+                                                                  <th class="th"> {{query_pig.end_date_of_farming}}</th>
+                                                                </tr>
+                                                              </table>
+                                                            </div>
+                                                            <div >
+                                                              <table  id="query_pig" class="table" align="center">
+                                                                <tr bgcolor="#007bff" >
+                                                                  <th colspan="2" > TRANSPORT </th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> Company</th>
+                                                                  <th class="th"> {{query_pig.company}}</th>
+                                                                </tr>
+                                                                <tr> 
+                                                                  <th> Transporter </th>
+                                                                  <th class="th"> {{query_pig.transporter}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> Vehicle</th>
+                                                                  <th class="th"> {{query_pig.vehicle}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> Trouble</th>
+                                                                  <th class="th"> {{query_pig.trouble}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> Solution</th>
+                                                                  <th class="th"> {{query_pig.solution}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> TransportQualified</th>
+                                                                  <th class="th"> {{query_pig.transport_qualified}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> Time</th>
+                                                                  <th class="th"> {{query_pig.time}}</th>
+                                                                </tr>
+                                                              </table>
+                                                            </div>
+                                                            <div >
+                                                              <table  id="query_pig" class="table" align="center">
+                                                                <tr bgcolor="#007bff" >
+                                                                  <th colspan="2" > ABATTOIR </th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> AbattoirName</th>
+                                                                  <th class="th"> {{query_pig.abattoir_name}}</th>
+                                                                </tr>
+                                                                <tr> 
+                                                                  <th> AbattoirLocation </th>
+                                                                  <th class="th"> {{query_pig.abattoir_location}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> AbattoirQualified</th>
+                                                                  <th class="th"> {{query_pig.abattoir_qualified}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> Peck_Time</th>
+                                                                  <th class="th"> {{query_pig.peck_time}}</th>
+                                                                </tr>
+                                                              </table>
+                                                              
+                                                            </div>
+                                                            <div >
+                                                              <table  id="query_pig" class="table" align="center">
+                                                                <tr bgcolor="#007bff" >
+                                                                  <th colspan="2" > SUPERMARKET </th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> SupermarketName</th>
+                                                                  <th class="th"> {{query_pig.supermarket_name}}</th>
+                                                                </tr>
+                                                                <tr> 
+                                                                  <th> SupermarketQualified </th>
+                                                                  <th class="th"> {{query_pig.supermarket_qualified}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> Price</th>
+                                                                  <th class="th"> {{query_pig.price}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> QuantityRemaining</th>
+                                                                  <th class="th"> {{query_pig.quantity_remaining}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> MFG</th>
+                                                                  <th class="th"> {{query_pig.manufacturing_date}}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                  <th> EXP</th>
+                                                                  <th class="th"> {{query_pig.expiry_date}}</th>
+                                                                </tr>
+                                                        
+                                                              </table>
+                                                            </div>
+                                                          
+                                                          </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                          </form>
+                                        </div>
+                                      
+                                        
+                                    </div>
+                                
+            
+                                    <div ng-show="tab.isSet(2)">
+                                        
+                                        <div class="container" id="QR-Code">               
+                                            <div class="panel panel-info">
+                                                <div class="panel-heading">
+                                                    <div class="navbar-form navbar-left">
+                                                        <h4>Demo</h4>
+                                                    </div>
+                                                    <div class="navbar-form navbar-right">
+                                                        <select class="form-control" id="camera-select"></select>
+                                                        <div class="form-group">
+                                                            <input id="image-url" type="text" class="form-control" placeholder="Image url">
+                                                            <button title="Decode Image" class="btn btn-default btn-sm" id="decode-img" type="button" data-toggle="tooltip"><span class="glyphicon glyphicon-upload"></span></button>
+                                                            <button title="Image shoot" class="btn btn-info btn-sm disabled" id="grab-img" type="button" data-toggle="tooltip"><span class="glyphicon glyphicon-picture"></span></button>
+                                                            <button title="Play" class="btn btn-success btn-sm" id="play" type="button" data-toggle="tooltip"><span class="glyphicon glyphicon-play"></span></button>
+                                                            <button title="Pause" class="btn btn-warning btn-sm" id="pause" type="button" data-toggle="tooltip"><span class="glyphicon glyphicon-pause"></span></button>
+                                                            <button title="Stop streams" class="btn btn-danger btn-sm" id="stop" type="button" data-toggle="tooltip"><span class="glyphicon glyphicon-stop"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-body text-center">
+                                                    <div class="col-md-6">
+                                                        <div class="well" style="position: relative;display: inline-block;">
+                                                            <canvas width="320" height="240" id="webcodecam-canvas"></canvas>
+                                                            <div class="scanner-laser laser-rightBottom" style="opacity: 0.5;"></div>
+                                                            <div class="scanner-laser laser-rightTop" style="opacity: 0.5;"></div>
+                                                            <div class="scanner-laser laser-leftBottom" style="opacity: 0.5;"></div>
+                                                            <div class="scanner-laser laser-leftTop" style="opacity: 0.5;"></div>
+                                                        </div>
+                                                        <div class="well" style="width: 100%;">
+                                                            <label id="zoom-value" width="100">Zoom: 2</label>
+                                                            <input id="zoom" onchange="Page.changeZoom();" type="range" min="10" max="30" value="20">
+                                                            <label id="brightness-value" width="100">Brightness: 0</label>
+                                                            <input id="brightness" onchange="Page.changeBrightness();" type="range" min="0" max="128" value="0">
+                                                            <label id="contrast-value" width="100">Contrast: 0</label>
+                                                            <input id="contrast" onchange="Page.changeContrast();" type="range" min="0" max="64" value="0">
+                                                            <label id="threshold-value" width="100">Threshold: 0</label>
+                                                            <input id="threshold" onchange="Page.changeThreshold();" type="range" min="0" max="512" value="0">
+                                                            <label id="sharpness-value" width="100">Sharpness: off</label>
+                                                            <input id="sharpness" onchange="Page.changeSharpness();" type="checkbox">
+                                                            <label id="grayscale-value" width="100">grayscale: off</label>
+                                                            <input id="grayscale" onchange="Page.changeGrayscale();" type="checkbox">
+                                                            <br>
+                                                            <label id="flipVertical-value" width="100">Flip Vertical: off</label>
+                                                            <input id="flipVertical" onchange="Page.changeVertical();" type="checkbox">
+                                                            <label id="flipHorizontal-value" width="100">Flip Horizontal: off</label>
+                                                            <input id="flipHorizontal" onchange="Page.changeHorizontal();" type="checkbox">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="thumbnail" id="result">
+                                                            <div class="well" style="overflow: hidden;">
+                                                                <img width="320" height="240" id="scanned-img" src="">
+                                                            </div>
+                                                            <div class="caption">
+                                                                <h3>Scanned result</h3>
+                                                                <p id="scanned-QR"></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+            
+                                            <div id="body"></div>
+                                            
+                                        </div>
+                                    </div>
+
+                                    
+                                    
+                                </div>
+                            </div>
+                          </ngb-tabset>
+    
+                    </div>
+                    </div>
+                </div>  
+            
+            </app-home>
+        
+        </div>
+    
+        <app-footer-home-main _ngcontent-plj-c1="" _nghost-plj-c3="">
+            <footer _ngcontent-plj-c3="" class="col-lg-12 text-center">
+                <p _ngcontent-plj-c3="" class="text-muted small mb-0 flex-1 text-left">© PSC 2019. Hiếu Linh Lâm.</p>
+                <!-- <div _ngcontent-plj-c3="" class="row justify-content-md-right">
+                <div _ngcontent-plj-c3="" class="col-auto row">
+                    <a _ngcontent-plj-c3="" href="https://apps.apple.com/us/app/x%C3%A1c-minh-v%C4%83n-b%E1%BA%B1ng-vdb/id1468072081?ls=1">
+                    <img _ngcontent-plj-c3="" alt="VDB - Xác minh văn bằng - Appstore" class="dw-icon col-auto" src="assets/img/icon/appstore1.png">
+                    </a>
+                    <a _ngcontent-plj-c3="" href="https://play.google.com/store/apps/details?id=com.vnpt.kv3.vdb">
+                    <img _ngcontent-plj-c3="" alt="VDB - Xác minh văn bằng - GooglePlay" class="dw-icon col-auto" src="assets/img/icon/chplay1.png">
+                    </a>
+                </div>
+                </div> -->
+            </footer>
+        </app-footer-home-main>
+    
+        
+    </div>
+    <script type="text/javascript" src="../js/filereader.js"></script>
+    <script type="text/javascript" src="../js/qrcodelib.js"></script>
+    <script type="text/javascript" src="../js/webcodecamjs.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <!-- </body> -->
+    <!-- <script type="text/javascript" src="../app.js"> </script> -->
+    
+    <!-- </div> -->
+    

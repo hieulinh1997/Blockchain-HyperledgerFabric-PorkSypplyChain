@@ -38,3 +38,48 @@ Week 4 & 5: Building controller web service.
 
 Week 6: Built basic qrcode scanning system
 	-	![ok](https://user-images.githubusercontent.com/46451472/64932794-a2722280-d86b-11e9-94df-5eb3ae462827.png)
+
+Week 7: update user interface
+	-	Truy xuất theo ID
+	![week7](https://user-images.githubusercontent.com/46451472/65389849-6156a280-dd84-11e9-96bb-0511c9afabaa.png)
+	-	Truy xuất QR
+	![week7-qr](https://user-images.githubusercontent.com/46451472/65389953-06717b00-dd85-11e9-9675-e26b1d0ad6eb.png)
+
+Week 8 & 9: basic about sign-up and login with roles admin
+	-	sign up
+	![sign-up-w8-9](https://user-images.githubusercontent.com/46451472/66125190-7f3bc700-e610-11e9-8d44-b4a6aa990563.png)
+	-	login
+	![login-w8-9](https://user-images.githubusercontent.com/46451472/66125192-806cf400-e610-11e9-817b-a5cd1efc4b63.png)
+	
+Week 10: fix and update sign-up & login(get current user, logout):   
+	- homepage  
+	![homepage](https://user-images.githubusercontent.com/46451472/66412950-acc5ad80-ea20-11e9-9bd1-58ff6bcaa70d.png)  
+	............................................................................................................  
+	- signuppage  
+	![signuppage](https://user-images.githubusercontent.com/46451472/66412962-b18a6180-ea20-11e9-9822-0fce12334711.png)  
+	............................................................................................................  
+	- loginpage  
+	![loginpage](https://user-images.githubusercontent.com/46451472/66412966-b3ecbb80-ea20-11e9-8b68-90ed207ad174.png) 
+	............................................................................................................  
+	- adminpage  
+	![adminpage](https://user-images.githubusercontent.com/46451472/66412970-b5b67f00-ea20-11e9-8424-f63b25dc826f.png) 
+	............................................................................................................  
+	- userpage  
+	![userpage](https://user-images.githubusercontent.com/46451472/66412973-b7804280-ea20-11e9-9ca3-390b9337c509.png)  
+	
+Week 11: Actors case:  
+	 - admin case:  
+	 ![admin](https://user-images.githubusercontent.com/46451472/66711439-00841e00-edb6-11e9-9f51-54f4c06e115c.PNG)  
+	 ............................................................................................................  
+	 - members case:  
+	 ![members](https://user-images.githubusercontent.com/46451472/66711443-214c7380-edb6-11e9-9dd2-194458e44489.PNG)  
+	- Admin page : 
+	............................................................................................................  
+	+ Approve members:  
+	![admin](https://user-images.githubusercontent.com/46451472/67205170-55b8d300-f439-11e9-988d-7e616062beb8.png)  
+	............................................................................................................  
+	+ Initialization chain ID:  
+	![admin-initchainid](https://user-images.githubusercontent.com/46451472/67205171-57829680-f439-11e9-995a-ec6c22371bac.png)  
+	............................................................................................................  
+	- chain members(4 members) page:  
+	![farm-add-info](https://user-images.githubusercontent.com/46451472/67205174-594c5a00-f439-11e9-9166-ab2cf1f45e13.png)  

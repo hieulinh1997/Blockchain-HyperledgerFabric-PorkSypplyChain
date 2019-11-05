@@ -59,22 +59,21 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
     };
 
     // send the query proposal to the peer
-    console.log("delete");
     return channel.queryByChaincode(request);
     
-}).then((query_responses) => {
-    console.log("Query has completed, checking results");
-    // query_responses could have more than one  results if there multiple peers were used as targets
-    if (query_responses && query_responses.length == 1) {
-        if (query_responses[0] instanceof Error) {
-            console.error("error from query = ", query_responses[0]);
+}).then((delete_responses) => {
+    console.log("Delete has completed, checking results");
+    // delete_responses could have more than one  results if there multiple peers were used as targets
+    if (delete_responses && delete_responses.length == 1) {
+        if (delete_responses[0] instanceof Error) {
+            console.error("error from delete = ", delete_responses[0]);
         } else {
-            console.log("Response is ", query_responses[0].toString());
-            res.send(query_responses[0].toString())
+            console.log("Response is function ok");
+            res.send(delete_responses[0].toString())
         }
     } else {
-        console.log("No payloads were returned from query");
+        console.log("No payloads were returned from delete");
     }
 }).catch((err) => {
-    console.error('Failed to query successfully :: ' + err);
+    console.error('Failed to delete successfully :: ' + err);
 });

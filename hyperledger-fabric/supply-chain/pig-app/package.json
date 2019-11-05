@@ -1,15 +1,17 @@
 {
-    "name": "Fabric-pig-app",
+    "name": "fabric-pig-app",
     "version": "1.0.0",
     "description": "Hyperledger Fabric MOOC Sample Application",
     "main": "server.js",
     "dependencies": {
+        "@uirouter/angularjs": "^1.0.22",
         "angular": "^1.4.3",
+        "angular-route": "^1.6.2",
         "body-parser": "latest",
         "ejs": "latest",
         "express": "latest",
         "fabric-ca-client": "^1.0.2",
-        "fabric-client": "^1.0.2",
+        "fabric-client": "^1.2.1",
         "grpc": "^1.6.0",
         "qrcode": "^1.4.1"
     },
@@ -18,7 +20,7 @@
         "Hyperledger",
         "Fabric",
         "Oceans",
-        "Tuna",
+        "Pig",
         "Fishing",
         "Sample",
         "Application"

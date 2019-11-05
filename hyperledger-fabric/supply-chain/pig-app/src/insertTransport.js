@@ -54,13 +54,13 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
     fabric_client.setCryptoSuite(crypto_suite);
 
     // get the enrolled user from persistence, this user will sign all requests
-    return fabric_client.getUserContext('user1', true);
+    return fabric_client.getUserContext('admin', true);
 }).then((user_from_store) => {
     if (user_from_store && user_from_store.isEnrolled()) {
-        console.log('Successfully loaded user1 from persistence');
+        console.log('Successfully loaded admin from persistence');
         member_user = user_from_store;
     } else {
-        throw new Error('Failed to get user1.... run registerUser.js');
+        throw new Error('Failed to get admin.... run registerUser.js');
     }
 
     // get a transaction id object based on the current user assigned to fabric client
@@ -118,8 +118,9 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 
         // get an eventhub once the fabric client has a user assigned. The user
         // is required bacause the event registration must be signed
-        let event_hub = fabric_client.newEventHub();
-        event_hub.setPeerAddr('grpc://localhost:7053');
+        // let event_hub = fabric_client.newEventHub();
+        // event_hub.setPeerAddr('grpc://localhost:7053');
+        let event_hub = channel.newChannelEventHub('localhost:7051');
 
         // using resolve the promise so that result status may be processed
         // under the then clause rather than having the catch clause process
@@ -143,7 +144,8 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
                     console.error('The transaction was invalid, code = ' + code);
                     resolve(return_status); // we could use reject(new Error('Problem with the tranaction, event status ::'+code));
                 } else {
-                    console.log('The transaction has been committed on peer ' + event_hub._ep._endpoint.addr);
+                    console.log('The transaction has been committed on peer ' + event_hub.getPeerAddr());
+                    // console.log('The transaction has been committed on peer ' + event_hub._ep._endpoint.addr);
                     resolve(return_status);
                 }
             }, (err) => {
@@ -170,7 +172,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 
     if(results && results[1] && results[1].event_status === 'VALID') {
         console.log('Successfully committed the change to the ledger by the peer');
-        res.json(tx_id.getTransactionID())
+        // res.json(tx_id.getTransactionID())
     } else {
         console.log('Transaction failed to be committed to the ledger due to ::'+results[1].event_status);
     }
