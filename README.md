@@ -96,6 +96,7 @@ Week 12-13:
 	.............................................................  
 	- farm page(add,edit record & profile)
 	![farm](https://user-images.githubusercontent.com/46451472/68220489-6876fe80-001a-11ea-860e-070b8ceb8b6a.png)  
+<<<<<<< HEAD
 	============================================================================================================================================================================  
 Week 14:  
 	- farm page  
@@ -142,3 +143,9 @@ Week 15: Hoàn thành giao diện quản lý của 4 công đoạn - Cập nhậ
 Week 16: Cập nhật định dạng mã chuỗi cung ứng theo dạng (201911.0001)  
 	- Định dạng mã chuỗi cung ứng  
 	![formatID](https://user-images.githubusercontent.com/46451472/69358141-f3adf080-0cb8-11ea-95a0-9766e7f4aca0.png)
+=======
+	----------------------------------------------------------------------------------------------------------  
+	
+	
+
+>>>>>>> 08d75e518c0f78b102cad255eb75dbaf45f8073b
