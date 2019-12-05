@@ -24,12 +24,13 @@ import (
 	sc "github.com/hyperledger/fabric/protos/peer"
 )
 
-// Define the Smart Contract structure
+//SmartContract struct - Define the Smart Contract structure
 type SmartContract struct {
 }
 
-//aa
+//User struct
 type User struct {
+	Img      string `json:"img"`
 	Username string `json:"username"`
 	Password string `json:"password"`
 	Email    string `json:"email"`
@@ -39,146 +40,183 @@ type User struct {
 	Approve  string `json:"approve"`
 }
 
-//SentUser
-type SentUser struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-	Email    string `json:"email"`
-	Roles    string `json:"roles"`
-	Status   string `json:"status"`
-	Approve  string `json:"approve"`
-}
-
-/* Define Supply chain structure, with 4 properties.
-Structure tags are used by encoding/json library
-*/
+//Farm struct
 type Farm struct {
-	QRCode             string `json:"qrcode"`
+	FarmAccount        string `json:"farm_account"`
 	Famer              string `json:"famer"`
 	Species            string `json:"species"`
 	Food               string `json:"food"`
-	Sick_Cure          string `json:"sick_cure"`
+	SickCure           string `json:"sick_cure"`
+	FarmQualified      string `json:"farm_qualified"`
 	FarmLocation       string `json:"farm_location"`
 	StartDateOfFarming string `json:"start_date_of_farming"`
 	EndDateOfFarming   string `json:"end_date_of_farming"`
 }
 
-type Transport struct {
-	Farm
-	Company            string `json:"company"`
-	Transporter        string `json:"transporter"`
-	Vehicle            string `json:"vehicle"`
-	Trouble            string `json:"trouble"`
-	Solution           string `json:"solution"`
-	TransportQualified string `json:"transport_qualified"`
-	Time               string `json:"time"`
+//Pork struct(SupplyChain)
+type Pork struct {
+	Farm        //extend Farm struct
+	Transport   //extend Transport struct
+	Abattoir    //extend Abattoir struct
+	Supermarket //extend Supermarket struct
 }
 
-// Abattoir
+//Transport struct
+type Transport struct {
+	Farm
+	TransportAccount         string `json:"transport_account"`
+	Company                  string `json:"company"`
+	Transporter              string `json:"transporter"`
+	Vehicle                  string `json:"vehicle"`
+	TransportTroubleSolution string `json:"transport_trouble_solution"`
+	TransportQualified       string `json:"transport_qualified"`
+	Time                     string `json:"time"`
+}
+
+//Abattoir struct
 type Abattoir struct {
 	Farm
 	Transport
-	AbattoirName      string `json:"abattoir_name"`
-	AbattoirLocation  string `json:"abattoir_location"`
-	AbattoirQualified string `json:"abattoir_qualified"`
-	Peck_Time         string `json:"peck_time"`
+	AbattoirAccount         string `json:"abattoir_account"`
+	AbattoirName            string `json:"abattoir_name"`
+	AbattoirTroubleSolution string `json:"abattoir_trouble_solution"`
+	AbattoirLocation        string `json:"abattoir_location"`
+	AbattoirQualified       string `json:"abattoir_qualified"`
+	PeckTime                string `json:"peck_time"`
 }
 
+//Supermarket struct
 type Supermarket struct {
 	Farm
 	Transport
 	Abattoir
-	SupermarketName      string `json:"supermarket_name"`
-	SupermarketQualified string `json:"supermarket_qualified"`
-	Price                string `json:"price"`
-	QuantityRemaining    string `json:"quantity_remaining"`
-	MFG                  string `json:"manufacturing_date"`
-	EXP                  string `json:"expiry_date"`
+	SupermarketAccount         string `json:"supermarket_account"`
+	SupermarketName            string `json:"supermarket_name"`
+	SupermarketTroubleSolution string `json:"supermarket_trouble_solution"`
+	SupermarketQualified       string `json:"supermarket_qualified"`
+	Price                      string `json:"price"`
+	QuantityRemaining          string `json:"quantity_remaining"`
+	MFG                        string `json:"manufacturing_date"`
+	EXP                        string `json:"expiry_date"`
 }
-type Pork struct {
-	// User
-	Farm
-	Transport
-	Abattoir
-	Supermarket
+
+//HistoryTxID struct
+type HistoryTxID struct {
+	TxID       string `json:"txid"`
+	Account    string `json:"account"`
+	Job        string `json:"job"`
+	CreateTime string `json:"create_time"`
 }
 
 /*
- * The Init method *
- called when the Smart Contract "tuna-chaincode" is instantiated by the network
- * Best practice is to have any Ledger initialization in separate function
- -- see initLedger()
+* The Init method *
+called when the Smart Contract "tuna-chaincode" is instantiated by the network
+* Best practice is to have any Ledger initialization in separate function
+-- see initLedger()
 */
+
+// Init method definition
 func (s *SmartContract) Init(APIstub shim.ChaincodeStubInterface) sc.Response {
 	return shim.Success(nil)
 }
 
-/*
- * The Invoke method *
- called when an application requests to run the Smart Contract "pig-chaincode"
- The app also specifies the specific smart contract function to call with args
+/*Invoke methoad
+called when an application requests to run the Smart Contract "pig-chaincode"
+The app also specifies the specific smart contract function to call with args
 */
 func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response {
 
 	// Retrieve the requested Smart Contract function and arguments
 	function, args := APIstub.GetFunctionAndParameters()
 	// Route to the appropriate handler function to interact with the ledger
-	if function == "queryPig" {
+	if function == "queryPig" { //look up pork with ID
 		return s.queryPig(APIstub, args)
 	} else if function == "queryViewUser" {
 		return s.queryViewUser(APIstub, args)
-	} else if function == "queryFarm" {
-		return s.queryFarm(APIstub, args)
-	} else if function == "queryTransport" {
-		return s.queryTransport(APIstub, args)
-	} else if function == "queryAbattoir" {
-		return s.queryAbattoir(APIstub, args)
-	} else if function == "querySupermarket" {
-		return s.querySupermarket(APIstub, args)
 	} else if function == "addUser" {
 		return s.addUser(APIstub, args)
-		// } else if function == "addSentUser" {
-		// 	return s.addSentUser(APIstub, args)
+	} else if function == "deleteUser" {
+		return s.deleteUser(APIstub, args)
 	} else if function == "queryAllUser" {
 		return s.queryAllUser(APIstub)
-		// } else if function == "querySentUser" {
-		// 	return s.querySentUser(APIstub)
-		// } else if function == "chainDelete" {
-		// 	return s.chainDelete(APIstub, args)
-	} else if function == "initLedger" {
+	} else if function == "initLedger" { //initialization Ledger
 		return s.initLedger(APIstub)
-		// } else if function == "initLedgerUser" {
-		// return s.initLedgerUser(APIstub)
-	} else if function == "initChain" {
+	} else if function == "initChain" { //create supply chain
 		return s.initChain(APIstub, args)
-	} else if function == "recordFarm" {
-		return s.recordFarm(APIstub, args)
-	} else if function == "insertTransport" {
-		return s.insertTransport(APIstub, args)
-	} else if function == "insertAbattoir" {
-		return s.insertAbattoir(APIstub, args)
-	} else if function == "insertSupermarket" {
-		return s.insertSupermarket(APIstub, args)
-		// } else if function == "queryHistory" {
-		// 	return s.queryHistory(APIstub, args)
-	} else if function == "recordTransport" {
-		return s.recordTransport(APIstub, args)
-	} else if function == "queryAllPig" {
+	} else if function == "queryAllPig" { //query all pig id
 		return s.queryAllPig(APIstub)
-	} else if function == "insertFarm" {
-		return s.insertFarm(APIstub, args)
+		//...
+	} else if function == "queryAllHistoryTxID" {
+		return s.queryAllHistoryTxID(APIstub)
+	} else if function == "addHistoryTxID" {
+		return s.addHistoryTxID(APIstub, args)
+
+		// update  farm info
 	} else if function == "updateFamer" {
 		return s.updateFamer(APIstub, args)
 	} else if function == "updateSpecies" {
 		return s.updateSpecies(APIstub, args)
 	} else if function == "updateFood" {
 		return s.updateFood(APIstub, args)
+	} else if function == "updateFarmQualified" {
+		return s.updateFarmQualified(APIstub, args)
 	} else if function == "updateLocation" {
 		return s.updateLocation(APIstub, args)
 	} else if function == "updateStartDate" {
 		return s.updateStartDate(APIstub, args)
 	} else if function == "updateEndDate" {
 		return s.updateEndDate(APIstub, args)
+
+		//update  transport info
+	} else if function == "updateFarmAccount" {
+		return s.updateFarmAccount(APIstub, args)
+	} else if function == "updateTransportAccount" {
+		return s.updateTransportAccount(APIstub, args)
+	} else if function == "updateCompany" {
+		return s.updateCompany(APIstub, args)
+	} else if function == "updateTransporter" {
+		return s.updateTransporter(APIstub, args)
+	} else if function == "updateVehicle" {
+		return s.updateVehicle(APIstub, args)
+	} else if function == "updateTransportTroubleSolution" {
+		return s.updateTransportTroubleSolution(APIstub, args)
+	} else if function == "updateTransportQualified" {
+		return s.updateTransportQualified(APIstub, args)
+	} else if function == "updateTime" {
+		return s.updateTime(APIstub, args)
+
+		//update abattoir info
+	} else if function == "updateAbattoirAccount" {
+		return s.updateAbattoirAccount(APIstub, args)
+	} else if function == "updateAbattoirName" {
+		return s.updateAbattoirName(APIstub, args)
+	} else if function == "updateAbattoirTroubleSolution" {
+		return s.updateAbattoirTroubleSolution(APIstub, args)
+	} else if function == "updateAbattoirLocation" {
+		return s.updateAbattoirLocation(APIstub, args)
+	} else if function == "updateAbattoirQualified" {
+		return s.updateAbattoirQualified(APIstub, args)
+	} else if function == "updatePeckTime" {
+		return s.updatePeckTime(APIstub, args)
+
+		//update supermarket info
+	} else if function == "updateSupermarketAccount" {
+		return s.updateSupermarketAccount(APIstub, args)
+	} else if function == "updateSupermarketName" {
+		return s.updateSupermarketName(APIstub, args)
+	} else if function == "updateSupermarketTroubleSolution" {
+		return s.updateSupermarketTroubleSolution(APIstub, args)
+	} else if function == "updateSupermarketQualified" {
+		return s.updateSupermarketQualified(APIstub, args)
+	} else if function == "updatePrice" {
+		return s.updatePrice(APIstub, args)
+	} else if function == "updateQuantityRemaining" {
+		return s.updateQuantityRemaining(APIstub, args)
+	} else if function == "updateMFG" {
+		return s.updateMFG(APIstub, args)
+	} else if function == "updateEXP" {
+		return s.updateEXP(APIstub, args)
+
 	} else if function == "approveUser" {
 		return s.approveUser(APIstub, args)
 	} else if function == "editChainID" {
@@ -189,16 +227,44 @@ func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response 
 		return s.editPassword(APIstub, args)
 	} else if function == "editEmail" {
 		return s.editEmail(APIstub, args)
+	} else if function == "editImg" {
+		return s.editImg(APIstub, args)
 	} else if function == "editStatus" {
 		return s.editStatus(APIstub, args)
 	} else if function == "updateSickCure" {
 		return s.updateSickCure(APIstub, args)
-	} else if function == "queryAllFarm" {
-		return s.queryAllFarm(APIstub)
-	} else if function == "queryAllTransport" {
-		return s.queryAllTransport(APIstub)
 	}
+
 	return shim.Error("Invalid Smart Contract function name.")
+}
+
+//editImg
+func (s *SmartContract) editImg(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	editImgAsBytes, _ := APIstub.GetState(args[0])
+	if editImgAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	user := User{}
+
+	json.Unmarshal(editImgAsBytes, &user)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	user.Img = args[1]
+
+	editImgAsBytes, _ = json.Marshal(user)
+	err := APIstub.PutState(args[0], editImgAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
 }
 
 //editPassword
@@ -393,7 +459,36 @@ func (s *SmartContract) updateSickCure(APIstub shim.ChaincodeStubInterface, args
 	json.Unmarshal(pigAsBytes, &farm)
 	// Normally check that the specified argument
 	// we are skipping this check for this example
-	farm.Sick_Cure = args[1]
+	farm.SickCure = args[1]
+
+	pigAsBytes, _ = json.Marshal(farm)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateFarmAccount
+func (s *SmartContract) updateFarmAccount(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	farm := Pork{}
+
+	json.Unmarshal(pigAsBytes, &farm)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	farm.FarmAccount = args[1]
 
 	pigAsBytes, _ = json.Marshal(farm)
 	err := APIstub.PutState(args[0], pigAsBytes)
@@ -492,6 +587,35 @@ func (s *SmartContract) updateFood(APIstub shim.ChaincodeStubInterface, args []s
 	return shim.Success(nil)
 }
 
+//updateFarmQualified
+func (s *SmartContract) updateFarmQualified(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	farm := Pork{}
+
+	json.Unmarshal(pigAsBytes, &farm)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	farm.FarmQualified = args[1]
+
+	pigAsBytes, _ = json.Marshal(farm)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
 //updateLocation
 func (s *SmartContract) updateLocation(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
@@ -579,6 +703,617 @@ func (s *SmartContract) updateEndDate(APIstub shim.ChaincodeStubInterface, args 
 	return shim.Success(nil)
 }
 
+//updateTransportAccount
+func (s *SmartContract) updateTransportAccount(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	transport := Pork{}
+
+	json.Unmarshal(pigAsBytes, &transport)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	transport.TransportAccount = args[1]
+
+	pigAsBytes, _ = json.Marshal(transport)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateCompany
+func (s *SmartContract) updateCompany(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	transport := Pork{}
+
+	json.Unmarshal(pigAsBytes, &transport)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	transport.Company = args[1]
+
+	pigAsBytes, _ = json.Marshal(transport)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateTransporter
+func (s *SmartContract) updateTransporter(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	transport := Pork{}
+
+	json.Unmarshal(pigAsBytes, &transport)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	transport.Transporter = args[1]
+
+	pigAsBytes, _ = json.Marshal(transport)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateVehicle
+func (s *SmartContract) updateVehicle(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	transport := Pork{}
+
+	json.Unmarshal(pigAsBytes, &transport)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	transport.Vehicle = args[1]
+
+	pigAsBytes, _ = json.Marshal(transport)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateTroubleSolution
+func (s *SmartContract) updateTransportTroubleSolution(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	transport := Pork{}
+
+	json.Unmarshal(pigAsBytes, &transport)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	transport.TransportTroubleSolution = args[1]
+
+	pigAsBytes, _ = json.Marshal(transport)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateTransportQualified
+func (s *SmartContract) updateTransportQualified(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	transport := Pork{}
+
+	json.Unmarshal(pigAsBytes, &transport)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	transport.TransportQualified = args[1]
+
+	pigAsBytes, _ = json.Marshal(transport)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateTime
+func (s *SmartContract) updateTime(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	transport := Pork{}
+
+	json.Unmarshal(pigAsBytes, &transport)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	transport.Time = args[1]
+
+	pigAsBytes, _ = json.Marshal(transport)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//update abattoir info
+//updateAbattoirAccount
+func (s *SmartContract) updateAbattoirAccount(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	abattoir := Pork{}
+
+	json.Unmarshal(pigAsBytes, &abattoir)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	abattoir.AbattoirAccount = args[1]
+
+	pigAsBytes, _ = json.Marshal(abattoir)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateAbattoirName
+func (s *SmartContract) updateAbattoirName(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	abattoir := Pork{}
+
+	json.Unmarshal(pigAsBytes, &abattoir)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	abattoir.AbattoirName = args[1]
+
+	pigAsBytes, _ = json.Marshal(abattoir)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateAbattoirTroubleSolution
+func (s *SmartContract) updateAbattoirTroubleSolution(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	abattoir := Pork{}
+
+	json.Unmarshal(pigAsBytes, &abattoir)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	abattoir.AbattoirTroubleSolution = args[1]
+
+	pigAsBytes, _ = json.Marshal(abattoir)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateAbattoirLocation
+func (s *SmartContract) updateAbattoirLocation(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	abattoir := Pork{}
+
+	json.Unmarshal(pigAsBytes, &abattoir)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	abattoir.AbattoirLocation = args[1]
+
+	pigAsBytes, _ = json.Marshal(abattoir)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateAbattoirQualified
+func (s *SmartContract) updateAbattoirQualified(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	abattoir := Pork{}
+
+	json.Unmarshal(pigAsBytes, &abattoir)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	abattoir.AbattoirQualified = args[1]
+
+	pigAsBytes, _ = json.Marshal(abattoir)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updatePeckTime
+func (s *SmartContract) updatePeckTime(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	abattoir := Pork{}
+
+	json.Unmarshal(pigAsBytes, &abattoir)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	abattoir.PeckTime = args[1]
+
+	pigAsBytes, _ = json.Marshal(abattoir)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//update supermarket info
+//updateSupermarketAccount
+func (s *SmartContract) updateSupermarketAccount(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	supermarket := Pork{}
+
+	json.Unmarshal(pigAsBytes, &supermarket)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	supermarket.SupermarketAccount = args[1]
+
+	pigAsBytes, _ = json.Marshal(supermarket)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateSupermarketName
+func (s *SmartContract) updateSupermarketName(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	supermarket := Pork{}
+
+	json.Unmarshal(pigAsBytes, &supermarket)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	supermarket.SupermarketName = args[1]
+
+	pigAsBytes, _ = json.Marshal(supermarket)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateSupermarketTroubleSolution
+func (s *SmartContract) updateSupermarketTroubleSolution(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	supermarket := Pork{}
+
+	json.Unmarshal(pigAsBytes, &supermarket)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	supermarket.SupermarketTroubleSolution = args[1]
+
+	pigAsBytes, _ = json.Marshal(supermarket)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateSupermarketQualified
+func (s *SmartContract) updateSupermarketQualified(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	supermarket := Pork{}
+
+	json.Unmarshal(pigAsBytes, &supermarket)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	supermarket.SupermarketQualified = args[1]
+
+	pigAsBytes, _ = json.Marshal(supermarket)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updatePrice
+func (s *SmartContract) updatePrice(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	supermarket := Pork{}
+
+	json.Unmarshal(pigAsBytes, &supermarket)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	supermarket.Price = args[1]
+
+	pigAsBytes, _ = json.Marshal(supermarket)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateQuantityRemaining
+func (s *SmartContract) updateQuantityRemaining(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	supermarket := Pork{}
+
+	json.Unmarshal(pigAsBytes, &supermarket)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	supermarket.QuantityRemaining = args[1]
+
+	pigAsBytes, _ = json.Marshal(supermarket)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateMFG
+func (s *SmartContract) updateMFG(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	supermarket := Pork{}
+
+	json.Unmarshal(pigAsBytes, &supermarket)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	supermarket.MFG = args[1]
+
+	pigAsBytes, _ = json.Marshal(supermarket)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//updateEXP
+func (s *SmartContract) updateEXP(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	pigAsBytes, _ := APIstub.GetState(args[0])
+	if pigAsBytes == nil {
+		return shim.Error("Could not locate id")
+	}
+
+	supermarket := Pork{}
+
+	json.Unmarshal(pigAsBytes, &supermarket)
+	// Normally check that the specified argument
+	// we are skipping this check for this example
+	supermarket.EXP = args[1]
+
+	pigAsBytes, _ = json.Marshal(supermarket)
+	err := APIstub.PutState(args[0], pigAsBytes)
+	// err := APIstub.DelState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
 //function pig-app
 func (s *SmartContract) queryPig(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
@@ -607,62 +1342,6 @@ func (s *SmartContract) queryViewUser(APIstub shim.ChaincodeStubInterface, args 
 	return shim.Success(pigAsBytes)
 }
 
-//function queryFarm
-func (s *SmartContract) queryFarm(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-
-	if len(args) != 1 {
-		return shim.Error("Incorrect number of arguments. Expecting 1")
-	}
-
-	pigAsBytes, _ := APIstub.GetState(args[0])
-	if pigAsBytes == nil {
-		return shim.Error("Could not locate farm id")
-	}
-	return shim.Success(pigAsBytes)
-}
-
-//queryTransport
-func (s *SmartContract) queryTransport(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-
-	if len(args) != 1 {
-		return shim.Error("Incorrect number of arguments. Expecting 1")
-	}
-
-	pigAsBytes, _ := APIstub.GetState(args[0])
-	if pigAsBytes == nil {
-		return shim.Error("Could not locate transport id")
-	}
-	return shim.Success(pigAsBytes)
-}
-
-//queryAbattoir
-func (s *SmartContract) queryAbattoir(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-
-	if len(args) != 1 {
-		return shim.Error("Incorrect number of arguments. Expecting 1")
-	}
-
-	pigAsBytes, _ := APIstub.GetState(args[0])
-	if pigAsBytes == nil {
-		return shim.Error("Could not locate abattoir id")
-	}
-	return shim.Success(pigAsBytes)
-}
-
-//querySupermarket
-func (s *SmartContract) querySupermarket(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-
-	if len(args) != 1 {
-		return shim.Error("Incorrect number of arguments. Expecting 1")
-	}
-
-	pigAsBytes, _ := APIstub.GetState(args[0])
-	if pigAsBytes == nil {
-		return shim.Error("Could not locate suppermarket id")
-	}
-	return shim.Success(pigAsBytes)
-}
-
 /*
  * The initLedger method *
 Will add test data to our network
@@ -670,28 +1349,13 @@ Will add test data to our network
 
 func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Response {
 
-	pig := []Pork{
-		Pork{
-			// User:        User{},
-			Farm:        Farm{QRCode: "923F", Famer: "HieuLinh", Species: "Home", Food: "Cam", Sick_Cure: "Ho-Tiffi", FarmLocation: "Nga Nam", StartDateOfFarming: "01/01/2019", EndDateOfFarming: "01/04/2019"},
-			Transport:   Transport{Company: "1 Thanh Vien", Transporter: "Sapau", Vehicle: "Xe Tai", Trouble: "No", Solution: "No", TransportQualified: "ISO 9000", Time: "01/04/2019"},
-			Abattoir:    Abattoir{AbattoirName: "Taikonn", AbattoirLocation: "Can Tho", AbattoirQualified: "OK", Peck_Time: "02/04/2019"},
-			Supermarket: Supermarket{SupermarketName: "BigC", SupermarketQualified: "Ngon", Price: "3$", QuantityRemaining: "20", MFG: "03/04/2019", EXP: "04/04/2019"},
-		},
-	}
-
-	i := 0
-	for i < len(pig) {
-		fmt.Println("i is ", i)
-		pigAsBytes, _ := json.Marshal(pig[i])
-		APIstub.PutState(strconv.Itoa(i+1), pigAsBytes)
-		fmt.Println("Added", pig[i])
-		i = i + 1
-	}
-
 	//members
 	user := []User{
-		User{Username: "admin", Password: "admin", Email: "admin@gmail.com", ChainID: "NO", Roles: "Admin", Status: "ABLE", Approve: "APPROVED"},
+		User{Img: "QmSsSpp1EosrVuNWxtzJ4xRPy7g6SghULp57WaTZv2RUwC", Username: "admin", Password: "admin", Email: "admin@gmail.com", ChainID: "NO", Roles: "Admin", Status: "ENABLE", Approve: "APPROVED"},
+		User{Img: "QmSsSpp1EosrVuNWxtzJ4xRPy7g6SghULp57WaTZv2RUwC", Username: "nongtrai", Password: "nongtrai", Email: "nongtrai@gmail.com", ChainID: "NO", Roles: "Z.Farm", Status: "DISABLE", Approve: "WAITTING"},
+		User{Img: "QmSsSpp1EosrVuNWxtzJ4xRPy7g6SghULp57WaTZv2RUwC", Username: "vanchuyen", Password: "vanchuyen", Email: "vanchuyen@gmail.com", ChainID: "NO", Roles: "Y.Transport", Status: "ENABLE", Approve: "WAITTING"},
+		User{Img: "QmSsSpp1EosrVuNWxtzJ4xRPy7g6SghULp57WaTZv2RUwC", Username: "lomo", Password: "lomo", Email: "lomo@gmail.com", ChainID: "NO", Roles: "X.Abattoir", Status: "ENABLE", Approve: "WAITTING"},
+		User{Img: "QmSsSpp1EosrVuNWxtzJ4xRPy7g6SghULp57WaTZv2RUwC", Username: "sieuthi", Password: "sieuthi", Email: "sieuthi@gmail.com", ChainID: "NO", Roles: "W.Supermarket", Status: "ENABLE", Approve: "WAITTING"},
 	}
 	u := 0
 	for u < len(user) {
@@ -702,99 +1366,112 @@ func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Respo
 		u = u + 1
 	}
 
-	//sent signup for admin approve
-	sentUser := []SentUser{
-		SentUser{},
+	pigpsc := []Pork{
+		Pork{
+			Farm:        Farm{FarmAccount: "farm", Famer: "HieuLinh1", Species: "Heo rừng", Food: "Thức ăn", SickCure: "Ecoli_Lactobacillus", FarmQualified: "*****", FarmLocation: "Ngã Năm", StartDateOfFarming: "01012019", EndDateOfFarming: "01042019"},
+			Transport:   Transport{TransportAccount: "transport", Company: "1 thành viên", Transporter: "Sapau", Vehicle: "Xe Tải", TransportTroubleSolution: "No", TransportQualified: "*****", Time: "01042019"},
+			Abattoir:    Abattoir{AbattoirAccount: "abattoir", AbattoirName: "Lò mổ lợn", AbattoirTroubleSolution: "No", AbattoirLocation: "Cần Thơ", AbattoirQualified: "*****", PeckTime: "02042019"},
+			Supermarket: Supermarket{SupermarketAccount: "supermarket", SupermarketName: "Big.C", SupermarketTroubleSolution: "No", SupermarketQualified: "*****", Price: "3$", QuantityRemaining: "20", MFG: "03042019", EXP: "04042019"},
+		},
+		// Pork{
+		// 	Farm:        Farm{FarmAccount: "farm", Famer: "HieuLinh2", Species: "Heo rừng", Food: "Thức ăn", SickCure: "Ecoli_Lactobacillus", FarmQualified: "*****", FarmLocation: "Ngã Năm", StartDateOfFarming: "01012019", EndDateOfFarming: "01042019"},
+		// 	Transport:   Transport{TransportAccount: "transport", Company: "1 thành viên", Transporter: "Sapau", Vehicle: "Xe Tải", TransportTroubleSolution: "No", TransportQualified: "*****", Time: "01042019"},
+		// 	Abattoir:    Abattoir{AbattoirAccount: "abattoir", AbattoirName: "Lò mổ lợn", AbattoirTroubleSolution: "No", AbattoirLocation: "Cần Thơ", AbattoirQualified: "*****", PeckTime: "02042019"},
+		// 	Supermarket: Supermarket{SupermarketAccount: "supermarket", SupermarketName: "Big.C", SupermarketTroubleSolution: "No", SupermarketQualified: "*****", Price: "3$", QuantityRemaining: "20", MFG: "03042019", EXP: "04042019"},
+		// },
 	}
-	a := 1
-	for a < len(sentUser) {
-		fmt.Println("a is ", a)
-		sentUserAsBytes, _ := json.Marshal(sentUser[a])
-		APIstub.PutState("user"+strconv.Itoa(a+1), sentUserAsBytes)
-		fmt.Println("Added", sentUser[a])
-		a = a + 1
+
+	i := 0
+	for i < len(pigpsc) {
+		fmt.Println("i is ", i)
+		pigAsBytes, _ := json.Marshal(pigpsc[i])
+		APIstub.PutState("20191101.000000.000"+strconv.Itoa(i+1), pigAsBytes)
+		fmt.Println("Added", pigpsc[i])
+		i = i + 1
+
+	}
+
+	//HistoryTxID
+	history := []HistoryTxID{
+		HistoryTxID{TxID: "InitLedger", Account: "InitLedger", Job: "InitLedger$", CreateTime: "00000000"},
+	}
+
+	h := 0
+	for h < len(history) {
+		fmt.Println("h is ", h)
+		historyAsBytes, _ := json.Marshal(history[h])
+		APIstub.PutState("history"+strconv.Itoa(h+1), historyAsBytes)
+		fmt.Println("Added", history[h])
+		h = h + 1
 	}
 
 	return shim.Success(nil)
 }
 
-// add user
-func (s *SmartContract) addUser(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-
-	if len(args) != 8 {
-		return shim.Error("Incorrect number of arguments. Expecting 8")
+//delete method definition
+func (s *SmartContract) deleteUser(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+	if len(args) != 9 {
+		return shim.Error("Incorrect number of arguments. Expecting 9")
 	}
-	var user = User{Username: args[1], Password: args[2], Email: args[3], ChainID: args[4], Roles: args[5], Status: args[6], Approve: args[7]}
 
-	userAsBytes, _ := json.Marshal(user)
-	err := APIstub.PutState(args[0], userAsBytes)
+	err := APIstub.DelState(args[0])
 	if err != nil {
-		return shim.Error(fmt.Sprintf("Failed to add user: %s", args[0]))
+		return shim.Error(fmt.Sprintf("Failed to delete: %s", args[0]))
 	}
 
+	eventPayload := "User with ID " + args[0] + " whose owner is " + args[2]
+	payloadAsBytes := []byte(eventPayload)
+	eventErr := APIstub.SetEvent("deleteEvent", payloadAsBytes)
+	if eventErr != nil {
+		return shim.Error(fmt.Sprintf("Failed to emit event"))
+	}
+	fmt.Printf("- deleteUser:\n%s\n", args[0])
 	return shim.Success(nil)
 }
 
-// add user
-// func (s *SmartContract) addSentUser(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+//query all pig id
+func (s *SmartContract) queryAllPig(APIstub shim.ChaincodeStubInterface) sc.Response {
 
-// 	if len(args) != 7 {
-// 		return shim.Error("Incorrect number of arguments. Expecting 7")
-// 	}
-// 	var sentUser = SentUser{Username: args[1], Password: args[2], Email: args[3], Roles: args[4], Status: args[5], Approve: args[6]}
+	startKey := "20191101.000000.0000"
+	endKey := "99999999.999999.999999"
 
-// 	sentUserAsBytes, _ := json.Marshal(sentUser)
-// 	err := APIstub.PutState(args[0], sentUserAsBytes)
-// 	if err != nil {
-// 		return shim.Error(fmt.Sprintf("Failed to add sentUser: %s", args[0]))
-// 	}
+	resultsIterator, err := APIstub.GetStateByRange(startKey, endKey)
+	if err != nil {
+		return shim.Error(err.Error())
+	}
+	defer resultsIterator.Close()
 
-// 	return shim.Success(nil)
-// }
+	// buffer is a JSON array containing QueryResults
+	var buffer bytes.Buffer
+	buffer.WriteString("[")
 
-// queryAlllSaveSignUp
-// func (s *SmartContract) querySentUser(APIstub shim.ChaincodeStubInterface) sc.Response {
+	bArrayMemberAlreadyWritten := false
+	for resultsIterator.HasNext() {
+		queryResponse, err := resultsIterator.Next()
+		if err != nil {
+			return shim.Error(err.Error())
+		}
+		// Add comma before array members,suppress it for the first array member
+		if bArrayMemberAlreadyWritten == true {
+			buffer.WriteString(",")
+		}
+		buffer.WriteString("{\"Key\":")
+		buffer.WriteString("\"")
+		buffer.WriteString(string(queryResponse.Key))
+		buffer.WriteString("\"")
 
-// 	startKey := "user0"
-// 	endKey := "user999"
+		buffer.WriteString(", \"Record\":")
+		// Record is a JSON object, so we write as-is
+		buffer.WriteString(string(queryResponse.Value))
+		buffer.WriteString("}")
+		bArrayMemberAlreadyWritten = true
+	}
+	buffer.WriteString("]")
 
-// 	resultsIterator, err := APIstub.GetStateByRange(startKey, endKey)
-// 	if err != nil {
-// 		return shim.Error(err.Error())
-// 	}
-// 	defer resultsIterator.Close()
+	fmt.Printf("- queryAllPig:\n%s\n", buffer.String())
 
-// 	// buffer is a JSON array containing QueryResults
-// 	var buffer bytes.Buffer
-// 	buffer.WriteString("[")
-
-// 	bArrayMemberAlreadyWritten := false
-// 	for resultsIterator.HasNext() {
-// 		queryResponse, err := resultsIterator.Next()
-// 		if err != nil {
-// 			return shim.Error(err.Error())
-// 		}
-// 		// Add comma before array members,suppress it for the first array member
-// 		if bArrayMemberAlreadyWritten == true {
-// 			buffer.WriteString(",")
-// 		}
-// 		buffer.WriteString("{\"Key\":")
-// 		buffer.WriteString("\"")
-// 		buffer.WriteString(queryResponse.Key)
-// 		buffer.WriteString("\"")
-
-// 		buffer.WriteString(", \"Record\":")
-// 		// Record is a JSON object, so we write as-is
-// 		buffer.WriteString(string(queryResponse.Value))
-// 		buffer.WriteString("}")
-// 		bArrayMemberAlreadyWritten = true
-// 	}
-// 	buffer.WriteString("]")
-
-// 	fmt.Printf("- queryAllSentUser:\n%s\n", buffer.String())
-
-// 	return shim.Success(buffer.Bytes())
-// }
+	return shim.Success(buffer.Bytes())
+}
 
 // queryalluser
 func (s *SmartContract) queryAllUser(APIstub shim.ChaincodeStubInterface) sc.Response {
@@ -840,39 +1517,96 @@ func (s *SmartContract) queryAllUser(APIstub shim.ChaincodeStubInterface) sc.Res
 	return shim.Success(buffer.Bytes())
 }
 
-/*
- * The recordFarm method *
-This method takes in five arguments (attributes to be saved in the ledger).
-*/
+// queryAllHistoryTxID
+func (s *SmartContract) queryAllHistoryTxID(APIstub shim.ChaincodeStubInterface) sc.Response {
 
-func (s *SmartContract) recordFarm(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+	startKey := "history1"
+	endKey := "history999"
 
-	if len(args) != 9 {
-		return shim.Error("Incorrect number of arguments. Expecting 9")
-	}
-	var farm = Farm{QRCode: args[1], Famer: args[2], Species: args[3], Food: args[4], Sick_Cure: args[5], FarmLocation: args[6], StartDateOfFarming: args[7], EndDateOfFarming: args[8]}
-
-	pigAsBytes, _ := json.Marshal(farm)
-	err := APIstub.PutState(args[0], pigAsBytes)
+	resultsIterator, err := APIstub.GetStateByRange(startKey, endKey)
 	if err != nil {
-		return shim.Error(fmt.Sprintf("Failed to record farm: %s", args[0]))
+		return shim.Error(err.Error())
+	}
+	defer resultsIterator.Close()
+
+	// buffer is a JSON array containing QueryResults
+	var buffer bytes.Buffer
+	buffer.WriteString("[")
+
+	bArrayMemberAlreadyWritten := false
+	for resultsIterator.HasNext() {
+		queryResponse, err := resultsIterator.Next()
+		if err != nil {
+			return shim.Error(err.Error())
+		}
+		// Add comma before array members,suppress it for the first array member
+		if bArrayMemberAlreadyWritten == true {
+			buffer.WriteString(",")
+		}
+		buffer.WriteString("{\"Key\":")
+		buffer.WriteString("\"")
+		buffer.WriteString(queryResponse.Key)
+		buffer.WriteString("\"")
+
+		buffer.WriteString(", \"Record\":")
+		// Record is a JSON object, so we write as-is
+		buffer.WriteString(string(queryResponse.Value))
+		buffer.WriteString("}")
+		bArrayMemberAlreadyWritten = true
+	}
+	buffer.WriteString("]")
+
+	fmt.Printf("- queryAllHistoryTxID:\n%s\n", buffer.String())
+
+	return shim.Success(buffer.Bytes())
+}
+
+// add addHistoryTxID
+func (s *SmartContract) addHistoryTxID(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 5 {
+		return shim.Error("Incorrect number of arguments. Expecting 5")
+	}
+	var history = HistoryTxID{TxID: args[1], Account: args[2], Job: args[3], CreateTime: args[4]}
+
+	historyAsBytes, _ := json.Marshal(history)
+	err := APIstub.PutState(args[0], historyAsBytes)
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to add history: %s", args[0]))
 	}
 
 	return shim.Success(nil)
 }
 
-//initChain
+// add user
+func (s *SmartContract) addUser(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 9 {
+		return shim.Error("Incorrect number of arguments. Expecting 9")
+	}
+	var user = User{Img: args[1], Username: args[2], Password: args[3], Email: args[4], ChainID: args[5], Roles: args[6], Status: args[7], Approve: args[8]}
+
+	userAsBytes, _ := json.Marshal(user)
+	err := APIstub.PutState(args[0], userAsBytes)
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to add user: %s", args[0]))
+	}
+
+	return shim.Success(nil)
+}
+
+//initChain method
 func (s *SmartContract) initChain(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
-	if len(args) != 26 {
-		return shim.Error("Incorrect number of arguments. Expecting 26")
+	if len(args) != 31 {
+		return shim.Error("Incorrect number of arguments. Expecting 31")
 	}
 
 	var chain = Pork{
-		Farm:        Farm{QRCode: args[1], Famer: args[2], Species: args[3], Food: args[4], Sick_Cure: args[5], FarmLocation: args[6], StartDateOfFarming: args[7], EndDateOfFarming: args[8]},
-		Transport:   Transport{Company: args[9], Transporter: args[10], Vehicle: args[11], Trouble: args[12], Solution: args[13], TransportQualified: args[14], Time: args[15]},
-		Abattoir:    Abattoir{AbattoirName: args[16], AbattoirLocation: args[17], AbattoirQualified: args[18], Peck_Time: args[19]},
-		Supermarket: Supermarket{SupermarketName: args[20], SupermarketQualified: args[21], Price: args[22], QuantityRemaining: args[23], MFG: args[24], EXP: args[25]},
+		Farm:        Farm{FarmAccount: args[1], Famer: args[2], Species: args[3], Food: args[4], SickCure: args[5], FarmQualified: args[6], FarmLocation: args[7], StartDateOfFarming: args[8], EndDateOfFarming: args[9]},
+		Transport:   Transport{TransportAccount: args[10], Company: args[11], Transporter: args[12], Vehicle: args[13], TransportTroubleSolution: args[14], TransportQualified: args[15], Time: args[16]},
+		Abattoir:    Abattoir{AbattoirAccount: args[17], AbattoirName: args[18], AbattoirTroubleSolution: args[19], AbattoirLocation: args[20], AbattoirQualified: args[21], PeckTime: args[22]},
+		Supermarket: Supermarket{SupermarketAccount: args[23], SupermarketName: args[24], SupermarketTroubleSolution: args[25], SupermarketQualified: args[26], Price: args[27], QuantityRemaining: args[28], MFG: args[29], EXP: args[30]},
 	}
 
 	pigAsBytes, _ := json.Marshal(chain)
@@ -882,425 +1616,6 @@ func (s *SmartContract) initChain(APIstub shim.ChaincodeStubInterface, args []st
 	}
 
 	return shim.Success(nil)
-}
-
-/*
- * The insertTransport method *
-The data in the world state can be updated with who has possession.
-This function takes in 8 arguments, transport id and new args.
-*/
-
-func (s *SmartContract) insertTransport(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-
-	if len(args) != 8 {
-		return shim.Error("Incorrect number of arguments. Expecting 8")
-	}
-
-	pigAsBytes, _ := APIstub.GetState(args[0])
-	if pigAsBytes == nil {
-		return shim.Error("Could not locate id")
-	}
-
-	transport := Pork{}
-
-	json.Unmarshal(pigAsBytes, &transport)
-	// Normally check that the specified argument
-	// we are skipping this check for this example
-	transport.Company = args[1]
-	transport.Transporter = args[2]
-	transport.Vehicle = args[3]
-	transport.Trouble = args[4]
-	transport.Solution = args[5]
-	transport.TransportQualified = args[6]
-	transport.Time = args[7]
-
-	pigAsBytes, _ = json.Marshal(transport)
-	err := APIstub.PutState(args[0], pigAsBytes)
-	if err != nil {
-		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
-	}
-
-	return shim.Success(nil)
-}
-
-/*
- * The insertAbattoir method *
-The data in the world state can be updated with who has possession.
-This function takes in 5 arguments, farm id and new args.
-*/
-
-func (s *SmartContract) insertAbattoir(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-
-	if len(args) != 5 {
-		return shim.Error("Incorrect number of arguments. Expecting 5")
-	}
-
-	pigAsBytes, _ := APIstub.GetState(args[0])
-	if pigAsBytes == nil {
-		return shim.Error("Could not locate id")
-	}
-
-	abattoir := Pork{}
-
-	json.Unmarshal(pigAsBytes, &abattoir)
-	// Normally check that the specified argument
-	// we are skipping this check for this example
-	abattoir.AbattoirName = args[1]
-	abattoir.AbattoirLocation = args[2]
-	abattoir.AbattoirQualified = args[3]
-	abattoir.Peck_Time = args[4]
-
-	pigAsBytes, _ = json.Marshal(abattoir)
-	err := APIstub.PutState(args[0], pigAsBytes)
-	if err != nil {
-		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
-	}
-
-	return shim.Success(nil)
-}
-
-/*
- * The insertSupermarket method *
-The data in the world state can be updated with who has possession.
-This function takes in 5 arguments, farm id and new args.
-*/
-
-func (s *SmartContract) insertSupermarket(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-
-	if len(args) != 7 {
-		return shim.Error("Incorrect number of arguments. Expecting 7")
-	}
-
-	pigAsBytes, _ := APIstub.GetState(args[0])
-	if pigAsBytes == nil {
-		return shim.Error("Could not locate id")
-	}
-
-	supermarket := Pork{}
-
-	json.Unmarshal(pigAsBytes, &supermarket)
-	// Normally check that the specified argument
-	// we are skipping this check for this example
-	supermarket.SupermarketName = args[1]
-	supermarket.SupermarketQualified = args[2]
-	supermarket.Price = args[3]
-	supermarket.QuantityRemaining = args[4]
-	supermarket.MFG = args[5]
-	supermarket.EXP = args[6]
-
-	pigAsBytes, _ = json.Marshal(supermarket)
-	err := APIstub.PutState(args[0], pigAsBytes)
-	if err != nil {
-		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
-	}
-
-	return shim.Success(nil)
-}
-
-// func (s *SmartContract) chainDelete(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-
-// 	if len(args) != 1 {
-// 		return shim.Error("Incorrect number of arguments. Expecting 1")
-// 	}
-
-// 	pigAsBytes, _ := APIstub.GetState(args[0])
-// 	if pigAsBytes == nil {
-// 		return shim.Error("Could not locate id to delete")
-// 	}
-
-// 	err := APIstub.DelState(args[0])
-// 	if err != nil {
-// 		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
-// 	}
-
-// 	// bytes, err := APIstub.GetState(args[0])
-
-// 	// if err != nil {
-// 	// 	return shim.Error("Unable to get tasks.")
-
-// 	// }
-
-// 	// var chain []Pork
-
-// 	// Decode JSON collection into array
-// 	// Add latest instance value
-// 	// err = json.Unmarshal(bytes, &chain)
-// 	// for g := 0; g < len(chain); g++ {
-// 	// 	if chain[g].QRCode == args[0] {
-// 	// 		chain = append(chain[:g], chain[g+1:]...)
-// 	// 	}
-
-// 	// }
-
-// 	// Encode as JSON
-// 	// Put back on the block
-// 	// bytes, err = json.Marshal(chain)
-// 	// err = APIstub.PutState(args[0], bytes)
-
-// 	return shim.Success(nil)
-// }
-
-/* NOT USE
- * The insertFarm method *
-The data in the world state can be updated with who has possession.
-This function takes in 9 arguments, farm id and new args.
-*/
-
-func (s *SmartContract) insertFarm(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-
-	if len(args) != 9 {
-		return shim.Error("Incorrect number of arguments. Expecting 9")
-	}
-
-	farmAsBytes, _ := APIstub.GetState(args[0])
-	if farmAsBytes == nil {
-		return shim.Error("Could not locate id")
-	}
-
-	farm := Pork{}
-
-	json.Unmarshal(farmAsBytes, &farm)
-	// Normally check that the specified argument
-	// we are skipping this check for this example
-	farm.QRCode = args[1]
-	farm.Famer = args[2]
-	farm.Species = args[3]
-	farm.Food = args[4]
-	farm.Sick_Cure = args[5]
-	farm.FarmLocation = args[6]
-	farm.StartDateOfFarming = args[7]
-	farm.EndDateOfFarming = args[8]
-
-	farmAsBytes, _ = json.Marshal(farm)
-	err := APIstub.PutState(args[0], farmAsBytes)
-	// err := APIstub.DelState(args[0])
-	if err != nil {
-		return shim.Error(fmt.Sprintf("Failed to change: %s", args[0]))
-	}
-
-	return shim.Success(nil)
-}
-
-/*
- * The recordTransport method *
-This method takes in five arguments (attributes to be saved in the ledger).
-*/
-
-func (s *SmartContract) recordTransport(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-
-	if len(args) != 8 {
-		return shim.Error("Incorrect number of arguments. Expecting 8")
-	}
-	var transport = Transport{Company: args[1], Transporter: args[2], Vehicle: args[3], Trouble: args[4], Solution: args[5], TransportQualified: args[6], Time: args[7]}
-	transportAsBytes, _ := json.Marshal(transport)
-	err := APIstub.PutState(args[0], transportAsBytes)
-	if err != nil {
-		return shim.Error(fmt.Sprintf("Failed to record transport: %s", args[0]))
-	}
-
-	return shim.Success(nil)
-}
-
-/*
- * The queryTunaHistory method *
-Used to view the transcation history of one particular tuna
-It takes one argument -- the key for the pỏrk in question
-*/
-// func (s *SmartContract) queryHistory(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-
-// 	if len(args) != 1 {
-// 		return shim.Error("Incorrect number of arguments. Expecting 1")
-// 	}
-
-// 	resultsIterator, err := APIstub.GetHistoryForKey(args[0])
-// 	if err != nil {
-// 		return shim.Error(err.Error())
-// 	}
-// 	defer resultsIterator.Close()
-
-// 	// buffer is a JSON array containing QueryResults
-// 	var buffer bytes.Buffer
-// 	buffer.WriteString("[")
-
-// 	bArrayMemberAlreadyWritten := false
-// 	for resultsIterator.HasNext() {
-// 		queryResponse, err := resultsIterator.Next()
-// 		if err != nil {
-// 			return shim.Error(err.Error())
-// 		}
-// 		// Add comma before array members,suppress it for the first array member
-// 		if bArrayMemberAlreadyWritten == true {
-// 			buffer.WriteString(",")
-// 		}
-
-// 		buffer.WriteString("{\"TxId\":")
-// 		buffer.WriteString("\"")
-// 		buffer.WriteString(queryResponse.TxId)
-// 		buffer.WriteString("\"")
-
-// 		buffer.WriteString(", \"Value\":")
-// 		// if it was a delete operation on given key, then we need to set the
-// 		//corresponding value null. Else, we will write the response.Value
-// 		//as-is (as the Value itself a JSON marble)
-// 		if queryResponse.IsDelete {
-// 			buffer.WriteString("null")
-// 		} else {
-// 			buffer.WriteString(string(queryResponse.Value))
-// 		}
-
-// 		buffer.WriteString(", \"Timestamp\":")
-// 		buffer.WriteString("\"")
-// 		buffer.WriteString(time.Unix(queryResponse.Timestamp.Seconds, 0).String())
-// 		buffer.WriteString("\"")
-
-// 		buffer.WriteString(", \"IsDelete\":")
-// 		buffer.WriteString("\"")
-// 		buffer.WriteString(strconv.FormatBool(queryResponse.IsDelete))
-// 		buffer.WriteString("\"")
-
-// 		buffer.WriteString("}")
-// 		bArrayMemberAlreadyWritten = true
-// 	}
-// 	buffer.WriteString("]")
-
-// 	fmt.Printf("- queryHistory:\n%s\n", buffer.String())
-
-// 	return shim.Success(buffer.Bytes())
-// }
-
-/*
- * The queryAllTuna method *
-allows for assessing all the records added to the ledger(all tuna catches)
-This method does not take any arguments. Returns JSON string containing results.
-*/
-
-func (s *SmartContract) queryAllPig(APIstub shim.ChaincodeStubInterface) sc.Response {
-
-	startKey := "0"
-	endKey := "999"
-
-	resultsIterator, err := APIstub.GetStateByRange(startKey, endKey)
-	if err != nil {
-		return shim.Error(err.Error())
-	}
-	defer resultsIterator.Close()
-
-	// buffer is a JSON array containing QueryResults
-	var buffer bytes.Buffer
-	buffer.WriteString("[")
-
-	bArrayMemberAlreadyWritten := false
-	for resultsIterator.HasNext() {
-		queryResponse, err := resultsIterator.Next()
-		if err != nil {
-			return shim.Error(err.Error())
-		}
-		// Add comma before array members,suppress it for the first array member
-		if bArrayMemberAlreadyWritten == true {
-			buffer.WriteString(",")
-		}
-		buffer.WriteString("{\"Key\":")
-		buffer.WriteString("\"")
-		buffer.WriteString(queryResponse.Key)
-		buffer.WriteString("\"")
-
-		buffer.WriteString(", \"Record\":")
-		// Record is a JSON object, so we write as-is
-		buffer.WriteString(string(queryResponse.Value))
-		buffer.WriteString("}")
-		bArrayMemberAlreadyWritten = true
-	}
-	buffer.WriteString("]")
-
-	fmt.Printf("- queryAllPig:\n%s\n", buffer.String())
-
-	return shim.Success(buffer.Bytes())
-}
-
-func (s *SmartContract) queryAllFarm(APIstub shim.ChaincodeStubInterface) sc.Response {
-
-	startKey := "0"
-	endKey := "999"
-
-	resultsIterator, err := APIstub.GetStateByRange(startKey, endKey)
-	if err != nil {
-		return shim.Error(err.Error())
-	}
-	defer resultsIterator.Close()
-
-	// buffer is a JSON array containing QueryResults
-	var buffer bytes.Buffer
-	buffer.WriteString("[")
-
-	bArrayMemberAlreadyWritten := false
-	for resultsIterator.HasNext() {
-		queryResponse, err := resultsIterator.Next()
-		if err != nil {
-			return shim.Error(err.Error())
-		}
-		// Add comma before array members,suppress it for the first array member
-		if bArrayMemberAlreadyWritten == true {
-			buffer.WriteString(",")
-		}
-		buffer.WriteString("{\"Key\":")
-		buffer.WriteString("\"")
-		buffer.WriteString(queryResponse.Key)
-		buffer.WriteString("\"")
-
-		buffer.WriteString(", \"Record\":")
-		// Record is a JSON object, so we write as-is
-		buffer.WriteString(string(queryResponse.Value))
-		buffer.WriteString("}")
-		bArrayMemberAlreadyWritten = true
-	}
-	buffer.WriteString("]")
-
-	fmt.Printf("- queryAllFarm:\n%s\n", buffer.String())
-
-	return shim.Success(buffer.Bytes())
-}
-
-func (s *SmartContract) queryAllTransport(APIstub shim.ChaincodeStubInterface) sc.Response {
-
-	startKey := "0"
-	endKey := "999"
-
-	resultsIterator, err := APIstub.GetStateByRange(startKey, endKey)
-	if err != nil {
-		return shim.Error(err.Error())
-	}
-	defer resultsIterator.Close()
-
-	// buffer is a JSON array containing QueryResults
-	var buffer bytes.Buffer
-	buffer.WriteString("[")
-
-	bArrayMemberAlreadyWritten := false
-	for resultsIterator.HasNext() {
-		queryResponse, err := resultsIterator.Next()
-		if err != nil {
-			return shim.Error(err.Error())
-		}
-		// Add comma before array members,suppress it for the first array member
-		if bArrayMemberAlreadyWritten == true {
-			buffer.WriteString(",")
-		}
-		buffer.WriteString("{\"Key\":")
-		buffer.WriteString("\"")
-		buffer.WriteString(queryResponse.Key)
-		buffer.WriteString("\"")
-
-		buffer.WriteString(", \"Record\":")
-		// Record is a JSON object, so we write as-is
-		buffer.WriteString(string(queryResponse.Value))
-		buffer.WriteString("}")
-		bArrayMemberAlreadyWritten = true
-	}
-	buffer.WriteString("]")
-
-	fmt.Printf("- queryAllTransport:\n%s\n", buffer.String())
-
-	return shim.Success(buffer.Bytes())
 }
 
 /*

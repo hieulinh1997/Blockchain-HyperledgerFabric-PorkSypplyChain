@@ -10,7 +10,7 @@
             PSC
             <!-- <img _ngcontent-abn-c2="" alt="SCP" class="brand-image " height="25px" src="home.png" style="opacity: 1"> -->
         </a>
-        <div _ngcontent-qht-c2="" class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div _ngcontent-qht-c2="" class="collapseadmin navbar-collapseadmin" id="navbarSupportedContent">
         <ul _ngcontent-qht-c2="" class="navbar-nav mr-auto">
             <li _ngcontent-qht-c2="" class="nav-item d-none d-lg-inline-block">
             <a _ngcontent-qht-c2="" class="nav-link">Phần mềm truy xuất nguồn gốc thịt lợn</a>
@@ -18,25 +18,6 @@
 
         </ul>
 
-        <!-- modal login -->
-        <!-- <ul _ngcontent-gwf-c2="" class="nav navbar-nav ml-auto">
-                <li _ngcontent-gwf-c2="" class="nav-item ">
-                  <a _ngcontent-gwf-c2="" class="nav-link btn btn-outline-primary" routerlink="/login" ng-reflect-router-link="/login" href="/views/login.html">
-                    <i _ngcontent-gwf-c2="" class="fa fa-sign-in mr-2"></i>
-                    <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
-                      Đăng nhập
-                    </span>
-                  </a>
-                </li>
-                <li _ngcontent-gwf-c2="" class="nav-item">
-                  <a _ngcontent-gwf-c2="" class="nav-link btn btn-outline-primary bg-white text-dark" routerlink="/signup" ng-reflect-router-link="/signup" style="color:#007bff!important"  href="/signup">
-                    <span _ngcontent-gwf-c2="" translate="signup" ng-reflect-translate="signup">Đăng ký</span>
-                  </a>
-                </li>
-                
-              </ul> -->
-
-        
 
         
         </div>
@@ -52,32 +33,33 @@
 
         <app-home _nghost-xxd-c4="">
             <div _ngcontent-xxd-c4="" class="row">
+              
                 <div _ngcontent-xxd-c4="" class="col-sm-12">
-                <div _ngcontent-xxd-c4="" class="card card-primary">
-                    
-                    <!-- <div ng-controller="appController"> -->
-                    <!-- </div> -->
-                    <div class="col-md-6 col-md-offset-3">
-                            <form action="/" id="myLogin" name="form">
-                              <h2 _ngcontent-xxd-c4="" translate="home.tab-one.title" ng-reflect-translate="home.tab-one.title">
-                                  <center>LOGIN</center>
-                                </h2>
-                              <!-- <center>LOGIN</center> </br> -->
-                                <center>
-                                    <input _ngcontent-bfd-c4="" 
-                                    formcontrolname="idCer" 
-                                    id="username" 
+                  <div _ngcontent-xxd-c4="" class="card card-primary">
+                      
+                      <!-- <div ng-controller="appController"> -->
+                      <!-- </div> -->
+                      <div class="col-md-6 col-md-offset-3">
+                          <div class=sign-up-form>
+                              <form class="modal-content" action="/" id="myLogin" name="form">
+                                <!-- <h2 _ngcontent-xxd-c4="" translate="home.tab-one.title" ng-reflect-translate="home.tab-one.title">
+                                    <center>LOGIN</center>
+                                  </h2> -->
+                                  <h1>Đăng nhập</h1>
+                                <!-- <center>LOGIN</center> </br> -->
+                                <h5 style="color:red;margin-bottom:2%" id="success_login">Sai mật khẩu.</h5>
+                                <h5 style="color:red;margin-bottom:2%" id="error_user_erroled">Người chưa đăng ký.</h5>
+                                  <center>
+                                    <label>Tài khoản</label>
+                                    <input _ngcontent-bfd-c4="" id="username" 
                                     ng-model="usernameLogin" type="text" 
-                                    ng-reflect-name="idCer" 
-                                    class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
+                                    class="input-custom-control-signup form-control form-control-lg-signup " 
                                     placeholder="Username " required>
-                                    
-                                    <input _ngcontent-bfd-c4="" 
-                                    formcontrolname="idCer" 
-                                    id="password" 
-                                    ng-model="password" type="password" 
-                                    ng-reflect-name="idCer" 
-                                    class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
+                                    <br>
+
+                                    <label>Mật khẩu</label>
+                                    <input _ngcontent-bfd-c4="" id="password" ng-model="password" type="password" 
+                                    class="input-custom-control-signup form-control form-control-lg-signup " 
                                     placeholder="Password " required>
                                     
                                     <!-- <input _ngcontent-bfd-c4="" 
@@ -87,20 +69,27 @@
                                     ng-reflect-name="idCer" 
                                     class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
                                     placeholder="Roles " required> -->
-                                <!-- <input class="form-control-login" type="text" name="username" id="username" placeholder="Username" ng-model="usernameLogin" required><br> -->
-                                <!-- <input class="form-control-login" type="text" name="roles" id="roles" placeholder="Roles" ng-model="rolesLogin" required><br> -->
-                                <br>
-                                <!-- Password: <input type="password" name="password" id="password" ng-model="password"><br> -->
-                                <button type="button" ng-disabled="form.$invalid||isDisabled" ng-click="wrapLogin()" class="btn btn-primary">Login</button>
-                                <a type="text"  routerlink="/signup" ng-reflect-router-link="/signup"  href="/views/signup.html">Register</a>
-                            </center>
-                            </form>
-                    </div>
-                    
+                                  <!-- <input class="form-control-login" type="text" name="username" id="username" placeholder="Username" ng-model="usernameLogin" required><br> -->
+                                  <!-- <input class="form-control-login" type="text" name="roles" id="roles" placeholder="Roles" ng-model="rolesLogin" required><br> -->
+                                  <br>
+                                  <!-- <label>
+                                      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+                                    </label>
+                                    <br> -->
+                                  <!-- Password: <input type="password" name="password" id="password" ng-model="password"><br> -->
+                                  <button type="button" ng-disabled="form.$invalid||isDisabled" ng-click="wrapLogin()" class="btn btn-primary">Login</button>
+                                  <a type="text"  routerlink="/signup" ng-reflect-router-link="/signup"  href="/views/signup.html">Register</a>
+                                  <br>
+                                  <br>
+                              </center>
+                              </form>
+                          </div>
+                      </div>
+                      
 
-                    
+                      
 
-                </div>
+                  </div>
                 </div>
             </div>  
         

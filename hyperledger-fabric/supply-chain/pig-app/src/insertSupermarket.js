@@ -19,12 +19,13 @@ console.log("changing supermarket: ");
 
 var array = req.params.supermarket.split("-");
 var key = array[0];
-var supermarket_name = array[1];
-var supermarket_qualified = array[2];
-var price = array[3];
-var quantity_remaining = array[4];
-var manufacturing_date = array[5];
-var expiry_date = array[6];
+		var supermarket_account = args[1]
+		var supermarket_name = array[2];
+		var supermarket_qualified = array[3];
+		var price = array[4];
+		var quantity_remaining = array[5];
+		var manufacturing_date = array[6];
+		var expiry_date = array[7];
 
 var fabric_client = new Fabric_Client();
 
@@ -72,7 +73,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
         //targets : --- letting this default to the peers assigned to the channel
         chaincodeId: 'pig-app',
         fcn: 'insertSupermarket',
-        args: [key, supermarket_name, supermarket_qualified, price, quantity_remaining, manufacturing_date, expiry_date],
+        args: [key, supermarket_account, supermarket_name, supermarket_qualified, price, quantity_remaining, manufacturing_date, expiry_date],
         chainId: 'mychannel',
         txId: tx_id
     };

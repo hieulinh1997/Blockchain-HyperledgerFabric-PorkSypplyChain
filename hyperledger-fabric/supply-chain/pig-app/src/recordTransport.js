@@ -20,17 +20,14 @@ console.log("submit recording of chain: ");
 var array = req.params.pig.split("-");
 
 var key = array[0]
-// var timestamp = array[2]
-// var location = array[1]
-// var vessel = array[4]
-// var holder = array[3]
-var company = array[2]
-var transporter = array[1]
-var vehicle = array[4]
-var trouble = array[3]
-var solution = array[5]
-var transport_qualified = array[6]
-var time = array[7]
+		var transport_account = args[1]
+		var company = array[2]
+		var transporter = array[3]
+		var vehicle = array[4]
+		var trouble = array[5]
+		var solution = array[6]
+		var transport_qualified = array[7]
+		var time = array[8]
 
 var fabric_client = new Fabric_Client();
 
@@ -78,7 +75,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
         //targets : --- letting this default to the peers assigned to the channel
         chaincodeId: 'pig-app',
         fcn: 'recordTransport',
-        args: [key, company, transporter, vehicle, trouble, solution, transport_qualified, time],
+        args: [key, transport_account, company, transporter, vehicle, trouble, solution, transport_qualified, time],
         chainId: 'mychannel',
         txId: tx_id
     };

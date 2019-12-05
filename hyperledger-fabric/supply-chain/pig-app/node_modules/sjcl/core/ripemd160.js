@@ -7,7 +7,6 @@
 /**
  * Context for a RIPEMD-160 operation in progress.
  * @constructor
- * @class RIPEMD, 160 bits.
  */
 sjcl.hash.ripemd160 = function (hash) {
     if (hash) {
@@ -53,7 +52,10 @@ sjcl.hash.ripemd160.prototype = {
         var i, b = this._buffer = sjcl.bitArray.concat(this._buffer, data),
             ol = this._length,
             nl = this._length = ol + sjcl.bitArray.bitLength(data);
-        for (i = 512+ol & -512; i <= nl; i+= 512) {
+        if (nl > 9007199254740991){
+            throw new sjcl.exception.invalid("Cannot hash more than 2^53 - 1 bits");
+        }
+        for (i = 512+ol - ((512+ol) & 511); i <= nl; i+= 512) {
             var words = b.splice(0,16);
             for ( var w = 0; w < 16; ++w )
                 words[w] = _cvt(words[w]);
@@ -75,7 +77,7 @@ sjcl.hash.ripemd160.prototype = {
             zp = z % 32;
 
         if ( zp > 0 )
-            b = sjcl.bitArray.concat( b, [ sjcl.bitArray.partial(zp,0) ] )
+            b = sjcl.bitArray.concat( b, [ sjcl.bitArray.partial(zp,0) ] );
         for ( ; z >= 32; z -= 32 )
             b.push(0);
 
@@ -135,23 +137,23 @@ var _s2 = [  8,  9,  9, 11, 13, 15, 15,  5,  7,  7,  8, 11, 14, 14, 12,  6,
 
 function _f0(x,y,z) {
     return x ^ y ^ z;
-};
+}
 
 function _f1(x,y,z) {
     return (x & y) | (~x & z);
-};
+}
 
 function _f2(x,y,z) {
     return (x | ~y) ^ z;
-};
+}
 
 function _f3(x,y,z) {
     return (x & z) | (y & ~z);
-};
+}
 
 function _f4(x,y,z) {
     return x ^ (y | ~z);
-};
+}
 
 function _rol(n,l) {
     return (n << l) | (n >>> (32-l));

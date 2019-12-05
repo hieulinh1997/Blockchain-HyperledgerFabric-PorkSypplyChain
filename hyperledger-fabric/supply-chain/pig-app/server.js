@@ -9,7 +9,7 @@
 This code is based on code written by the Hyperledger Fabric community.
   Original code can be found here: https://gerrit.hyperledger.org/r/#/c/14395/4/fabcar/enrollAdmin.js
  */
-
+// var logger = log4js.getLogger('KajmakWebApp');
 var Fabric_Client = require('fabric-client');
 var Fabric_CA_Client = require('fabric-ca-client');
 
@@ -76,6 +76,8 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
     console.error('Failed to enroll admin: ' + err);
 });
 
+
+
 //SPDX-License-Identifier: Apache-2.0
 
 // nodejs server setup 
@@ -90,7 +92,24 @@ var Fabric_Client = require('fabric-client');
 var path          = require('path');
 var util          = require('util');
 var os            = require('os');
+var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
 // var QRCode = require('qrcode');
+var cookieParser = require('cookie-parser')
+// const IPFS = require('ipfs')
+// IPFS = window.IpfsApi('ipfs.infura.io', '5001', {protocol: 'https'})
+var log4js = require('log4js');
+var logger = log4js.getLogger('KajmakWebApp');
+var fs = require('fs');
+require('./config.js');
+
+// var hfc = require('fabric-client');
+
+var port = process.env.PORT || Fabric_Client.getConfigSetting('port');
+var host = process.env.HOST || Fabric_Client.getConfigSetting('host');
+
+// const node = await IPFS.create()
+
 
 // Load all of our middleware
 // configure app to use bodyParser()
@@ -98,6 +117,7 @@ var os            = require('os');
 // app.use(express.static(__dirname + '/client'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 // instantiate the app
 var app = express();
@@ -108,14 +128,39 @@ require('./routes.js')(app);
 // set up a static file server that points to the "client" directory
 app.use(express.static(path.join(__dirname, './client')));
 
+// app.use((req, res, next) => {
+//   console.log('==============================');
+//   console.log("Uslo u middlware");
+//   console.log(req.url);
+//   let token = req.cookies.token;
+//   console.log(token);
+//   if (!token) {
+//     return res.json({ message: 'Missing token.' });
+//   }
+
+//   jwt.verify(token, 'cryptokajmaksecret', (err, decoded) => {
+//     if (err) return res.json({ message: 'Failed to authenticate token.' });
+//     // do something else
+//     req.decoded = decoded;
+//     console.log(decoded);
+//     next();
+//   });
+// });
+
+app.set('secret', 'cryptokajmaksecret');
+
 // Save our port
-var port = process.env.PORT || 8000;
+// var port = process.env.PORT || 8000;
 
 // Start the server and listen on port 
-app.listen(port,function(){
-  console.log("Live on port: " + port);
-});
+// app.listen(port,function(){
+//   console.log("Live on port: " + port);
+// });
 
+var server = http.createServer(app).listen(port, function () { });
+logger.info('*********** SERVER STARTED ***********');
+logger.info('*********** http://%s:%s ***********', host, port);
+server.timeout = 240000;
 // var segs = [
 //   { data: 'HIEULINH', mode: 'alphanumeric' },
 //   { data: '0123456', mode: 'numeric' }

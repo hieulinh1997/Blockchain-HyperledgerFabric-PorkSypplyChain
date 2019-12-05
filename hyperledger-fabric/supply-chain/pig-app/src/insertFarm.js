@@ -18,22 +18,17 @@ var os = require('os');
 console.log("changing farm: ");
 
 var array = req.params.farm.split("-");
-// var array2 = req.params.famer.split("-");
-// var array3 = req.params.species.split("-");
-// var array4 = req.params.food.split("-");
-// var array5 = req.params.sick_cure.split("-");
-// var array6 = req.params.farm_location.split("-");
-// var array7 = req.params.start_date_of_farming.split("-");
-// var array8 = req.params.end_date_of_farming.split("-");
+
 var key = array[0];
-var qrcode = array[2];
-var famer = array[1];
-var species = array[4];
-var food = array[3];
-var sick_cure = array[5];
-var farm_location = array[6];
-var start_date_of_farming = array[7];
-var end_date_of_farming = array[8];
+		var farm_account = args[1]
+		var famer = array[2];
+		var species = array[3];
+		var food = array[4];
+		var fosick_cureod = array[5];
+		var farm_qualified = array[6];
+		var farm_location = array[7]
+		var start_date_of_farming = array[8];
+		var end_date_of_farming = array[9];
 
 var fabric_client = new Fabric_Client();
 
@@ -81,7 +76,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
         //targets : --- letting this default to the peers assigned to the channel
         chaincodeId: 'pig-app',
         fcn: 'insertFarm',
-        args: [key, qrcode, famer, species, food, sick_cure, farm_location, start_date_of_farming, end_date_of_farming],
+        args: [key, farm_account, famer, species, food, sick_cure, farm_qualified, farm_location, start_date_of_farming, end_date_of_farming],
         chainId: 'mychannel',
         txId: tx_id
     };

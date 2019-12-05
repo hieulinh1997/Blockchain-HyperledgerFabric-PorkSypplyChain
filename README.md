@@ -83,3 +83,62 @@ Week 11: Actors case:
 	............................................................................................................  
 	- chain members(4 members) page:  
 	![farm-add-info](https://user-images.githubusercontent.com/46451472/67205174-594c5a00-f439-11e9-9166-ab2cf1f45e13.png)  
+	============================================================================================================================================================================  
+Week 12-13:  
+	- Approve users:  
+	![approveuser](https://user-images.githubusercontent.com/46451472/68220448-60b75a00-001a-11ea-8527-347e35946a82.png)  
+	.............................................................  
+	- Chain list:  
+	![chainlist](https://user-images.githubusercontent.com/46451472/68220478-657c0e00-001a-11ea-82ff-477840eca40f.png)  
+	.............................................................  
+	- Members profile  
+	![profilemembers](https://user-images.githubusercontent.com/46451472/68220479-6745d180-001a-11ea-9206-0c35cc6810ee.png)  
+	.............................................................  
+	- farm page(add,edit record & profile)
+	![farm](https://user-images.githubusercontent.com/46451472/68220489-6876fe80-001a-11ea-860e-070b8ceb8b6a.png)  
+	============================================================================================================================================================================  
+Week 14:  
+	- farm page  
+	![farmPage](https://user-images.githubusercontent.com/46451472/68546424-8bcdef00-0408-11ea-8f47-d74a029799a7.png)  
+	.............................................................  
+	- Thêm mẫu tin heo gặp sự cố:  
+	![recordPigTrouble](https://user-images.githubusercontent.com/46451472/68546534-c5ebc080-0409-11ea-841e-a975489a23b2.png)  
+	.............................................................  
+	- Profile users:  
+	![profileUsers](https://user-images.githubusercontent.com/46451472/68546428-925c6680-0408-11ea-9593-f06c4585d5b7.png)  
+	.............................................................  
+	- transport page:  
+	![transportPage](https://user-images.githubusercontent.com/46451472/68546431-97b9b100-0408-11ea-9416-abf5103780b9.png)  
+	============================================================================================================================================================================  
+Week 15: Hoàn thành giao diện quản lý của 4 công đoạn - Cập nhật giao diện form Đăng ký và Đăng nhập - Cập nhật giao diện thêm thông tin  
+.............................................................  
+	- sign-up page:  
+	![form_signup](https://user-images.githubusercontent.com/46451472/68673642-d07f9480-0586-11ea-80df-88e2343f2360.png)  
+	.............................................................  
+	- login page:  
+	![form_login](https://user-images.githubusercontent.com/46451472/68673645-d37a8500-0586-11ea-8c2e-1dd5c5c7dc06.png)    
+	.............................................................  
+	- farm page:  
+	![farm_page](https://user-images.githubusercontent.com/46451472/68673659-d70e0c00-0586-11ea-84e7-b027db0a41e8.png)  
+	.............................................................  
+	- transport page:  
+	![transport_page](https://user-images.githubusercontent.com/46451472/68673673-dd9c8380-0586-11ea-9373-7fa3c61500da.png)  
+	.............................................................  
+	- abattoir page  
+	![abattoir_page](https://user-images.githubusercontent.com/46451472/68673678-e2613780-0586-11ea-8a80-63ba9a6caadd.png)  
+	.............................................................  
+	- supermarket page  
+	![supermarket_page](https://user-images.githubusercontent.com/46451472/68673685-e7be8200-0586-11ea-8ea9-c97773d50c6d.png)  
+	.............................................................  
+	- Gia diện tra cứu mẫu(để em sửa lại theo mẫu timeline )  
+	![tra cuu](https://user-images.githubusercontent.com/46451472/68674522-9e6f3200-0588-11ea-96b3-f85000441aed.png)
+	.............................................................  
+	- Tra cứu giao diện kiểu timeline  
+	![timeline](https://user-images.githubusercontent.com/46451472/68687029-26603680-059f-11ea-9935-d37665cc2d97.png)  
+	.............................................................  
+	- Lịch sử giao dịch(khi người dùng tương tác với ledger)  
+	![h](https://user-images.githubusercontent.com/46451472/68938948-fa78c700-07d1-11ea-92b6-1f3fbd4eb6d7.png)
+	============================================================================================================================================================================  
+Week 16: Cập nhật định dạng mã chuỗi cung ứng theo dạng (201911.0001)  
+	- Định dạng mã chuỗi cung ứng  
+	![formatID](https://user-images.githubusercontent.com/46451472/69358141-f3adf080-0cb8-11ea-95a0-9766e7f4aca0.png)

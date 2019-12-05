@@ -10,9 +10,7 @@ This code is based on code written by the Hyperledger Fabric community.
 
  */
 
- //SDK for writing node.js applications to interact with Hyperledger Fabric
 var Fabric_Client = require('fabric-client');
-//fabric-ca-client, to interact with the fabric-ca to manage user certificates.
 var Fabric_CA_Client = require('fabric-ca-client');
 
 var path = require('path');
@@ -48,7 +46,6 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
     // first check to see if the admin is already enrolled
     return fabric_client.getUserContext('admin', true);
 }).then((user_from_store) => {
-    //isEnrolled() Determine if this name has been enrolled
     if (user_from_store && user_from_store.isEnrolled()) {
         console.log('Successfully loaded admin from persistence');
         admin_user = user_from_store;

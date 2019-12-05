@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: Apache-2.0 -->
   
 <!-- <body _ngcontent-hms-c1 ng-app="application" ng-controller="appController as tab"> -->
-    <div _ngcontent-hms-c1 ng-controller="appController as tab">
+  <div _ngcontent-hms-c1 ng-controller="appController as tab">
         <!-- <div ng-view></div> -->
       <app-header-home _ngcontent-qht-c1="" _nghost-qht-c2="">
         <nav _ngcontent-qht-c2="" class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -15,7 +15,7 @@
           <button _ngcontent-vyn-c2="" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span _ngcontent-vyn-c2="" class="navbar-toggler-icon"></span></button>
 
 
-          <div _ngcontent-qht-c2="" class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div _ngcontent-qht-c2="" class="collapseadmin navbar-collapseadmin" id="navbarSupportedContent">
             <ul _ngcontent-qht-c2="" class="navbar-nav mr-auto">
               <li _ngcontent-qht-c2="" class="nav-item d-none d-lg-inline-block">
                 <a _ngcontent-qht-c2="" class="nav-link">Phần mềm truy xuất nguồn gốc thịt lợn</a>
@@ -24,25 +24,47 @@
             </ul>
   
             <!-- current username -->
-            <ul _ngcontent-gwf-c2="" class="nav navbar-nav ml-auto">
-              <li _ngcontent-gwf-c2="" class="nav-item ">
-                <a _ngcontent-gwf-c2="" id="clickCurrentUser" ng-click="loadCurrentUser()" class="nav-link btn btn-outline-primary" data-toggle="modal" data-target="#viewUserModal">
-                  <i _ngcontent-gwf-c2="" class="fa fa-user"></i>
-                  <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
-                      {{message}}
-                  </span>
-                </a>
-                
-              </li>
-              <li _ngcontent-gwf-c2="" class="nav-item ">
+            <ul _ngcontent-gwf-c2="" class="nav navbar-nav ml-auto-admin">
+                <li _ngcontent-gwf-c2="" class="nav-item-an ">
+                    <a _ngcontent-gwf-c2="" id="clickCurrentUser" class="nav-link btn btn-outline-primary" ng-click="loadCurrentUser()"  data-toggle="modal" data-target="#viewUserModal">
+                      <!-- <i _ngcontent-gwf-c2="" class="fa fa-user"></i> -->
+                      
+                        <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
+                            {{message}}
+                        </span>
+                    </a>
+                  </li>
+                  <li _ngcontent-gwf-c2="" class="nav-item ">
+                      <a _ngcontent-gwf-c2="" id="clickCurrentUser" class="nav-link btn btn-outline-primary" ng-click="loadCurrentUser()"  data-toggle="modal" data-target="#viewUserModal">
+                          <img id="blah" src="#" alt="your image" class="img-small"/>
+                          <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
+                              <input id="currentUser" class="currentUser" type="button" value="">
+                          </span>
+                      </a>
+                  </li>
+              <li _ngcontent-gwf-c2="" class="nav-item-an">
                 <a _ngcontent-gwf-c2="" id="clickCurrentUser" ng-click="loadCurrentUser()" class="nav-link btn btn-outline-primary" >
                   <!-- <i _ngcontent-gwf-c2="" class="fa fa-sign-in mr-2"></i> -->
                   <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
                       ChainID: {{chainidLocalStorage}}
                   </span>
                 </a>
-                
               </li>
+              <li _ngcontent-gwf-c2="" class="nav-item-an">
+                  <a _ngcontent-gwf-c2="" id="clickCurrentUser" ng-click="loadCurrentUser()" class="nav-link btn btn-outline-primary" >
+                    <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
+                        <input id="chainIdUser" class="currentUser" type="button" value="">
+                    </span>
+                  </a>
+                </li>
+                  <li _ngcontent-gwf-c2="" class="nav-item-an ">
+                      <a _ngcontent-gwf-c2="" id="clickCurrentUser" class="nav-link btn btn-outline-primary" ng-click="loadCurrentUser()"  data-toggle="modal" data-target="#viewUserModal">
+                          
+                          <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
+                              <input id="getIdUserCurrent" class="currentUser" type="button" value="">
+                          </span>
+                      </a>
+                  </li>
               <li _ngcontent-gwf-c2="" class="nav-item">
                   <a _ngcontent-gwf-c2="" class="nav-link btn btn-outline-primary bg-white text-dark" routerlink="/signup" style="color:#007bff!important" ng-reflect-router-link="/signup" href="#/">
                     <span _ngcontent-gwf-c2="" translate="signup" ng-reflect-translate="signup">Logout</span>
@@ -62,526 +84,741 @@
               <div _ngcontent-xxd-c4="" class="col-sm-12">
                 <div _ngcontent-xxd-c4="" class="card card-primary">
                   
-                        <ngb-tabset _ngcontent-xxd-c4="" class="nav-tab-custom-home">
-      
-                                <!-- tablist -->
-                                <ul role="tablist" class="nav nav-tabs justify-content-start">
-                                  
-                                    <ul class="nav nav-pills">
-                                        <li ng-class="{active:tab.isSet(1)}"><a href ng-click="tab.setTab(1)">Thêm thông tin chuỗi</a></li>
-                                        <li ng-class="{active:tab.isSet(2)}"><a href ng-click="tab.setTab(2)">...</a></li>
-                                    </ul>
-          
-                                </ul>
-                                <!-- tablist -->
-                                
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" aria-labelledby="ngb-tab-0" id="ngb-tab-0-panel" aria-expanded="true">
-                                        <div ng-show="tab.isSet(1)">
-                                                <div _ngcontent-xxd-c4="" class="intro-head pr-2 pl-2"><h2 _ngcontent-xxd-c4="" translate="home.tab-one.title" ng-reflect-translate="home.tab-one.title">
-                                                        <center>Quản lý thông tin Siêu Thị </center></h2>
-                                                      </div>
-                                                
-                                                    <button class="btn btn-primary"
-                                                      data-toggle="modal" data-target="#insertSupermarket">
-                                                      <i class="fa fa-plus"></i>
-                                                      Thêm
-                                                      
-                                                    </button>
-                                                
-                                            </div>
+                    <ngb-tabset _ngcontent-xxd-c4="" class="nav-tab-custom-home">
   
-                                            <!-- Insert thông tin của công đoạn Farm-->
-                                            <!-- <div class="col-md-6 col-md-offset-3"> -->
-                                              
-                                            <center>
+                            <!-- tablist -->
+                            <ul role="tablist" class="nav nav-tabs justify-content-start">
+                              
+                                <ul class="nav nav-pills">
+                                    <li ng-class="{active:tab.isSet(1)}"><a href ng-click="tab.setTab(1)">Thêm thông tin chuỗi</a></li>
+                                    <li ng-class="{active:tab.isSet(2)}"><a href ng-click="tab.setTab(2)">...</a></li>
+                                </ul>
+      
+                            </ul>
+                            <!-- tablist -->
+                            
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" aria-labelledby="ngb-tab-0" id="ngb-tab-0-panel" aria-expanded="true">
+                                    <div ng-show="tab.isSet(1)">
+                                        <div _ngcontent-xxd-c4="" class="intro-head pr-2 pl-2"><h2 _ngcontent-xxd-c4="" translate="home.tab-one.title" ng-reflect-translate="home.tab-one.title">
+                                            <center>Quản lý thông tin Siêu Thị </center></h2>
+                                        </div>
+                                            
+                                        <!-- <button class="btn btn-primary"
+                                          data-toggle="modal" data-target="#insertSupermarket">
+                                          <i class="fa fa-plus"></i>
+                                          Thêm
+                                        </button> -->
+
+                                        <!-- Truy xuất thông tin Supermarket với username -->
+                                        <div>
                                                 
-                                                <!-- Truy xuất thông tin Transport -->
-                                                <div>
-                                                    
-                                                    <div id="box">
-                                                        <div class="form-group">
-                                                          <label>Thêm thông tin Vận chuyển </label>
-                                                          <p><input id="querySupermarket" type="hidden" value="Query" class="btn btn-primary" ng-click="querySupermarket()"></p>
-                                                        </div>
-                                                        <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Id</h5>
+                                          <div id="box">
 
-                                                        <table id="query_supermarket" class="table-query-farm" align="center">
-                                                          <tr class="tr-query-farm">
-                                                            <th>ID</th>
-                                                            <th colspan="2">SupermarketName</th>
-                                                            <th>SupermarketQualified</th>
-                                                            <th>Price</th>
-                                                            <th>QuantityRemaining </th>
-                                                            <th >MFG</th>
-                                                            <th>EXP</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <td>{{chainidLocalStorage}}</td>
-                                                            <td>{{query_supermarket.supermarket_name}}</td>
-                                                            <td>
-                                                                <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addFamer">
-                                                                    Edit
-                                                                </button>
-                                                              </td>
-                                                            <td>{{query_supermarket.supermarket_qualified}}</td>
-                                                            <td>{{query_supermarket.price}}</td>
-                                                            <td>{{query_supermarket.quantity_remaining}}</td>
-                                                            <td>{{query_supermarket.manufacturing_date}}</td>
-                                                            <td>{{query_supermarket.expiry_date}}</td>
-                                                          </tr>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                                </center>
-                                          </div>
-          
-                                            
-                                          <!-- modal insertSupermarket -->
-                                          <div class="modal fade" id="insertSupermarket">
-                                              <div class="modal-dialog">
-        
-                                                  <!-- Modal content-->
-                                                  <div class="modal-content">
-                                                      <div class="modal-header">
-                                                          <button type="button" class="close"
-                                                            data-dismiss="modal">x
-                                                          </button>
-                                                          <h4 class="modal-title" > Thêm thông tin Siêu thị</h4> <br>
-                                                      </div>
-        
-                                                      <!-- <div class="modal-body">
-                                                          <p></p>
-        
-                                                      </div> -->
-                                                      <div class="modal-body">
-                                                          <form name="form">
-                                                              <!-- <h2 _ngcontent-xxd-c4="" translate="home.tab-one.title" ng-reflect-translate="home.tab-one.title">
-                                                                      <center>Thêm thông tin chuỗi vận chuyển</center>
-                                                              </h2> -->
-                                                              </center>
-                                                              <!-- <label>Thêm thông tin chuỗi</label><br> -->
-                                                              <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{insert_supermarket}}</h5>
-                                                              <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Id</h5>
-                                                              <input _ngcontent-bfd-c4="" 
-                                                                ng-model="supermarket.supermarket_name" type="text" 
-                                                                class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
-                                                                placeholder="Tên " required> <br> 
-                                                              <input _ngcontent-bfd-c4="" 
-                                                                ng-model="supermarket.supermarket_qualified" type="text" 
-                                                                class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
-                                                                placeholder="Chất lượng" required> <br>
-                                                              <input _ngcontent-bfd-c4="" 
-                                                                ng-model="supermarket.price" type="text" 
-                                                                class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
-                                                                placeholder="Giá" required> <br>
-                                                              <input _ngcontent-bfd-c4="" 
-                                                                ng-model="supermarket.quantity_remaining" type="text" 
-                                                                class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
-                                                                placeholder="Số lượng" required> <br>
-                                                              <input _ngcontent-bfd-c4="" 
-                                                                ng-model="supermarket.manufacturing_date" type="text" 
-                                                                class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
-                                                                placeholder="NSX" required> <br>
-                                                              <input _ngcontent-bfd-c4="" 
-                                                                ng-model="supermarket.expiry_date" type="text" 
-                                                                class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
-                                                                placeholder="HSD" required> <br>
-                                                              <!-- <button type="button" ng-disabled="form.$invalid" ng-click="insertFarm()" class="btn btn-primary">Add</button> -->
-                                                              </center>
-                                                            </form>
-        
-                                                          <h5>Bạn chắc chắn muốn thêm?</h5>
-        
-                                                      </div>
-                                                      <div class="modal-footer">
-                                                          <input id="transferSubmit" type="submit" ng-disabled="form.$invalid" value="Add" class="btn btn-primary" ng-click="insertSupermarket()">
-                                                          &nbsp;
-                                                          <button type="button" class="btn btn-danger btn-md"
-                                                              data-dismiss="modal">
-                                                              Cancel</button>
-                                                          <!-- Goi ham them va dong modal -->
-                                                      </div>
-                                                  </div>
+                                              <div class="form-group">
+                                                <p><input id="queryAllPigWithAccountSupermarket" type="hidden" value="queryAllPigWithAccountSupermarket" class="btn btn-primary" ng-click="queryAllPigWithAccountSupermarket()"></p>
+                                                
                                               </div>
-                                          </div>
-                                            
-                                            
-                                          <!--Modal view user-->
-                                        <div class="modal fade" id="viewUserModal">
-                                            <div class="modal-dialog">
 
-                                                <!-- Modal content-->
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close"
-                                                            data-dismiss="modal">x</button>
-                                                        <h4 class="modal-title">Thông tin</h4> <br>
-                                                    </div>
-                                                    <div class="modal-body" style="overflow-x:auto;">
-                                                        <div class="form-group" >
-                                                          <p><input id="queryViewUser" type="hidden" value="Query" class="btn btn-primary" ng-click="queryViewUser()"></p>
-                                                        </div>
-                                                        
-                                                        <table id="query_view_user" class="table-approve-user" align="center" > 
-                                              
-                                                            <tr >
-                                                              <th >
-                                                                  ID 
-                                                              </th>
-                                                              <th class="th">
-                                                                  {{iduserLocalStorage}}
-                                                              </th>
-                                                            </tr>
+                                              <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Pig Id</h5>
+                                              <center>
 
-                                                            <tr>
-                                                              <th >
-                                                                  Username
-                                                              </th>
-                                                              <th class="th">
-                                                                  {{query_view_user.username}}
-                                                              </th>
-                                                            </tr>
+                                                <label for="search"> Tìm kiếm:</label>
+                                                <input ng-model="q" id="search" class="input-custom-control-search form-control-lg-search"  placeholder="Tìm">
+                                                <label for="search"> Hiển thị: </label>
+                                                <select ng-model="pageSize" id="pageSize" class="select-custum-control">
+                                                    <option value="3">3</option>
+                                                    <option value="5">5</option>
+                                                    <option value="15">15</option>
+                                                    <option value="100">All</option>
+                                                </select>
+                                              </center>
 
-                                                            <tr>
-                                                              <th >
-                                                                  Password
-                                                              </th>
-                                                              <th class="th">
-                                                                  {{query_view_user.password}}
-                                                              </th>
-                                                              <th>
-                                                                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editPassword">
-                                                                      <i
-                                                                      class="fa fa-edit"></i>
-                                                                      Edit
-                                                                    </button>
-                                                              </th>
-                                                            </tr>
+                                              <table id="all_pig_with_account_supermarket" class="table-query-farm">
+                      
 
-                                                            <tr>
-                                                              <th >
-                                                                  Email
-                                                              </th>
-                                                              <th class="th">
-                                                                  {{query_view_user.email}}
-                                                              </th>
-                                                              <th>
-                                                                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editEmail">
-                                                                      <i
-                                                                      class="fa fa-edit"></i>
-                                                                      Edit
-                                                                    </button>
-                                                              </th>
-                                                            </tr>
+                                                <tr class="tr-query-farm">
+                                                  <th>STT</th>
+                                                  <th> Mã chuỗi</th>
+                                                  <th>Mã QR</th>
+                                                  <th>Tên tài khoản</th>
+                                                  <th>Tên siêu thị</th>
+                                                  <th >Vấn đề  - Giải quyết</th>
+                                                  <th >Chất lượng siêu thị</th>
+                                                  <!-- <th >Giá</th>
+                                                  <th >Số lượng(Kg) </th> -->
+                                                  <th >Ngày sản xuất</th>
+                                                  <th >Hạn sử dụng</th>
+                                                  
+                                                </tr>
+                                                
+                                                <tr ng-repeat="pig in all_pig_with_account_supermarket | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize">
+                                                  
+                                                  <td>{{$index + 1}}</td>
+                                                  <td>{{pig.Key}}</td>
 
-                                                            <tr >
-                                                              <th >
-                                                                
-                                                                  Chain ID 
-                                                              </th>
-                                                              <th class="th">
-                                                                  {{query_view_user.chainid}}
-                                                              </th>
-                                                            </tr>
+                                                  <td>
+                                                    <label id="text" type="text" 
+                                                            value="{{pig.Key}}" style="Width:0%"
+                                                            onblur='generateBarCode();' > </label>
 
-                                                            <tr >
-                                                              <th >
-                                                                  Roles
-                                                              </th>
-                                                              <th class="th">
-                                                                  {{query_view_user.roles}}
-                                                              </th>
-                                                            </tr>
+                                                            <img id='barcode'
+                                                              src="https://api.qrserver.com/v1/create-qr-code/?data= Key: {{pig.Key}} | Sick: {{pig.sick_cure}}  | Farm-Qualified: {{pig.farm_qualified}} | Supermarket-Qualified: {{pig.supermarket_qualified}}&amp;size=500x500" 
+                                                              alt="" 
+                                                              title="HELLO" 
+                                                              width="50" 
+                                                              height="50" />
+                                                  </td>
 
-                                                            <tr >
-                                                              <th >
-                                                                  Status
-                                                              </th>
-                                                              <th class="th">
-                                                                {{query_view_user.status}}
-                                                              </th>
-                                                              
-                                                            </tr>
-                                                            
-                                                            <tr>
-                                                              <th >
-                                                                  Approve
-                                                              </th>
-                                                              <th class="th">
-                                                                  {{query_view_user.approve}}
-                                                              </th>
-                                                            </tr>
-                                                            
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--End modal view user-->
-
-                                        <!-- modal editPassword -->
-                                        <div class="modal fade" id="editPassword">
-                                          <div class="modal-dialog">
-                                              
-                                              <div class="modal-content">
-                                                  <div class="modal-header">
-                                                      <button type="button" class="close"
-                                                        data-dismiss="modal">x
+                                                  <td >{{pig.supermarket_account}}</td>
+                                                  <td >{{pig.supermarket_name}} <br>
+                                                      <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdateSupermarketName(pig.Key)" data-toggle="modal" data-target="#addSupermarketName" >
+                                                          <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                                          Sửa 
                                                       </button>
-                                                      <h4 class="modal-title">Đổi mật khẩu</h4> <br>
-                                                  </div>
-                                                  
-    
-                                                  
-                                                  <div class="modal-body">
-                                                    <form name="liveForm">
-                                                      <!-- <h5 style="color:green;margin-bottom:2%" id="success_editChainID">Success! Tx ID: {{edit_chainid}}</h5> -->
-                                                      <h5 style="color:red;margin-bottom:2%" id="error_editPassword">Error: Please enter a valid Id</h5>
-                                                      
-                                                      <label>Id cần đổi mật khẩu:</label>  
-                                                      <input class="form-control" name="assetSelect" placeholder="Ex: user1" ng-model="user.id">
-                                                      <br>
-
-                                                      <label>Mật khẩu mới:</label>  
-                                                      <input class="form-control" name="user.password" placeholder="Mật khẩu" ng-model="user.password">
-                                                      <br>
-
-                                                      <label>Nhập lại mật khẩu:</label>  
-
-                                                      <input type="password" name="repeatPass" ng-model="repeatPass" required compare-to="user.password" class="form-control" />   
-
-                                                      <span class="error text-danger" ng-show="liveForm.repeatPass.$error.compareTo">  
-
-                                                          Passwords don't match.  
-
-                                                      </span>
-                                                    </form>
-    
-                                                      <h5 align="right">Bạn đã chắc chắn?</h5>
-    
-                                                  </div>
-                                                  <div class="modal-footer">
-                                                      <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="changePassword()" >
-                                                      &nbsp;
-                                                      <button type="button" class="btn btn-danger btn-md"
-                                                          data-dismiss="modal">
-                                                          Cancel</button>
-                                                      
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                    
-                                      <!-- modal editEmail -->
-                                      <div class="modal fade" id="editEmail">
-                                          <div class="modal-dialog">
-                                              
-                                              <div class="modal-content">
-                                                  <div class="modal-header">
-                                                      <button type="button" class="close"
-                                                        data-dismiss="modal">x
+                                                  </td>
+                                                  <td >{{pig.supermarket_trouble_solution}}<br> 
+                                                    <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdateSupermarketTroubleSolution(pig.Key)" data-toggle="modal" data-target="#addSupermarketTroubleSolution" >
+                                                        <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                                        Sửa 
                                                       </button>
-                                                      <h4 class="modal-title">Chỉnh sửa Email</h4> <br>
-                                                  </div>
-                                                  
-    
-                                                  
-                                                  <div class="modal-body">
-                                                    <!-- <form name="liveForm"> -->
-                                                      <!-- <h5 style="color:green;margin-bottom:2%" id="success_editChainID">Success! Tx ID: {{edit_chainid}}</h5> -->
-                                                      <h5 style="color:red;margin-bottom:2%" id="error_editEmail">Error: Please enter a valid Id</h5>
-                                                      <span>Id cần đổi email:</span>
-                                                      
-                                                      <input class="form-control" name="assetSelect" placeholder="Ex: user1" ng-model="user.id">
-                                                      
-                                                      <span>Email mới:</span><br>
-                                                      
-                                                      <input class="form-control" name="user.email" placeholder="Email" ng-model="user.email">
-                                                      <br>
+                                                  </td>
 
-                                                      
-                                                    <!-- </form> -->
-    
-                                                      <h5>Bạn đã chắc chắn?</h5>
-    
-                                                  </div>
-                                                  <div class="modal-footer">
-                                                      <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="changeEmail()" >
-                                                      &nbsp;
-                                                      <button type="button" class="btn btn-danger btn-md"
-                                                          data-dismiss="modal">
-                                                          Cancel</button>
-                                                      
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                    
-                                            
-                                            <!-- modal update addFamer -->
-                                        <div class="modal fade" id="addFamer">
-                                          <div class="modal-dialog">
-    
-                                              <!-- Modal content-->
-                                              <div class="modal-content">
-                                                  <div class="modal-header">
-                                                      <h4 class="modal-title">Edit value</h4> <br>
-                                                  </div>
-    
-                                                  <!-- <div class="modal-body">
-                                                      <p></p>
-    
-                                                  </div> -->
-                                                  <div class="modal-body">
-                                                      <h5 style="color:green;margin-bottom:2%" id="success_update_famer">Success! Tx ID: {{update_famer}}</h5>
-                                                      <h5 style="color:red;margin-bottom:2%" id="error_update_famer">Error: Please enter a valid Id</h5>
-                                                      Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="farm.id">
-                                                      Enter a famer: <input class="form-control" name="assetSelect" placeholder="Ex: hieulinh" ng-model="farm.famer">
-                                                      <!-- <input id="transferSubmit" type="submit" value="Add" class="btn btn-primary" ng-click="updateFamer()"> -->
-    
-                                                      <h5>Bạn chắc chắn muốn sửa?</h5>
-    
-                                                  </div>
-                                                  <div class="modal-footer">
-                                                      <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateFamer()">
-                                                      &nbsp;
-                                                      <button type="button" class="btn btn-danger btn-md"
-                                                          data-dismiss="modal">
-                                                          Cancel</button>
-                                                      <!-- Goi ham them va dong modal -->
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <!-- modal update addSickCure -->
-                                      <div class="modal fade" id="addSickCure">
-                                        <div class="modal-dialog">
-    
-                                            <!-- Modal content-->
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close"
-                                                      data-dismiss="modal">x
+                                                  <td>{{pig.supermarket_qualified}}<br>
+                                                    <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdateSupermarketQualified(pig.Key)" data-toggle="modal" data-target="#addSupermartketQualified" >
+                                                        <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                                        Sửa 
                                                     </button>
-                                                    <h4 class="modal-title">Edit value</h4> <br>
-                                                </div>
-    
-                                                <div class="modal-body">
-                                                    <p></p>
-    
-                                                </div><div class="modal-body">
-                                                    <h5 style="color:green;margin-bottom:2%" id="success_update_sick_cure">Success! Tx ID: {{update_sick_cure}}</h5>
-                                                    <h5 style="color:red;margin-bottom:2%" id="error_update_sick_cure">Error: Please enter a valid Id</h5>
-                                                    Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="farm.id">
-                                                    Enter a sick-cure: <input class="form-control" name="assetSelect" placeholder="Ex: hieulinh" ng-model="farm.sick_cure">
-                                                    <!-- <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()"> -->
-    
-                                                    <h5>Bạn chắc chắn muốn sửa?</h5>
-    
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()">
-                                                    &nbsp;
-                                                    <button type="button" class="btn btn-danger btn-md"
-                                                        data-dismiss="modal">
-                                                        Cancel</button>
-                                                    <!-- Goi ham them va dong modal -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                      </div>
-                                            
-                                        </div>
-                                    
-                
-                                        <div ng-show="tab.isSet(2)">
-                                            
-                                            <!-- Truy xuất thông tin của 1 sản phẩm cụ thể -->
-                                            <center>
-                                            <div>
-                                                <button id="toggleMessage" ng-click="toggle3=!toggle3">
-                                                    {{toggle3 ? 'Ẩn truy xuất thông tin của 1 sản phẩm cụ thể ' : 'Truy xuất thông tin của 1 sản phẩm cụ thể '}}
+                                                  </td>
+
+                                                  <td>{{pig.manufacturing_date}}<br>
+                                                    <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdateMFG(pig.Key)" data-toggle="modal" data-target="#addMFG" >
+                                                        <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                                        Sửa 
+                                                    </button>
+                                                  </td>
+
+                                                  <td>{{pig.expiry_date}}<br>
+                                                    <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdateEXP(pig.Key)" data-toggle="modal" data-target="#addEXP" >
+                                                        <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                                        Sửa 
+                                                    </button>
+                                                  </td>
+                                                  
+
+                                                </tr>
+
+                                              </table>
+
+                                              <center>
+                                                <!-- <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls> -->
+                                                <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+                                                  Previous
                                                 </button>
-                                                <div id="box" ng-show="toggle3">
-                                                    <div class="form-group">
-                                                      <label>Query a Pork</label><br>
-                                                      <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Pig Id</h5>
-                                                      
-                                                      Enter a ID: <input id="createName" class="form-control" type="text" placeholder="Ex: 3" ng-model="pig_id">
-                                                      <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryPig()">
-                                                    </div>
-                    
-                                                    <table id="query_pig" class="table" align="center">
-                                                      <tr>
-                                                        <td colspan="7" style="font-size: 35px"> <center>Thông tin</center></td>
-                                                      </tr>
-                                                      
-                                                      <tr>
-                                                        <th>QRCode</th>
-                                                        <th>Famer</th>
-                                                        <th>Species</th>
-                                                        <th>Food </th>
-                                                        <th>Sick_Cure</th>
-                                                        <th>Location</th>
-                                                        <th>Start_Date</th>
-                                                        <th>End_Date</th>
-                                                        <th>Company</th>
-                                                        <th>Transporter</th>
-                                                        <th>Vehicle</th>
-                                                        <th>Trouble</th>
-                                                        <th>Solution</th>
-                                                        <th>Qualified</th>
-                                                        <th>Time</th>
-                                                        <th>Name</th>
-                                                        <th>Location</th>
-                                                        <th>Qualified</th>
-                                                        <th>Peck_Time</th>
-                                                        <th>Supermarket</th>
-                                                        <th>Qualified</th>
-                                                        <th>Price</th>
-                                                        <th>Quantity Remaining</th>
-                                                        <th>MFG</th>
-                                                        <th>EXP</th>
-                                                      </tr>
-                                                      
-                                                      <tr>
-                                                        <td>{{query_pig.qrcode}}</td>
-                                                        <td>{{query_pig.famer}}</td>
-                                                        <td>{{query_pig.species}}</td>
-                                                        <td>{{query_pig.food}}</td>
-                                                        <td>{{query_pig.sick_cure}}</td>
-                                                        <td>{{query_pig.farm_location}}</td>
-                                                        <td>{{query_pig.start_date_of_farming}}</td>
-                                                        <td>{{query_pig.end_date_of_farming}}</td>
-                                                        <td>{{query_pig.company}}</td>
-                                                        <td>{{query_pig.transporter}}</td>
-                                                        <td>{{query_pig.vehicle}}</td>
-                                                        <td>{{query_pig.trouble}}</td>
-                                                        <td>{{query_pig.solution}}</td>
-                                                        <td>{{query_pig.transport_qualified}}</td>
-                                                        <td>{{query_pig.time}}</td>
-                                                        <td>{{query_pig.abattoir_name}}</td>
-                                                        <td>{{query_pig.abattoir_location}}</td>
-                                                        <td>{{query_pig.abattoir_qualified}}</td>
-                                                        <td>{{query_pig.peck_time}}</td>
-                                                        <td>{{query_pig.supermarket_name}}</td>
-                                                        <td>{{query_pig.supermarket_qualified}}</td>
-                                                        <td>{{query_pig.price}}</td>
-                                                        <td>{{query_pig.quantity_remaining}}</td>
-                                                        <td>{{query_pig.manufacturing_date}}</td>
-                                                        <td>{{query_pig.expiry_date}}</td>
-                                                      </tr>
-                                                      
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            </center>
+                                                {{currentPage+1}}/{{numberOfPages()}}
+                                                <button ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1">
+                                                    Next
+                                                </button>
+                                              </center>
+
+
+                                          </div>
                                         </div>
+                                
+                                            
+                                    </div>
+
+                                            
+                                
+                                
+                                  </div>
+      
                                         
+                                <!-- modal insertSupermarket -->
+                                <div class="modal fade" id="insertSupermarket">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                  data-dismiss="modal">x
+                                                </button>
+                                                <h4 class="modal-title" > Thêm thông tin Siêu thị</h4> <br>
+                                            </div>
+
+                                            <!-- <div class="modal-body">
+                                                <p></p>
+
+                                            </div> -->
+                                            <div class="modal-body">
+                                                <div class="modal-body-getkey"></div>
+                                                <form name="form">
+                                                    <!-- <h2 _ngcontent-xxd-c4="" translate="home.tab-one.title" ng-reflect-translate="home.tab-one.title">
+                                                            <center>Thêm thông tin chuỗi vận chuyển</center>
+                                                    </h2> -->
+                                                    </center>
+                                                    <!-- <label>Thêm thông tin chuỗi</label><br> -->
+                                                    <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{insert_supermarket}}</h5>
+                                                    <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Id</h5>
+                                                    <input _ngcontent-bfd-c4="" 
+                                                      ng-model="supermarket.supermarket_name" type="text" 
+                                                      class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
+                                                      placeholder="Tên " required> <br> 
+                                                    <input _ngcontent-bfd-c4="" 
+                                                      ng-model="supermarket.supermarket_qualified" type="text" 
+                                                      class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
+                                                      placeholder="Chất lượng" required> <br>
+                                                    <input _ngcontent-bfd-c4="" 
+                                                      ng-model="supermarket.price" type="text" 
+                                                      class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
+                                                      placeholder="Giá" required> <br>
+                                                    <input _ngcontent-bfd-c4="" 
+                                                      ng-model="supermarket.quantity_remaining" type="text" 
+                                                      class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
+                                                      placeholder="Số lượng" required> <br>
+                                                    <input _ngcontent-bfd-c4="" 
+                                                      ng-model="supermarket.manufacturing_date" type="text" 
+                                                      class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
+                                                      placeholder="NSX" required> <br>
+                                                    <input _ngcontent-bfd-c4="" 
+                                                      ng-model="supermarket.expiry_date" type="text" 
+                                                      class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
+                                                      placeholder="HSD" required> <br>
+                                                    <!-- <button type="button" ng-disabled="form.$invalid" ng-click="insertFarm()" class="btn btn-primary">Add</button> -->
+                                                    </center>
+                                                  </form>
+
+                                                <h5>Bạn chắc chắn muốn thêm?</h5>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input id="transferSubmit" type="submit" ng-disabled="form.$invalid" value="Add" class="btn btn-primary" ng-click="insertSupermarket()">
+                                                &nbsp;
+                                                <button type="button" class="btn btn-danger btn-md"
+                                                    data-dismiss="modal">
+                                                    Cancel</button>
+                                                <!-- Goi ham them va dong modal -->
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                        </ngb-tabset>
+                                      
+                                      
+                                <!--Modal view user-->
+                                <div class="modal fade" id="viewUserModal">
+                                  <div class="modal-dialog">
+
+                                      <!-- Modal content-->
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <button type="button" class="close"
+                                                  data-dismiss="modal">x</button>
+                                              <h4 class="modal-title">Thông tin người dùng</h4> <br>
+                                          </div>
+                                          <div class="modal-body" style="overflow-x:auto;">
+                                              
+                                              <div class="form-group" >
+                                                <p><input id="queryViewUser" type="hidden" value="Query" class="btn btn-primary" ng-click="queryViewUser()"></p>
+                                              </div>
+
+                                              
+                                              
+                                              <table border="0!important" id="query_view_user" align="center"  > 
+
+                                                  <tr >
+                                                    <th class="th">
+                                                        Avatar
+                                                    </th>
+                                                    <th class="th">
+                                                      <form  >
+                                                        <fieldset>
+                                                          <legend></legend>
+                                                          <input type="file" name="photo" id="photo" ng-model="imageSrc" ng-file-select="onFileSelect($files)" ng-click="getKeyForUpdateWhenUpdatePassword(iduserLocalStorage)">
+                                                          <button type="button" onclick="upload()" >Tải lên</button>
+                                                          <br>
+                                                          <h5 style="color:green;margin-bottom:2%" id="success_upload">Cập nhật thành công</h5>
+
+                                                          <input id="hashImg" name="hashImg" type="hidden" value="" >
+
+                                                          <input id="clickAddImg" type="hidden" ng-click="changeImg()" ><br>
+
+                                                          <a id="url" target="_blank"></a>
+                                                        </br>
+                                                        </br>
+                                                        </fieldset>
+                                                      </form>
+                                                    </th>
+                                                  </tr>
+
+                                                  <tr >
+                                                    <th class="th">
+
+                                                        
+                                                        <input id="hash" name="hash" type="hidden" value="https://ipfs.io/ipfs/{{query_view_user.img}}"> 
+                                                    </th>
+                                                    <th class="th"  >
+                                                      <center>
+                                                        <img id="blah2" src="#" alt="your image" />
+                                                      </center>
+                                                    </th>
+                                                  </tr>
+
+                                                  <!-- <tr >
+                                                    <th class="th">
+                                                        ID: 
+                                                    </th>
+                                                    <th class="th">
+                                                        {{iduserLocalStorage}}
+                                                    </th>
+                                                  </tr> -->
+
+                                                  <tr >
+                                                    <th class="th">
+                                                        Username:
+                                                    </th>
+                                                    <th class="th">
+                                                        {{query_view_user.username}}
+                                                    </th>
+                                                  </tr>
+
+                                                  <tr >
+                                                    <th class="th">
+                                                        Password:
+                                                    </th>
+                                                    <th class="th">
+                                                        {{query_view_user.password}}
+                                                    </th>
+                                                    <th class="th">
+                                                        <button class="btn btn-primary btn-xs" ng-click="getKeyForUpdateWhenUpdatePassword(iduserLocalStorage)" data-toggle="modal" data-target="#editPassword">
+                                                            <i
+                                                            class="fa fa-edit"></i>
+                                                            Edit
+                                                          </button>
+                                                    </th>
+                                                  </tr>
+
+                                                  <tr>
+                                                    <th class="th">
+                                                        Email:
+                                                    </th>
+                                                    <th class="th">
+                                                        {{query_view_user.email}}
+                                                    </th>
+                                                    <th class="th">
+                                                        <button class="btn btn-primary btn-xs" ng-click="getKeyForUpdateWhenUpdateEmail(iduserLocalStorage)" data-toggle="modal" data-target="#editEmail">
+                                                            <i
+                                                            class="fa fa-edit"></i>
+                                                            Edit
+                                                          </button>
+                                                    </th>
+                                                  </tr>
+
+                                                  <tr >
+                                                    <th class="th">
+                                                      
+                                                        Chain ID:
+                                                    </th>
+                                                    <th class="th">
+                                                        {{query_view_user.chainid}}
+                                                    </th>
+                                                  </tr>
+
+                                                  <tr >
+                                                    <th class="th">
+                                                        Roles:
+                                                    </th>
+                                                    <th class="th">
+                                                        {{query_view_user.roles}}
+                                                    </th>
+                                                  </tr>
+
+                                                  <tr >
+                                                    <th class="th">
+                                                        Status:
+                                                    </th>
+                                                    <th class="th">
+                                                      {{query_view_user.status}}
+                                                    </th>
+                                                    
+                                                  </tr>
+                                                  
+                                                  <tr>
+                                                    <th class="th">
+                                                        Approve:
+                                                    </th>
+                                                    <th class="th">
+                                                        {{query_view_user.approve}}
+                                                    </th>
+                                                  </tr>
+                                                  
+                                              </table>
+                                          </div>
+                                      </div>
+                                  </div>
+                                </div>
+                                <!--End modal view user-->
+
+                                <!-- modal editPassword -->
+                                <div class="modal fade" id="editPassword">
+                                    <div class="modal-dialog">
+                                        
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                  data-dismiss="modal">x
+                                                </button>
+                                                <h4 class="modal-title">Đổi mật khẩu</h4> <br>
+                                            </div>
+                                            
+
+                                          
+
+                                            <div class="modal-body">
+                                              
+                                                <div class="modal-body-getkey"></div>
+                                              <form name="liveForm">
+                                                <!-- <h5 style="color:green;margin-bottom:2%" id="success_editChainID">Success! Tx ID: {{edit_chainid}}</h5> -->
+                                                <h5 style="color:red;margin-bottom:2%" id="error_editPassword">Error: Please enter a valid Id</h5>
+                                                <!-- <label>Id cần đổi mật khẩu:</label>  
+                                                <input class="form-control" name="assetSelect" placeholder="Ex: user1" ng-model="user.id">
+                                                <br> -->
+                                                <br>
+
+                                                <label>Mật khẩu mới:</label>  
+                                                <input class="form-control" type="password" name="user.password" placeholder="Mật khẩu" ng-model="user.password">
+                                                <br>
+
+                                                <label>Nhập lại mật khẩu:</label>  
+
+                                                <input type="password" name="repeatPass" ng-model="repeatPass" required compare-to="user.password" class="form-control" />   
+
+                                                <span class="error text-danger" ng-show="liveForm.repeatPass.$error.compareTo">  
+
+                                                    Passwords don't match.  
+
+                                                </span>
+                                              </form>
+
+                                                <h5 align="right">Bạn đã chắc chắn?</h5>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="changePassword()" >
+                                                &nbsp;
+                                                <button type="button" class="btn btn-danger btn-md"
+                                                    data-dismiss="modal">
+                                                    Cancel</button>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                
+                                <!-- modal editEmail -->
+                                <div class="modal fade" id="editEmail">
+                                    <div class="modal-dialog">
+                                        
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                  data-dismiss="modal">x
+                                                </button>
+                                                <h4 class="modal-title">Chỉnh sửa Email</h4> <br>
+                                            </div>
+                                            
+
+                                            
+                                            <div class="modal-body">
+                                                <div class="modal-body-getkey"></div>
+                                              <form name="liveForm">
+                                                <!-- <h5 style="color:green;margin-bottom:2%" id="success_editChainID">Success! Tx ID: {{edit_chainid}}</h5> -->
+                                                <h5 style="color:red;margin-bottom:2%" id="error_editEmail">Error: Please enter a valid Id</h5>
+                                                <!-- <span>Id cần đổi email:</span>
+                                                
+                                                <input class="form-control" name="assetSelect" placeholder="Ex: user1" ng-model="user.id">
+                                                -->
+                                                <span>Email mới:</span><br>
+                                                
+                                                <input  class="form-control" name="user.email" placeholder="Email" ng-model="user.email">
+                                                <br>
+
+                                                
+                                              </form>
+
+                                                <h5>Bạn đã chắc chắn?</h5>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="changeEmail()" >
+                                                &nbsp;
+                                                <button type="button" class="btn btn-danger btn-md"
+                                                    data-dismiss="modal">
+                                                    Cancel</button>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+              
+                                <!-- modal update addTrouble -->
+                                <div class="modal fade" id="addSupermarketTroubleSolution">
+                                    <div class="modal-dialog">
+              
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Thêm vấn đề, giải quyết</h4> <br>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div class="modal-body-getkey"></div>
+                                                <!-- <h5 style="color:green;margin-bottom:2%" id="success_update_supermarket_trouble_solution">Success! Tx ID: {{update_supermarket_trouble_solution}}</h5> -->
+                                                <!-- <h5 style="color:red;margin-bottom:2%" id="error_update_supermarket_trouble_solution">Error: Please enter a valid Id</h5> -->
+                                                Nhập tên tên vấn đề, giải quyết: <input class="form-control" placeholder="Ex: vấn đề, giải quyết" ng-model="supermarket.trouble">
+              
+                                                <h5>Bạn chắc chắn muốn sửa?</h5>
+              
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <input type="submit" value="Sửa" class="btn btn-primary" ng-click="updateSupermarketTroubleSolution()">
+                                                &nbsp;
+                                                <button type="button" class="btn btn-danger btn-md"
+                                                    data-dismiss="modal">
+                                                    Cancel</button>
+                                                <!-- Goi ham them va dong modal -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                                <!-- modal update addSupermarketName -->
+                                <div class="modal fade" id="addSupermarketName">
+                                    <div class="modal-dialog">
+  
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                  data-dismiss="modal">x
+                                                </button>
+                                                <h4 class="modal-title">Chỉnh sửa tên siêu thị</h4> <br>
+                                            </div>
+  
+                                           <div class="modal-body">
+                                              <div class="modal-body-getkey"></div>
+                                                <h5 style="color:green;margin-bottom:2%" id="success_update_supermarket_name">Success! Tx ID: {{update_supermarket_name}}</h5>
+                                                <!-- <h5 style="color:red;margin-bottom:2%" id="error_update_supermarket_name">Error: Please enter a valid Id</h5> -->
+                                                Nhập tên siêu thị: <input class="form-control" name="assetSelect" placeholder="Ex: Big C" ng-model="supermarket.supermarket_name">
+                                                <!-- <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()"> -->
+                                              <br>
+                                                <h5>Bạn chắc chắn muốn sửa?</h5>
+  
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input id="transferSubmit" type="submit" value="Sửa" class="btn btn-primary" ng-click="updateSupermarketName()">
+                                                &nbsp;
+                                                <button type="button" class="btn btn-danger btn-md"
+                                                    data-dismiss="modal">
+                                                    Cancel</button>
+                                                <!-- Goi ham them va dong modal -->
+                                            </div>
+                                          </div>
+                                    </div>
+                                </div>
+
+                                <!-- modal update addSupmarketQualified -->
+                                <div class="modal fade" id="addSupermartketQualified">
+                                    <div class="modal-dialog">
+  
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                  data-dismiss="modal">x
+                                                </button>
+                                                <h4 class="modal-title">Chỉnh sửa Chất lượng siêu thị</h4> <br>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div class="modal-body-getkey"></div>
+                                                <h5 style="color:green;margin-bottom:2%" id="success_update_supermarket_qualified">Success! Tx ID: {{update_supermarket_qualified}}</h5>
+                                                <!-- <h5 style="color:red;margin-bottom:2%" id="error_update_supermarket_qualified">Error: Please enter a valid Id</h5> -->
+                                                Nhập Chất lượng siêu thị: <input class="form-control" placeholder="Ex: 5 sao" ng-model="supermarket.supermarketqualified">
+                                                <!-- <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()"> -->
+                                              <br>
+                                                <h5>Bạn chắc chắn muốn sửa?</h5>
+  
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSupermarketQualified()">
+                                                &nbsp;
+                                                <button type="button" class="btn btn-danger btn-md"
+                                                    data-dismiss="modal">
+                                                    Cancel</button>
+                                                <!-- Goi ham them va dong modal -->
+                                              </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- modal update addPrice -->
+                                <div class="modal fade" id="addPrice">
+                                    <div class="modal-dialog">
+  
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                  data-dismiss="modal">x
+                                                </button>
+                                                <h4 class="modal-title">Chỉnh sửa Giá thịt</h4> <br>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="modal-body-getkey"></div>
+                                                <h5 style="color:green;margin-bottom:2%" id="success_update_price">Success! Tx ID: {{update_supermarket_price}}</h5>
+                                                <!-- <h5 style="color:red;margin-bottom:2%" id="error_update_supermarket_qualified">Error: Please enter a valid Id</h5> -->
+                                                Nhập Giá thịt: <input class="form-control" name="assetSelect" placeholder="Ex: 5 sao" ng-model="supermarket.price">
+                                                <!-- <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()"> -->
+                                              <br>
+                                                <h5>Bạn chắc chắn muốn sửa?</h5>
+  
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSupermarketPrice()">
+                                                &nbsp;
+                                                <button type="button" class="btn btn-danger btn-md"
+                                                    data-dismiss="modal">
+                                                    Cancel</button>
+                                                <!-- Goi ham them va dong modal -->
+                                            </div>
+                                          </div>
+                                    </div>
+                                </div>
+
+                                <!-- modal update addSupermartketQuantityRemaining -->
+                                <div class="modal fade" id="addSupermartketQuantityRemaining">
+                                    <div class="modal-dialog">
+  
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                  data-dismiss="modal">x
+                                                </button>
+                                                <h4 class="modal-title">Chỉnh sửa Số lượng còn lại</h4> <br>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div class="modal-body-getkey"></div>
+                                                <h5 style="color:green;margin-bottom:2%" id="success_update_supermarket_quantity_remaining">Success! Tx ID: {{update_supermarket_quantity_remaining}}</h5>
+                                                <!-- <h5 style="color:red;margin-bottom:2%" id="error_update_supermarket_qualified">Error: Please enter a valid Id</h5> -->
+                                                Nhập số lượng(Kg): <input class="form-control" name="assetSelect" placeholder="Ex: 5 sao" ng-model="supermarket.supermarketquantityremaining">
+                                                <!-- <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()"> -->
+                                              <br>
+                                                <h5>Bạn chắc chắn muốn sửa?</h5>
+
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSupermarketQuantityRemaining()">
+                                                &nbsp;
+                                                <button type="button" class="btn btn-danger btn-md"
+                                                    data-dismiss="modal">
+                                                    Cancel</button>
+                                                <!-- Goi ham them va dong modal -->
+                                            </div>
+
+                                      </div>
+                                  </div>
+                                </div>
+
+                                <!-- modal update addMFG -->
+                                <div class="modal fade" id="addMFG">
+                                    <div class="modal-dialog">
+  
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                  data-dismiss="modal">x
+                                                </button>
+                                                <h4 class="modal-title">Chỉnh sửa Thời gian sản xuất</h4> <br>
+                                            </div>
+  
+
+                                        <div class="modal-body">
+                                            <div class="modal-body-getkey"></div>
+                                            <h5 style="color:green;margin-bottom:2%" id="success_update_supermarket_mfg">Success! Tx ID: {{update_supermarket_mfg}}</h5>
+                                            <!-- <h5 style="color:red;margin-bottom:2%" id="error_update_supermarket_qualified">Error: Please enter a valid Id</h5> -->
+                                            Nhập thời gian: <input type="date" name="bday" class="form-control"  placeholder="Ex: thời gian" ng-model="supermarket.supermarketmfg">
+                                            <!-- <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()"> -->
+                                          <br>
+                                            <h5>Bạn chắc chắn muốn sửa?</h5>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSupermarketMFG()">
+                                            &nbsp;
+                                            <button type="button" class="btn btn-danger btn-md"
+                                                data-dismiss="modal">
+                                                Cancel</button>
+                                            <!-- Goi ham them va dong modal -->
+                                        </div>
+
+                                      </div>
+                                  </div>
+                                </div>
+
+                                <!-- modal update addEXP -->
+                                <div class="modal fade" id="addEXP">
+                                    <div class="modal-dialog">
+  
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                  data-dismiss="modal">x
+                                                </button>
+                                                <h4 class="modal-title">Chỉnh sửa Hạn sử dụng</h4> <br>
+                                            </div>
+
+
+                                        <div class="modal-body">
+                                              <div class="modal-body-getkey"></div>
+                                              <h5 style="color:green;margin-bottom:2%" id="success_update_supermarket_exp">Success! Tx ID: {{update_supermarket_exp}}</h5>
+                                              <!-- <h5 style="color:red;margin-bottom:2%" id="error_update_supermarket_qualified">Error: Please enter a valid Id</h5> -->
+                                              Nhập thời gian: <input type="date" name="bday" class="form-control"  placeholder="Ex: thời gian" ng-model="supermarket.supermarketexp">
+                                              <!-- <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()"> -->
+                                              <br>
+                                              <h5>Bạn chắc chắn muốn sửa?</h5>
+
+                                        </div>
+                                            
+                                        <div class="modal-footer">
+                                            <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSupermarketEXP()">
+                                            &nbsp;
+                                            <button type="button" class="btn btn-danger btn-md"
+                                                data-dismiss="modal">
+                                                Cancel</button>
+                                            <!-- Goi ham them va dong modal -->
+                                        </div>
+
+                                      </div>
+
+                                  </div>
+
+                                </div>
+                                        
+                            </div>
+                            <!-- end tabcontent -->
+                                
+            
+                    </ngb-tabset>
                 </div>
               </div>
             </div>  
@@ -591,16 +828,7 @@
       <app-footer-home-main _ngcontent-plj-c1="" _nghost-plj-c3="">
           <footer _ngcontent-plj-c3="" class="col-lg-12 text-center">
             <p _ngcontent-plj-c3="" class="text-muted small mb-0 flex-1 text-left">© PSC 2019. Hiếu Linh Lâm.</p>
-            <!-- <div _ngcontent-plj-c3="" class="row justify-content-md-right">
-              <div _ngcontent-plj-c3="" class="col-auto row">
-                <a _ngcontent-plj-c3="" href="https://apps.apple.com/us/app/x%C3%A1c-minh-v%C4%83n-b%E1%BA%B1ng-vdb/id1468072081?ls=1">
-                  <img _ngcontent-plj-c3="" alt="VDB - Xác minh văn bằng - Appstore" class="dw-icon col-auto" src="assets/img/icon/appstore1.png">
-                </a>
-                <a _ngcontent-plj-c3="" href="https://play.google.com/store/apps/details?id=com.vnpt.kv3.vdb">
-                  <img _ngcontent-plj-c3="" alt="VDB - Xác minh văn bằng - GooglePlay" class="dw-icon col-auto" src="assets/img/icon/chplay1.png">
-                </a>
-              </div>
-            </div> -->
+            
           </footer>
       </app-footer-home-main>
   

@@ -5,10 +5,13 @@
  * @author Dan Boneh
  */
 
- /** @namespace JSON encapsulation */
+ /**
+  * JSON encapsulation
+  * @namespace
+  */
  sjcl.json = {
   /** Default values for encryption */
-  defaults: { v:1, iter:1000, ks:128, ts:64, mode:"ccm", adata:"", cipher:"aes" },
+  defaults: { v:1, iter:10000, ks:128, ts:64, mode:"ccm", adata:"", cipher:"aes" },
 
   /** Simple encryption function.
    * @param {String|bitArray} password The password or key.

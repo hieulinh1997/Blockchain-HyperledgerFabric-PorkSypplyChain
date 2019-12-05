@@ -1,3 +1,5 @@
+
+img{width:200px; height:200px;}
 /* .navigate-console[_ngcontent-meb-c2] {
     cursor: pointer;
 }
@@ -116,12 +118,15 @@ body[_ngcontent-gwf-c1] {
     .d-lg-inline-block {
         display: inline-block!important;
     }
-    .navbar-expand-lg .navbar-collapse {
+    .navbar-expand-lg .navbar-collapse-signup {
         display: flex!important;
         flex-basis: auto;
     }
 }
-.navbar-collapse {
+.collapse-signup:not(.show) {
+    display: none;
+}
+.navbar-collapse-signup {
     flex-basis: 100%;
     flex-grow: 1;
     align-items: center;
@@ -569,12 +574,52 @@ button, input {
     box-shadow: inset 0 0 0 transparent;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+.form-control-signup {
+    display: block;
+    width: 400px!important;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    box-shadow: inset 0 0 0 transparent;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
 .form-control-lg, .input-group-lg>.form-control, .input-group-lg>.input-group-append>.btn, .input-group-lg>.input-group-append>.input-group-text, .input-group-lg>.input-group-prepend>.btn, .input-group-lg>.input-group-prepend>.input-group-text {
     padding: .5rem 1rem;
     font-size: 1.25rem;
     line-height: 1.5;
     border-radius: .3rem;
+
 }
+
+.sign-up-form{
+    width: 500px;
+    /* box-shadow: 0 0 3px 0 rgba(0,0,0,0.3); */
+    background: #fff;
+    padding: 20px;
+    margin: 8% auto 0;
+    text-align: center;
+    margin-top: 0px;
+}
+.sign-up-form h1{
+    color: #1c8abd;
+    margin-bottom: 30px;
+}
+
+.form-control-lg-signup {
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+    width: 400px!important;
+}
+
+
 .input-custom-control {
     border: 1px solid #007bff;
 }
@@ -587,6 +632,15 @@ button, input {
     font-family: "Roboto","Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     font-size: 17px;
     font-weight: 400;
+    
+    border: 1px solid #007bff;
+}
+.input-custom-control-signup[_ngcontent-bfd-c4] {
+    font-family: "Roboto","Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 17px;
+    font-weight: 400;
+    width: 400px!important;
+    
     border: 1px solid #007bff;
 }
 .input-custom {
@@ -729,6 +783,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 .form-control {
     height: 32px;
 }
+
 
 .h4, h4 {
     width: auto;
@@ -988,3 +1043,4 @@ li {
     padding-right: 1rem;
     padding-left: 1rem;
 }
+

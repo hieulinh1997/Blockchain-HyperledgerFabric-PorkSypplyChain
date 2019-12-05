@@ -6,12 +6,15 @@
     <title>Blockchian - Hyperledger Fabric - Pork Supply Chain Application</title>
     <link rel="icon" href="favicon.png" type="image/gif">
     <link href="css/style.css" rel="stylesheet">
+    <!-- <link href="css/style.scss" rel="stylesheet"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <meta _ngcontent-otn-c1="" content="width=device-width, initial-scale=1.0, user-scalable = no" name="viewport"> -->
     
     <link rel="icon" href="/views/home.png" type="image/gif">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" >
     <!-- <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> -->
     <!-- <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> -->
@@ -21,13 +24,11 @@
     <!-- require jquery and bootstrap scripts -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script> -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.23/angular-ui-router.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.23/angular-ui-router.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.23/ui-router-angularjs.js"></script> -->
     
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script> -->
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
@@ -36,14 +37,170 @@
     <!-- login -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
+
+
+    <script src="https://wzrd.in/standalone/buffer"></script>
+    <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js"
+integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
+crossorigin="anonymous"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+
+<script data-require="angular.js@1.3.0" data-semver="1.3.0" src="https://code.angularjs.org/1.3.0/angular.js"></script>
+
+<script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+
+
     <!-- adding style here -->
     
     <style type="text/css">
-      
-      /* .navbar-expand-lg .navbar-nav .nav-link {
-          padding-right: 1rem;
-          padding-left: 1rem;
+
+      .text-right-timeline {
+        text-align: right;
+        margin-left: 100%;
+        color: #000;
+      }
+
+      .text-left-timeline {
+        margin-right: 100%;
+      }
+
+      /* .th {
+        white-space:nowrap!important;
       } */
+      /* * {   
+        box-sizing: border-box;
+      } */
+
+      
+
+      /* The actual timeline (the vertical ruler) */
+      .timeline1 {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        margin-top: 30px;
+      }
+
+      /* The actual timeline (the vertical ruler) */
+      .timeline1::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        background-color:#337ab7;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -3px;
+      }
+
+      /* Container around content */
+      .container1 {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+      }
+
+      /* The circles on the timeline */
+      .container1::after {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        right: -17px;
+        background-color: white;
+        border: 4px solid #FF9F55;
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+      }
+
+      /* Place the container to the left */
+      .left {
+          right: 5px;
+      }
+
+      /* Place the container to the right */
+      .right {
+          left: 604px;
+      }
+
+      /* Add arrows to the left container (pointing right) */
+      .left::before {
+        content: " ";
+        height: 0;
+        position: absolute;
+        top: 22px;
+        width: 0;
+        z-index: 1;
+        right: 30px;
+        border: medium solid white;
+        border-width: 10px 0 10px 10px;
+        border-color: transparent transparent transparent white;
+      }
+
+      /* Add arrows to the right container (pointing left) */
+      .right::before {
+        content: " ";
+        height: 0;
+        position: absolute;
+        top: 22px;
+        width: 0;
+        z-index: 1;
+        left: 30px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+      }
+
+      /* Fix the circle for containers on the right side */
+      .right::after {
+        left: -16px;
+      }
+
+      /* The actual content */
+      .content1 {
+        padding: 20px 30px;
+        background-color: rgb(147, 225, 243);
+        position: relative;
+        border-radius: 6px;
+        text-align: center;
+      }
+
+
+      /* Media queries - Responsive timeline on screens less than 600px wide */
+      @media screen and (max-width: 600px) {
+        /* Place the timelime to the left */
+        .timeline1::after {
+        left: 31px;
+        }
+        
+        /* Full-width containers */
+        .container1 {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+        }
+        
+        /* Make sure that all arrows are pointing leftwards */
+        .container1::before {
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+        }
+
+        /* Make sure all circles are at the same spot */
+        .left::after, .right::after {
+        left: 15px;
+        }
+        
+        /* Make all right containers behave like the left ones */
+        .right {
+        left: 0%;
+        }
+      }
+      
     </style>
   </head>
   
@@ -61,7 +218,7 @@
           <button _ngcontent-vyn-c2="" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span _ngcontent-vyn-c2="" class="navbar-toggler-icon"></span></button>
 
 
-          <div _ngcontent-qht-c2="" class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div _ngcontent-qht-c2="" class="collapse-index navbar-collapse-index" id="navbarSupportedContent">
             <ul _ngcontent-qht-c2="" class="navbar-nav mr-auto">
               <li _ngcontent-qht-c2="" class="nav-item d-none d-lg-inline-block">
                 <a _ngcontent-qht-c2="" class="nav-link">Phần mềm truy xuất nguồn gốc thịt lợn</a>
@@ -70,9 +227,9 @@
             </ul>
 
             <!-- modal login -->
-            <ul _ngcontent-gwf-c2="" class="nav navbar-nav ml-auto">
+            <ul _ngcontent-gwf-c2="" class="nav navbar-nav ml-auto-index">
               <li _ngcontent-gwf-c2="" class="nav-item ">
-                <a _ngcontent-gwf-c2="" class="nav-link btn btn-outline-primary" routerlink="/login" ng-reflect-router-link="/login" href="/views/login.html">
+                <a _ngcontent-gwf-c2="" class="nav-link btn btn-outline-primary"  href="/views/login.html">
                   <i _ngcontent-gwf-c2="" class="fa fa-sign-in mr-2"></i>
                   <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
                     Đăng nhập
@@ -168,7 +325,7 @@
                                               </div>
                                             </div>
                                             <div _ngcontent-bfd-c4="" class="col-sm-4">
-                                              <button _ngcontent-bfd-c4="" id="querySubmit" ng-click="queryPig()" class="btn btn-primary btn-lg btn-block" type="submit" data-toggle="modal" data-target="#myModal">
+                                              <button _ngcontent-bfd-c4="" id="querySubmit" ng-click="queryPig()" class="btn btn-primary btn-lg btn-block" type="submit" >
                                                 <i _ngcontent-bfd-c4="" class="fa fa-search"></i>
                                                 <span _ngcontent-bfd-c4="" class="btn-name-search" translate="home.btn-search" ng-reflect-translate="home.btn-search">
                                                   Tra cứu
@@ -179,7 +336,232 @@
                                         </div>
                                         <div _ngcontent-bfd-c4="" class="col-md-2"></div>
                                       </div>
-                                      <!-- <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Pig Id</h5> -->
+                                      <h5 style="color:green;margin-bottom:2%" id="success_query">Tra cứu thành công. Nhấn vào công đoạn để xem thông tin.</h5>
+                                      <h5 style="color:red;margin-bottom:2%" id="error_query">Lỗi. Làm ơn nhập ID chính xác.</h5>
+
+                                      <form>
+                                          <div class="timeline1">
+                                              <div class="container1 left">
+                                                <div class="content1">
+                                                  <!-- <label class="text-right-timeline">1</label> -->
+                                                  <center>
+                                                  <button id="toggleMessage" ng-click="toggle15=!toggle15" class="btn btn-primary">
+                                                      {{toggle15 ? 'Ẩn thông tin ở Nông trại' : 'Xem thông tin ở Nông trại'}}
+                                                      <label class="text-right-timeline">1</label>
+                                                  </button>
+                                                </center>
+      
+                                                  <center>
+                                                    <table id="query_pig" class="table" ng-show="toggle15" >
+                                                      <tr bgcolor="#007bff" >
+                                                        <th class="th" colspan="2" ><center> <h5>Thông tin ở Nông trại</h5> </center> </th>
+                                                      </tr>
+                                                      
+                                                      <!-- <tr> 
+                                                          <th> Mã QR </th>
+                                                          <th class="th"> 
+                                                              <label id="text" type="text" 
+                                                              value="{{pig_id}}" style="Width:20%"
+                                                              onblur='generateBarCode();' > </label>
+        
+                                                        <img id='barcode' 
+                                                              src="https://api.qrserver.com/v1/create-qr-code/?data= Key: {{pig_id}}&amp;size=50x50" 
+                                                              alt="" 
+                                                              title="HELLO" 
+                                                              width="50" 
+                                                              height="50" />
+                                                              
+                                                          </th>
+                                                      </tr> -->
+                                                      
+                                                      <tr> 
+                                                        <th> Tên tài khoản </th>
+                                                        <th class="th"> {{query_pig.farm_account}}</th>
+                                                      </tr>
+                                                      <tr> 
+                                                        <th> Họ tên Nông dân </th>
+                                                        <th class="th"> {{query_pig.famer}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Giống</th>
+                                                        <th class="th"> {{query_pig.species}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Thức ăn</th>
+                                                        <th class="th"> {{query_pig.food}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Bệnh - Điều trị</th>
+                                                        <th class="th"> {{query_pig.sick_cure}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Địa chỉ</th>
+                                                        <th class="th"> {{query_pig.farm_location}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Ngày bắt đầu nuôi</th>
+                                                        <th class="th"> {{query_pig.start_date_of_farming}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Ngày xuất chuồng</th>
+                                                        <th class="th"> {{query_pig.end_date_of_farming}}</th>
+                                                      </tr>
+                                                    </table>
+                                                  </center>
+                                                                                            
+                                                </div>
+                                              </div>
+                                              <div class="container1 right">
+                                                <div class="content1">
+                                                  <!-- <h2>2016</h2> -->
+                                                  
+                                                  <center>
+                                                  <button id="toggleMessage" ng-click="toggle16=!toggle16" class="btn btn-primary">
+                                                      {{toggle16 ? 'Ẩn thông tin lúc Vận chuyển' : 'Xem thông tin lúc Vận chuyển'}}
+                                                      <label class="text-left-timeline">2</label>
+                                                  </button>
+                                                  
+                                                  
+                                                  
+                                                    <table style="float:center" id="query_pig" class="table" ng-show="toggle16">
+                                                      <tr bgcolor="#007bff" >
+                                                        <th colspan="2" > <center>Thông tin lúc Vận chuyển </center></th>
+                                                      </tr>
+                                                      <tr> 
+                                                        <th> Tên tài khoản </th>
+                                                        <th class="th"> {{query_pig.transport_account}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Tên Công ty</th>
+                                                        <th class="th"> {{query_pig.company}}</th>
+                                                      </tr>
+                                                      <tr> 
+                                                        <th> Người vận chuyển </th>
+                                                        <th class="th"> {{query_pig.transporter}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Phương tiện</th>
+                                                        <th class="th"> {{query_pig.vehicle}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Vấn đề - Giải quyết</th>
+                                                        <th class="th"> {{query_pig.transport_trouble_solution}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Chất lượng vận chuyển</th>
+                                                        <th class="th"> {{query_pig.transport_qualified}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Thời gian vận chuyển</th>
+                                                        <th class="th"> {{query_pig.time}}</th>
+                                                      </tr>
+                                                    </table>   
+                                                  </center>
+                                                                                     
+                                                </div>
+                                              </div>
+                                              <div class="container1 left">
+                                                <div class="content1">
+                                                    
+                                                  <center>
+                                                    <button id="toggleMessage" ng-click="toggle17=!toggle17" class="btn btn-primary">
+                                                        {{toggle17 ? 'Ẩn thông tin ở Lò mổ' : 'Xem thông tin ở Lò mổ'}}
+                                                        <label class="text-right-timeline">3</label>
+                                                    </button>
+                                                    
+                                                    <!-- <h2>2015</h2> -->
+                                                  <table style="float:center" id="query_pig" class="table" ng-show="toggle17">
+                                                      <tr bgcolor="#007bff" >
+                                                        <th colspan="2" > <center>Xem thông tin ở Lò mổ</center> </th>
+                                                      </tr>
+                                                      <tr> 
+                                                        <th> Tên tài khoản </th>
+                                                        <th class="th"> {{query_pig.abattoir_account}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Tên lò mổ</th>
+                                                        <th class="th"> {{query_pig.abattoir_name}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Vấn đề - Giải quyết</th>
+                                                        <th class="th"> {{query_pig.abattoir_trouble_solution}}</th>
+                                                      </tr>
+                                                      <tr> 
+                                                        <th> Địa chỉ </th>
+                                                        <th class="th"> {{query_pig.abattoir_location}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Chất lượng lò mổ</th>
+                                                        <th class="th"> {{query_pig.abattoir_qualified}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Thời gian mổ </th>
+                                                        <th class="th"> {{query_pig.peck_time}}</th>
+                                                      </tr>
+                                                    </table>
+                                                  </center>                             
+                                                </div>
+                                              </div>
+                                              <div class="container1 right">
+                                                <div class="content1">
+                                                    
+                                                  <center>
+                                                    <button id="toggleMessage" ng-click="toggle18=!toggle18" class="btn btn-primary">
+                                                        {{toggle18 ? 'Ẩn thông tin ở Siêu thị' : 'Xem thông tin ở Siêu thị'}}
+                                                        <label class="text-left-timeline">4</label>
+                                                    </button>
+                                                    
+                                                    <!-- <h2>2012</h2> -->
+                                                  <table style="float:center" id="query_pig" class="table" ng-show="toggle18">
+                                                      <tr bgcolor="#007bff" >
+                                                        <th colspan="2" > <center>Thông tin ở Siêu thị</center> </th>
+                                                      </tr>
+                                                      <tr> 
+                                                        <th> Tên tài khoản </th>
+                                                        <th class="th"> {{query_pig.supermaket_account}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Tên siêu thị</th>
+                                                        <th class="th"> {{query_pig.supermarket_name}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Vấn đề - Giải quyết</th>
+                                                        <th class="th"> {{query_pig.supermarket_trouble_solution}}</th>
+                                                      </tr>
+                                                      <tr> 
+                                                        <th> Chất lượng siêu thị </th>
+                                                        <th class="th"> {{query_pig.supermarket_qualified}}</th>
+                                                      </tr>
+                                                      <!-- <tr>
+                                                        <th> Giá</th>
+                                                        <th class="th"> {{query_pig.price}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Số lượng còn lại(Kg)</th>
+                                                        <th class="th"> {{query_pig.quantity_remaining}}</th>
+                                                      </tr> -->
+                                                      <tr>
+                                                        <th> Ngày sản xuất</th>
+                                                        <th class="th"> {{query_pig.manufacturing_date}}</th>
+                                                      </tr>
+                                                      <tr>
+                                                        <th> Hạn sử dụng</th>
+                                                        <th class="th"> {{query_pig.expiry_date}}</th>
+                                                      </tr>
+                                              
+                                                    </table>  
+                                                  </center>
+                                                                                          
+                                                </div>
+                                              </div>
+      
+      
+                                              
+                                              
+                                            </div>
+                                      </form>
+
+                                      
 
                                       <!-- Modal view result query 1 id-->
                                       <div class="modal fade" id="myModal" role="dialog">
@@ -215,7 +597,11 @@
                                                                   
                                                               </th>
                                                           </tr>
-                                                            
+                                                          
+                                                          <tr> 
+                                                            <th> Account </th>
+                                                            <th class="th"> {{query_pig.farm_account}}</th>
+                                                          </tr>
                                                           <tr> 
                                                             <th> Famer </th>
                                                             <th class="th"> {{query_pig.famer}}</th>
@@ -250,6 +636,10 @@
                                                         <table style="float:center" id="query_pig" class="table" >
                                                           <tr bgcolor="#007bff" >
                                                             <th colspan="2" > <center>TRANSPORT </center></th>
+                                                          </tr>
+                                                          <tr> 
+                                                            <th> Account </th>
+                                                            <th class="th"> {{query_pig.transport_account}}</th>
                                                           </tr>
                                                           <tr>
                                                             <th> Company</th>
@@ -286,6 +676,10 @@
                                                           <tr bgcolor="#007bff" >
                                                             <th colspan="2" > <center>ABATTOIR</center> </th>
                                                           </tr>
+                                                          <tr> 
+                                                            <th> Account </th>
+                                                            <th class="th"> {{query_pig.abattoir_account}}</th>
+                                                          </tr>
                                                           <tr>
                                                             <th> AbattoirName</th>
                                                             <th class="th"> {{query_pig.abattoir_name}}</th>
@@ -308,6 +702,10 @@
                                                         <table style="float:center" id="query_pig" class="table" >
                                                           <tr bgcolor="#007bff" >
                                                             <th colspan="2" > <center>SUPERMARKET</center> </th>
+                                                          </tr>
+                                                          <tr> 
+                                                            <th> Account </th>
+                                                            <th class="th"> {{query_pig.supermaket_account}}</th>
                                                           </tr>
                                                           <tr>
                                                             <th> SupermarketName</th>
@@ -1124,7 +1522,7 @@
                                                           <img width="320" height="240" id="scanned-img" src="">
                                                       </div>
                                                       <div class="caption">
-                                                          <h3>Scanned result</h3>
+                                                          <h3>Kết quả quét mã QR</h3>
                                                           <p id="scanned-QR"></p>
                                                       </div>
                                                   </div>
@@ -1136,6 +1534,9 @@
                                       <div id="body"></div>
                                       
                                   </div>
+
+
+                                  
                               </div>
                               
                           </div>
@@ -1147,6 +1548,7 @@
         </app-home>
       </div>
 
+      
       
 
       <app-footer-home-main _ngcontent-plj-c1="" _nghost-plj-c3="">
@@ -1193,6 +1595,7 @@
   <!-- <script type="text/javascript" src="js/angular-ui-router.js"></script> -->
   <!-- <script type="text/javascript" src="js/angular-ui-router.js"></script> -->
 
+  <script type="text/javascript" src="../js/dirPagination.js"></script>
   
   <!-- <script type="text/javascript" src="js/angular-route.min.js"></script> -->
   <!-- <script src="login/loginController.js"></script>

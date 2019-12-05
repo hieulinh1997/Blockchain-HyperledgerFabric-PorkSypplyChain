@@ -15,40 +15,45 @@ var os = require('os');
 
 var fabric_client = new Fabric_Client();
 
-console.log("submit recording of a farm: ");
+console.log("add info for chain ");
 
 var array = req.params.chain.split("-");
 
 var key = array[0]
 		
-var qrcode = array[1]
+var farm_account = array[1]
 var famer = array[2]
 var species = array[3]
 var food = array[4]
 var sick_cure = array[5]
-var farm_location = array[6]
-var start_date_of_farming = array[7]
-var end_date_of_farming = array[8]
+var farm_qualified = array[6]
+var farm_location = array[7]
+var start_date_of_farming = array[8]
+var end_date_of_farming = array[9]
 
-var company = array[9];
-var transporter = array[10];
-var vehicle = array[11];
-var trouble = array[12];
-var solution = array[13];
-var transport_qualified = array[14];
-var time = array[15];
+var transport_account = array[10]
+var company = array[11];
+var transporter = array[12];
+var vehicle = array[13];
+var transport_trouble_solution = array[14];
+var transport_qualified = array[15];
+var time = array[16];
 
-var abattoir_name = array[16];
-var abattoir_location = array[17];
-var abattoir_qualified = array[18];
-var peck_time = array[19];
+var abattoir_account = array[17]
+var abattoir_name = array[18];
+var abattoir_trouble_solution = array[19];
+var abattoir_location = array[20];
+var abattoir_qualified = array[21];
+var peck_time = array[22];
 
-var supermarket_name = array[20];
-var supermarket_qualified = array[21];
-var price = array[22];
-var quantity_remaining = array[23];
-var manufacturing_date = array[24];
-var expiry_date = array[25];
+var supermarket_account = array[23]
+var supermarket_name = array[24];
+var supermarket_trouble_solution = array[25];
+var supermarket_qualified = array[26];
+var price = array[27];
+var quantity_remaining = array[28];
+var manufacturing_date = array[29];
+var expiry_date = array[30];
 
 
 var fabric_client = new Fabric_Client();
@@ -97,7 +102,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
         //targets : --- letting this default to the peers assigned to the channel
         chaincodeId: 'pig-app',
         fcn: 'initChain',
-        args: [key, qrcode, famer, species, food, sick_cure, farm_location, start_date_of_farming, end_date_of_farming, company, transporter, vehicle, trouble, solution, transport_qualified, time, abattoir_name, abattoir_location, abattoir_qualified, peck_time, supermarket_name, supermarket_qualified, price, quantity_remaining, manufacturing_date, expiry_date],
+        args: [key, farm_account, famer, species, food, sick_cure, farm_qualified, farm_location, start_date_of_farming, end_date_of_farming, transport_account, company, transporter, vehicle, transport_trouble_solution, transport_qualified, time, abattoir_account, abattoir_name, abattoir_trouble_solution, abattoir_location, abattoir_qualified, peck_time, supermarket_account, supermarket_name, supermarket_trouble_solution, supermarket_qualified, price, quantity_remaining, manufacturing_date, expiry_date],
         chainId: 'mychannel',
         txId: tx_id
     };

@@ -19,10 +19,11 @@ console.log("changing abattoir: ");
 
 var array = req.params.abattoir.split("-");
 var key = array[0];
-var abattoir_name = array[1];
-var abattoir_location = array[2];
-var abattoir_qualified = array[3];
-var peck_time = array[4];
+		var abattoir_account = args[1]
+		var abattoir_name = array[2];
+		var abattoir_location = array[3];
+		var abattoir_qualified = array[4];
+		var peck_time = array[5];
 
 var fabric_client = new Fabric_Client();
 
@@ -70,7 +71,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
         //targets : --- letting this default to the peers assigned to the channel
         chaincodeId: 'pig-app',
         fcn: 'insertAbattoir',
-        args: [key, abattoir_name, abattoir_location, abattoir_qualified, peck_time],
+        args: [key, abattoir_account, abattoir_name, abattoir_location, abattoir_qualified, peck_time],
         chainId: 'mychannel',
         txId: tx_id
     };

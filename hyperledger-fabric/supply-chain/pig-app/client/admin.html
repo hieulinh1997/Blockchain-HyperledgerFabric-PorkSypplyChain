@@ -1,1301 +1,1196 @@
-<!-- SPDX-License-Identifier: Apache-2.0 -->
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Hyperledger Fabric Supply Chain Pork Application</title>
-    <link rel="icon" href="favicon.png" type="image/gif">
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="icon" href="/views/home.png" type="image/gif">
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script> -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script> -->
-    <!-- require jquery and bootstrap scripts -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script> -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-    <!-- <script src="https://code.angularjs.org/1.2.13/angular.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script> -->
-    <!-- login -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
-    <!-- adding style here -->
-    <style type="text/css">
-      header{
-        background-color: lightgray;
-        font-size:30px;
-        padding:15px;
-      }
-      header, .form-group{
-        margin-bottom: 3%;
-      }
-      #above_header{
-        width:15%;
-        font-size:20px;
-        margin-left:550px;
-      }
-      #below_header{
-        margin-left:470px;
-        width:25%;
-        font-size:30px;
-      } 
-      #id {
-        width:49%;
-        display: inline-block;
-      }
-      table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 50px;
-      }
-      .table-transport {
-        margin-left: 200px;
-      }
-      td, th {
-          border: 1px solid #dddddd;
-          text-align: center;
-          padding: 8px;
-      }
-      .th {
-        text-align: center;
-        font-weight: normal !important;
+<div _ngcontent-hms-c1 ng-controller="appController as tab">
+  <!-- <div ng-view></div> -->
+  <app-header-home _ngcontent-qht-c1="" _nghost-qht-c2="">
+    <nav _ngcontent-qht-c2="" class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <!-- button home -->
+        <a _ngcontent-abn-c2="" class="navbar-brand" routerlink="/home" ng-reflect-router-link="/home" href="../index.html">
+          <i _ngcontent-gwf-c2="" class="fa fa-home mr-2"></i>
+          <span>PSC</span>  
+          <!-- <img _ngcontent-abn-c2="" alt="SCP" class="brand-image " height="25px" src="home.png" style="opacity: 1"> -->
+        </a>
 
-      }
-      .nav-tab-custom-home ul.nav-tabs {
-          background-color: #007bff !important;
-          border: 0;
-          border-top-left-radius: .25rem;
-          border-top-right-radius: .25rem;
-      }
-      dl, ol, ul {
-          margin-top: 0;
-          margin-bottom: 1rem;
-      }
-      
-      .nav-tabs {
-          border-bottom: 1px solid #dee2e6;
-      }
-      .justify-content-start {
-          justify-content: flex-start!important;
-      }
-      .card {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          min-width: 0;
-          word-wrap: break-word;
-          background-color: #fff;
-          background-clip: border-box;
-          border: 0 solid rgba(0,0,0,.125);
-          border-radius: .25rem;
-      }
-      
-      .nav-tab-custom-home ul.nav-tabs .nav-link.active {
-          color: #111;
-          border: 0;
-      }
-      .nav-tab-custom-home ul.nav-tabs .nav-link {
-          color: #fff;
-          border: 0;
-          text-align: center;
-      }
-      .nav-tabs .nav-link.active {
-          color: #495057;
-          background-color: #fff;
-          border-color: #dee2e6 #dee2e6 #fff;
-      }
-      .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
-          border-color: #e9ecef #e9ecef #dee2e6;
-      }
-      .nav-tabs .nav-link {
-          border: 1px solid transparent;
-          border-top-left-radius: .25rem;
-          border-top-right-radius: .25rem;
-      }
-      .nav-link {
-          display: block;
-          padding: .5rem 1rem;
-      }
-      p, a {
-          font-family: 'Source Sans Pro', -apple-system, B
-          nkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !important;
-      }
-      
+        <button _ngcontent-vyn-c2="" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span _ngcontent-vyn-c2="" class="navbar-toggler-icon"></span></button>
 
-      a {
-          color: #007bff;
-          text-decoration: none;
-          background-color: transparent;
-          -webkit-text-decoration-skip: objects;
-      }
-      *, ::after, ::before {
-          box-sizing: border-box;
-      }
-      a:-webkit-any-link {
-          color: -webkit-link;
-          cursor: pointer;
-          text-decoration: underline;
-      }
-      /* li {
-          text-align: -webkit-match-parent;
-      } */
-      .nav-pills>li>a {
-          border-radius: 4px;
-          color: white;
-      }
-      .navbar-dark .navbar-nav .nav-link {
-          color: rgba(255,255,255,.75);
-      }
-      /* .navbar-expand-lg .navbar-nav .nav-link {
-          padding-right: 1rem;
-          padding-left: 1rem;
-      } */
-    </style>
-  </head>
-  
-  <body _ngcontent-hms-c1 ng-app="application" ng-controller="appController as tab">
-      <!-- <div ng-view></div> -->
-      <app-header-home _ngcontent-qht-c1="" _nghost-qht-c2="">
-        <nav _ngcontent-qht-c2="" class="navbar navbar-expand-lg navbar-dark bg-primary">
-          <!-- button home -->
-          <a _ngcontent-abn-c2="" class="navbar-brand" routerlink="/home" ng-reflect-router-link="/home" href="../index.html">
-            <img _ngcontent-abn-c2="" alt="SCP" class="brand-image " height="25px" src="home.png" style="opacity: 1">
-          </a>
-          <div _ngcontent-qht-c2="" class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul _ngcontent-qht-c2="" class="navbar-nav mr-auto">
+
+        <div _ngcontent-qht-c2="" class="collapseadmin navbar-collapseadmin" id="navbarSupportedContent">
+          <ul _ngcontent-qht-c2="" class="navbar-nav mr-auto">
               <li _ngcontent-qht-c2="" class="nav-item d-none d-lg-inline-block">
-                <a _ngcontent-qht-c2="" class="nav-link">Phần mềm truy xuất nguồn gốc thịt lợn</a>
+              <a _ngcontent-qht-c2="" class="nav-link">Phần mềm truy xuất nguồn gốc thịt lợn</a>
               </li>
 
-            </ul>
+          </ul>
 
-            <!-- modal login -->
-            <ul _ngcontent-gwf-c2="" class="nav navbar-nav ml-auto">
+          <!-- current username -->
+          <ul _ngcontent-gwf-c2="" class="nav navbar-nav ml-auto-admin">
               <li _ngcontent-gwf-c2="" class="nav-item ">
-                <a _ngcontent-gwf-c2="" class="nav-link btn btn-outline-primary" routerlink="/login" ng-reflect-router-link="/login" href="views/login.html">
-                  <i _ngcontent-gwf-c2="" class="fa fa-sign-in mr-2"></i>
+              <a _ngcontent-gwf-c2="" id="clickCurrentUser" class="nav-link btn btn-outline-primary" ng-click="loadCurrentUser()" data-toggle="modal" data-target="#viewUserModal">
+                <i _ngcontent-gwf-c2="" class="fa fa-user"></i>
                   <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
-                    Đăng nhập
+                      {{message}}
                   </span>
-                </a>
+              </a>
               </li>
               <li _ngcontent-gwf-c2="" class="nav-item">
-                <a _ngcontent-gwf-c2="" class="nav-link btn btn-outline-primary bg-white text-dark" routerlink="/signup" style="color:#007bff!important" ng-reflect-router-link="/signup" href="views/signup.html">
-                  <span _ngcontent-gwf-c2="" translate="signup" ng-reflect-translate="signup">Đăng ký</span>
-                </a>
-              </li>
-              <!-- <li _ngcontent-meb-c2="" class="dropdown nav-item user user-menu open">
-                <a _ngcontent-meb-c2="" aria-expanded="true" class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">
-                  <span _ngcontent-meb-c2="" class="hidden-xs">hl.4bros@gmail.com</span>
-                </a>
-                <div _ngcontent-meb-c2="" class="dropdown-menu">
-                  <a _ngcontent-meb-c2="" class="dropdown-item">Nguyen Van A</a>
-                  <div _ngcontent-meb-c2="" class="dropdown-divider"></div>
-                  <a _ngcontent-meb-c2="" class="dropdown-item navigate-console">Console</a>
-                  <a _ngcontent-meb-c2="" class="dropdown-item" routerlink="/console/profile" ng-reflect-router-link="/console/profile" href="#/console/profile">Thông tin tài khoản</a>
-                  <div _ngcontent-meb-c2="" class="dropdown-divider"></div>
-                  <a _ngcontent-meb-c2="" class="dropdown-item navigate-console">
-                    <i _ngcontent-meb-c2="" class="fa fa-sign-out">
-
-                    </i>&nbsp;Đăng xuất
+                  <a _ngcontent-gwf-c2="" class="nav-link btn btn-outline-primary bg-white text-dark" routerlink="/signup" style="color:#007bff!important" ng-reflect-router-link="/signup" ng-click="logOut()">
+                  <span _ngcontent-gwf-c2="" translate="signup" ng-reflect-translate="signup">Logout</span>
                   </a>
-                </div>
-              </li> -->
-            </ul>
+              </li>
 
-
-          </div>
-
-        </nav>
+          </ul>
         
+        </div>
 
-      </app-header-home>
+    </nav>
+  </app-header-home>
 
-      
-      <!-- <header>
-        <i id="above_header">Demo Hyperledger Fabric</i>
-        <br>
-        <i id="below_header">Pork Supply Chain Application</i>
-      </header> -->
+  <div _ngcontent-hms-c1="" class="content-wrapper-search">
 
-      <div _ngcontent-hms-c1="" class="content-wrapper-search">
-        <router-outlet _ngcontent-hms-c1=""></router-outlet>
-        <app-home _nghost-xxd-c4="">
-            <div _ngcontent-xxd-c4="" class="row">
-              <div _ngcontent-xxd-c4="" class="col-sm-12">
-                <div _ngcontent-xxd-c4="" class="card card-primary">
+    <router-outlet _ngcontent-hms-c1=""></router-outlet>
+
+    <app-home _nghost-xxd-c4="">
+      <div _ngcontent-xxd-c4="" class="row">
+        <div _ngcontent-xxd-c4="" class="col-sm-12">
+          <div _ngcontent-xxd-c4="" class="card card-primary">
+
+            <ngb-tabset _ngcontent-xxd-c4="" class="nav-tab-custom-home">
+
+              <!-- tablist -->
+              <ul role="tablist" class="nav nav-tabs justify-content-start">
+                
+                <ul class="nav nav-pills">
+                  <li ng-class="{active:tab.isSet(1)}"><a href ng-click="tab.setTab(1)">Duyệt thành viên</a></li>
+                  <li ng-class="{active:tab.isSet(2)}"><a href ng-click="tab.setTab(2)">Danh sách Chuỗi cung ứng</a></li>
+                  <li ng-class="{active:tab.isSet(3)}"><a href ng-click="tab.setTab(3)">Lịch sử</a></li>
+                </ul>
+
+              </ul>
+              <!-- tablist -->
+              
+              <!-- tabcontent -->
+              <div class="tab-content">
+
+                <!-- tabpanel -->
+                <div role="tabpanel" class="tab-pane active" aria-labelledby="ngb-tab-0" id="ngb-tab-0-panel" aria-expanded="true">
                   
-                    <ngb-tabset _ngcontent-xxd-c4="" class="nav-tab-custom-home">
-      
-                      <!-- tablist -->
-                      <ul role="tablist" class="nav nav-tabs justify-content-start">
-                       
-                          <ul class="nav nav-pills">
-                              <li ng-class="{active:tab.isSet(1)}"><a href ng-click="tab.setTab(1)">Tra cứu theo ID</a></li>
-                              <li ng-class="{active:tab.isSet(2)}"><a href ng-click="tab.setTab(2)">Quét mã QR lấy ID</a></li>
-                          </ul>
+                  <!-- tab members status -->
+                  <div ng-show="tab.isSet(1)">
 
-                      </ul>
-                      <!-- tablist -->
                       
-                      <div class="tab-content">
-                          <div role="tabpanel" class="tab-pane active" aria-labelledby="ngb-tab-0" id="ngb-tab-0-panel" aria-expanded="true">
-                              <div ng-show="tab.isSet(1)">
-                                  <div _ngcontent-xxd-c4="" class="intro-head pr-2 pl-2"><h2 _ngcontent-xxd-c4="" translate="home.tab-one.title" ng-reflect-translate="home.tab-one.title">
-                                      <center>Tra cứu theo ID</center></h2>
-                                  </div>
-
-                                  
-                                  <div _ngcontent-bfd-c4="" class="search_frm pb-1">
-                                    <form _ngcontent-bfd-c4="" novalidate="" ng-reflect-form="[object Object]" class="ng-pristine ng-invalid ng-touched">
-                                      <div _ngcontent-bfd-c4="" class="row numberInfo search-widget">
-                                        <div _ngcontent-bfd-c4="" class="col-md-2">
-                                          
-                                        </div>
-                                        <div _ngcontent-bfd-c4="" class="col-md-8">
-                                          <div _ngcontent-bfd-c4="" class="row">
-                                            <div _ngcontent-bfd-c4="" class="col-sm-8 mb-2">
-                                              <div _ngcontent-bfd-c4="" class="input-custom">
-                                                <input _ngcontent-bfd-c4="" formcontrolname="idCer" id="createName" placeholder="Ex: 1" ng-model="pig_id" type="text" ng-reflect-name="idCer" class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" placeholder="Nhập ID ">
-                                                <div _ngcontent-bfd-c4="" class="input-custom-label ">
-                                                  <span _ngcontent-bfd-c4="" class="text-danger">* </span>
-                                                  <span _ngcontent-bfd-c4="" translate="home.tab-two.ccsid-label" ng-reflect-translate="home.tab-two.ccsid-label">
-                                                    ID cần tra cứu
-                                                  </span>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div _ngcontent-bfd-c4="" class="col-sm-4">
-                                              <button _ngcontent-bfd-c4="" id="querySubmit" ng-click="queryPig()" class="btn btn-primary btn-lg btn-block" type="submit" data-toggle="modal" data-target="#myModal">
-                                                <i _ngcontent-bfd-c4="" class="fa fa-search"></i>
-                                                <span _ngcontent-bfd-c4="" class="btn-name-search" translate="home.btn-search" ng-reflect-translate="home.btn-search">
-                                                  Tra cứu
-                                                </span>
-                                              </button>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div _ngcontent-bfd-c4="" class="col-md-2"></div>
-                                      </div>
-
-                                      
-                                      
-                                      <!-- Modal view result query 1 id-->
-                                      <div class="modal fade" id="myModal" role="dialog">
-                                          <div class="modal-dialog modal-sm">
-                                            <div class="modal-content">
-                                              <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title">Thông tin</h4>
-                                              </div>
-                                              <div class="modal-body">
-                                                  <div _ngcontent-lpg-c4="" class="row search-widget">
-                                                      <div >
-                                                        <table id="query_pig" class="table" align="center">
-                                                          <tr bgcolor="#007bff" >
-                                                            <th colspan="2" > FARM </th>
-                                                          </tr>
-                                                          </tr>
-                                                          
-                                                          <tr> 
-                                                              <th> QRCode </th>
-                                                              <th class="th"> 
-                                                                  <label id="text" type="text" 
-                                                                  value="{{pig_id}}" style="Width:20%"
-                                                                  onblur='generateBarCode();' > </label>
-
-                                                            <img id='barcode' 
-                                                                  src="https://api.qrserver.com/v1/create-qr-code/?data= Key: {{pig_id}}&amp;size=100x100" 
-                                                                  alt="" 
-                                                                  title="HELLO" 
-                                                                  width="100" 
-                                                                  height="100" />
-                                                                  
-                                                              </th>
-                                                          </tr>
-                                                            
-                                                          <tr> 
-                                                            <th> Famer </th>
-                                                            <th class="th"> {{query_pig.famer}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> Species</th>
-                                                            <th class="th"> {{query_pig.species}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> Food</th>
-                                                            <th class="th"> {{query_pig.food}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> Sick_Cure</th>
-                                                            <th class="th"> {{query_pig.sick_cure}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> Location</th>
-                                                            <th class="th"> {{query_pig.farm_location}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> Start_Date</th>
-                                                            <th class="th"> {{query_pig.start_date_of_farming}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> End_Date</th>
-                                                            <th class="th"> {{query_pig.end_date_of_farming}}</th>
-                                                          </tr>
-                                                        </table>
-                                                      </div>
-                                                      <div >
-                                                        <table id="query_pig" class="table" align="center">
-                                                          <tr bgcolor="#007bff" >
-                                                            <th colspan="2" > TRANSPORT </th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> Company</th>
-                                                            <th class="th"> {{query_pig.company}}</th>
-                                                          </tr>
-                                                          <tr> 
-                                                            <th> Transporter </th>
-                                                            <th class="th"> {{query_pig.transporter}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> Vehicle</th>
-                                                            <th class="th"> {{query_pig.vehicle}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> Trouble</th>
-                                                            <th class="th"> {{query_pig.trouble}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> Solution</th>
-                                                            <th class="th"> {{query_pig.solution}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> TransportQualified</th>
-                                                            <th class="th"> {{query_pig.transport_qualified}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> Time</th>
-                                                            <th class="th"> {{query_pig.time}}</th>
-                                                          </tr>
-                                                        </table>
-                                                      </div>
-                                                      <div >
-                                                        <table id="query_pig" class="table" align="center">
-                                                          <tr bgcolor="#007bff" >
-                                                            <th colspan="2" > ABATTOIR </th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> AbattoirName</th>
-                                                            <th class="th"> {{query_pig.abattoir_name}}</th>
-                                                          </tr>
-                                                          <tr> 
-                                                            <th> AbattoirLocation </th>
-                                                            <th class="th"> {{query_pig.abattoir_location}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> AbattoirQualified</th>
-                                                            <th class="th"> {{query_pig.abattoir_qualified}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> Peck_Time</th>
-                                                            <th class="th"> {{query_pig.peck_time}}</th>
-                                                          </tr>
-                                                        </table>
-                                                      </div>
-                                                      <div >
-                                                        <table id="query_pig" class="table" align="center">
-                                                          <tr bgcolor="#007bff" >
-                                                            <th colspan="2" > SUPERMARKET </th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> SupermarketName</th>
-                                                            <th class="th"> {{query_pig.supermarket_name}}</th>
-                                                          </tr>
-                                                          <tr> 
-                                                            <th> SupermarketQualified </th>
-                                                            <th class="th"> {{query_pig.supermarket_qualified}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> Price</th>
-                                                            <th class="th"> {{query_pig.price}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> QuantityRemaining</th>
-                                                            <th class="th"> {{query_pig.quantity_remaining}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> MFG</th>
-                                                            <th class="th"> {{query_pig.manufacturing_date}}</th>
-                                                          </tr>
-                                                          <tr>
-                                                            <th> EXP</th>
-                                                            <th class="th"> {{query_pig.expiry_date}}</th>
-                                                          </tr>
-                                                  
-                                                        </table>
-                                                      </div>
-                                                    </div>
-                                              </div>
-                                              <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                              </div>
-                                            </div>
-                                          </div>
-                                      </div>
-                                      
-                                      
-                                      
-                                      
-                                      
-
-                                      <!-- <div _ngcontent-lpg-c4="" class="row search-widget">
-                                        <div _ngcontent-lpg-c4="" class="col-md-4 mb-3">
-                                          <table id="query_pig" class="table" align="center">
-                                            <tr bgcolor="#007bff" >
-                                              <th colspan="2" > FARM </th>
-                                            </tr>
-                                            </tr>
-                                            
-                                            <tr> 
-                                                <th> QRCode </th>
-                                                <th class="th"> 
-                                                    <label id="text" type="text" 
-                                                    value="{{pig_id}}" style="Width:20%"
-                                                    onblur='generateBarCode();' > </label>
-        
-                                              <img id='barcode' 
-                                                    src="https://api.qrserver.com/v1/create-qr-code/?data= Key: {{pig_id}}&amp;size=100x100" 
-                                                    alt="" 
-                                                    title="HELLO" 
-                                                    width="100" 
-                                                    height="100" />
-                                                    
-                                                </th>
-                                            </tr>
-                                              
-                                            <tr> 
-                                              <th> Famer </th>
-                                              <th class="th"> {{query_pig.famer}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> Species</th>
-                                              <th class="th"> {{query_pig.species}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> Food</th>
-                                              <th class="th"> {{query_pig.food}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> Sick_Cure</th>
-                                              <th class="th"> {{query_pig.sick_cure}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> Location</th>
-                                              <th class="th"> {{query_pig.farm_location}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> Start_Date</th>
-                                              <th class="th"> {{query_pig.start_date_of_farming}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> End_Date</th>
-                                              <th class="th"> {{query_pig.end_date_of_farming}}</th>
-                                            </tr>
-                                          </table>
-                                        </div>
-                                        <div _ngcontent-lpg-c4="" class="col-md-3 mb-3">
-                                          <table id="query_pig" class="table-transport" align="center">
-                                            <tr bgcolor="#007bff" >
-                                              <th colspan="2" > TRANSPORT </th>
-                                            </tr>
-                                            <tr>
-                                              <th> Company</th>
-                                              <th class="th"> {{query_pig.company}}</th>
-                                            </tr>
-                                            <tr> 
-                                              <th> Transporter </th>
-                                              <th class="th"> {{query_pig.transporter}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> Vehicle</th>
-                                              <th class="th"> {{query_pig.vehicle}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> Trouble</th>
-                                              <th class="th"> {{query_pig.trouble}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> Solution</th>
-                                              <th class="th"> {{query_pig.solution}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> TransportQualified</th>
-                                              <th class="th"> {{query_pig.transport_qualified}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> Time</th>
-                                              <th class="th"> {{query_pig.time}}</th>
-                                            </tr>
-                                          </table>
-                                        </div>
-                                        <div _ngcontent-lpg-c4="" class="col-md-3 mb-3">
-                                          <table id="query_pig" class="table-transport" align="center">
-                                            <tr bgcolor="#007bff" >
-                                              <th colspan="2" > ABATTOIR </th>
-                                            </tr>
-                                            <tr>
-                                              <th> AbattoirName</th>
-                                              <th class="th"> {{query_pig.abattoir_name}}</th>
-                                            </tr>
-                                            <tr> 
-                                              <th> AbattoirLocation </th>
-                                              <th class="th"> {{query_pig.abattoir_location}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> AbattoirQualified</th>
-                                              <th class="th"> {{query_pig.abattoir_qualified}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> Peck_Time</th>
-                                              <th class="th"> {{query_pig.peck_time}}</th>
-                                            </tr>
-                                          </table>
-                                        </div>
-                                        <div _ngcontent-lpg-c4="" class="col-md-2">
-                                          <table id="query_pig" class="table-transport" align="center">
-                                            <tr bgcolor="#007bff" >
-                                              <th colspan="2" > SUPERMARKET </th>
-                                            </tr>
-                                            <tr>
-                                              <th> SupermarketName</th>
-                                              <th class="th"> {{query_pig.supermarket_name}}</th>
-                                            </tr>
-                                            <tr> 
-                                              <th> SupermarketQualified </th>
-                                              <th class="th"> {{query_pig.supermarket_qualified}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> Price</th>
-                                              <th class="th"> {{query_pig.price}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> QuantityRemaining</th>
-                                              <th class="th"> {{query_pig.quantity_remaining}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> MFG</th>
-                                              <th class="th"> {{query_pig.manufacturing_date}}</th>
-                                            </tr>
-                                            <tr>
-                                              <th> EXP</th>
-                                              <th class="th"> {{query_pig.expiry_date}}</th>
-                                            </tr>
-                                    
-                                          </table>
-                                        </div>
-                                      </div> -->
-                                    </form>
-                                  </div>
 
 
-                                    <!-- <h4>Tab 1</h4> -->
-                                
-                                  <!-- Thêm thông tin user-->
-                                  <div>
-                                    <button id="toggleMessage" ng-click="toggle99=!toggle99">
-                                        {{toggle99 ? 'Ẩn thêm thông tin user' : 'Thêm thông tin user'}}
-                                    </button>
-                                    <div id="box" ng-show="toggle99">
-                                        <div class="form-group">
-                                          <label>Create User Record</label>
-                                          <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_tuna}}</h5>
-                                          <!-- <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_tuna}}</h5> -->
-                                          <br>
-                                          Enter Id: <input class="form-control" type="text" ng-model="user.id">
-                                          Enter Username: <input class="form-control" type="text" ng-model="user.username">
-                                          Enter Password: <input class="form-control" type="text" ng-model="user.password">
-                                          Enter Email: <input class="form-control" type="text" ng-model="user.email">
-                                          Enter Roles: <input class="form-control" type="text" ng-model="user.roles">
-                                  
-                                          <input id="createSubmit" type="submit" value="Done" class="btn btn-primary" ng-click="addUser()"> 
-                                        </div>
-                                    </div>
-                                  </div>
 
-                                  <!-- Truy xuất thông tin All User -->
-                                  <div>
-                                    <button id="toggleMessage" ng-click="toggle98=!toggle98">
-                                        {{toggle98 ? 'Ẩn truy xuất tất cả User' : 'Truy xuất tất cả User'}}
-                                    </button>
-                                    <div id="box" ng-show="toggle98">
-                                        <div class="form-group">
-                                          <label>Query All User </label>
-                                          <p><input id="queryAllUser" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllUser()"></p>
-                                        </div>
-                                  
-                                        <table id="all_user" class="table" align="center">
-                                  
-                                          <tr>
-                                            <th>ID</th>
-                                            <th>Username</th>
-                                            <th>Password</th>
-                                            <th>Email</th>
-                                            <th>Roles</th>
-                                            
-                                          </tr>
-                                  
-                                          <tr ng-repeat="user in all_user">
-                                            <td>{{user.Key}}</td>
-                                            <td>{{user.username}}</td>
-                                            <td>{{user.password}}</td>
-                                            <td>{{user.email}}</td>
-                                            <td>{{user.roles}}</td>
-                                            
-                                          </tr>
-                                        </table>
-                                    </div>
-                                  </div>
-                                  <!-- signup -->
-                                  <div>
-                                      <button id="toggleMessage" ng-click="toggle10=!toggle10">
-                                          {{toggle10 ? 'Ẩn sign up' : 'sign up'}}
-                                      </button>
-                                      <div id="box" ng-show="toggle10">
-                                          <div class="form-group">
-                                            <label>SIGN UP</label>
-                                            <!-- <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_tuna}}</h5> -->
-                                            <!-- <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_tuna}}</h5> -->
-                                            <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Pig Id</h5>
-                                              
-                                              Enter a ID: <input id="createName" class="form-control" type="text" placeholder="Ex: 3" ng-model="username">
-                                              <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="registerUser()">
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <!-- Truy xuất thông tin All Supply chain -->
-                                  <div>
-                                      <button id="toggleMessage" ng-click="toggle2=!toggle2">
-                                          {{toggle2 ? 'Ẩn truy xuất tất cả thông tin Chuỗi' : 'Truy xuất tất cả thông tin Chuỗi'}}
-                                      </button>
-                                      <div id="box" ng-show="toggle2">
-                                          <div class="form-group">
-                                            <label>Query All Supply chain </label>
-                                            <p><input id="queryAllPig" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllPig()"></p>
-                                          </div>
-                                    
-                                          <table id="all_pig" class="table" align="center">
-                                    
-                                            <tr>
-                                              <th>ID</th>
-                                              <th>QRCode</th>
-                                              <th>Famer</th>
-                                              <th>Species</th>
-                                              <th>Food </th>
-                                              <th>Sick_Cure</th>
-                                              <th>Location</th>
-                                              <th>Start_Date</th>
-                                              <th>End_Date</th>
-                                              <th>Company</th>
-                                              <th>Transporter</th>
-                                              <th>Vehicle</th>
-                                              <th>Trouble</th>
-                                              <th>Solution</th>
-                                              <th>Qualified</th>
-                                              <th>Time</th>
-                                              <th>Name</th>
-                                              <th>Location</th>
-                                              <th>Qualified</th>
-                                              <th>Peck_Time</th>
-                                              <th>Supermarket</th>
-                                              <th>Qualified</th>
-                                              <th>Price</th>
-                                              <th>Quantity_Remaining</th>
-                                              <th>MFG</th>
-                                              <th>EXP</th>
-                                            </tr>
-                                    
-                                            <tr ng-repeat="pig in all_pig">
-                                              <td>{{pig.Key}}</td>
-                                              <td>
-                                                <label id="text" type="text" 
-                                                      value="{{pig.Key}}" style="Width:20%"
-                                                      onblur='generateBarCode();' > </label>
-          
-                                                <img id='barcode' 
-                                                      src="https://api.qrserver.com/v1/create-qr-code/?data= Key: {{pig.Key}}&amp;size=100x100" 
-                                                      alt="" 
-                                                      title="HELLO" 
-                                                      width="100" 
-                                                      height="100" />
-                                              </td>
-                                              
-                              
-                                              <td>{{pig.famer}}</td>
-                                              <td>{{pig.species}}</td>
-                                              <td>{{pig.food}}</td>
-                                              <td>{{pig.sick_cure}}</td>
-                                              <td>{{pig.farm_location}}</td>
-                                              <td>{{pig.start_date_of_farming}}</td>
-                                              <td>{{pig.end_date_of_farming}}</td>
-                                              <td>{{pig.company}}</td>
-                                              <td>{{pig.transporter}}</td>
-                                              <td>{{pig.vehicle}}</td>
-                                              <td>{{pig.trouble}}</td>
-                                              <td>{{pig.solution}}</td>
-                                              <td>{{pig.transport_qualified}}</td>
-                                              <td>{{pig.time}}</td>
-                                              <td>{{pig.abattoir_name}}</td>
-                                              <td>{{pig.abattoir_location}}</td>
-                                              <td>{{pig.abattoir_qualified}}</td>
-                                              <td>{{pig.peck_time}}</td>
-                                              <td>{{pig.supermarket_name}}</td>
-                                              <td>{{pig.supermarket_qualified}}</td>
-                                              <td>{{pig.price}}</td>
-                                              <td>{{pig.quantity_remaining}}</td>
-                                              <td>{{pig.manufacturing_date}}</td>
-                                              <td>{{pig.expiry_date}}</td>
-                                            </tr>
-                                          </table>
-                                      </div>
-                                  </div>
-                                  
-                                  <!-- Truy xuất thông tin của 1 sản phẩm cụ thể -->
-                                  <!-- <div>
-                                      <button id="toggleMessage" ng-click="toggle0=!toggle0">
-                                          {{toggle0 ? 'Ẩn xoa của 1 sản phẩm cụ thể ' : 'Xoa thông tin của 1 sản phẩm cụ thể '}}
-                                      </button>
-                                      <div id="box" ng-show="toggle0">
-                                          <div class="form-group">
-                                            <label>Delete a Pork</label><br>
-                                            <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Pig Id</h5>
-                                            
-                                            Enter a ID: <input id="createName" class="form-control" type="text" placeholder="Ex: 3" ng-model="delete_id">
-                                            <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="chainDelete()">
-                                          </div>
-          
-                                          <table id="delete_pig" class="table" align="center">
-                                            <tr>
-                                              <td colspan="7" style="font-size: 35px"> <center>Thông tin</center></td>
-                                            </tr>
-                                            
-                                            <tr>
-                                              <th>QRCode</th>
-                                              <th>Famer</th>
-                                              <th>Species</th>
-                                              <th>Food </th>
-                                              <th>Sick_Cure</th>
-                                              <th>Location</th>
-                                              <th>Start_Date</th>
-                                              <th>End_Date</th>
-                                              <th>Company</th>
-                                              <th>Transporter</th>
-                                              <th>Vehicle</th>
-                                              <th>Trouble</th>
-                                              <th>Solution</th>
-                                              <th>Qualified</th>
-                                              <th>Time</th>
-                                              <th>Name</th>
-                                              <th>Location</th>
-                                              <th>Qualified</th>
-                                              <th>Peck_Time</th>
-                                              <th>Supermarket</th>
-                                              <th>Qualified</th>
-                                              <th>Price</th>
-                                              <th>Quantity Remaining</th>
-                                              <th>MFG</th>
-                                              <th>EXP</th>
-                                            </tr>
-                                            
-                                            <tr>
-                                              <td>{{delete_pig.qrcode}}</td>
-                                              <td>{{delete_pig.famer}}</td>
-                                              <td>{{delete_pig.species}}</td>
-                                              <td>{{delete_pig.food}}</td>
-                                              <td>{{delete_pig.sick_cure}}</td>
-                                              <td>{{delete_pig.farm_location}}</td>
-                                              <td>{{delete_pig.start_date_of_farming}}</td>
-                                              <td>{{delete_pig.end_date_of_farming}}</td>
-                                              <td>{{delete_pig.company}}</td>
-                                              <td>{{delete_pig.transporter}}</td>
-                                              <td>{{delete_pig.vehicle}}</td>
-                                              <td>{{delete_pig.trouble}}</td>
-                                              <td>{{delete_pig.solution}}</td>
-                                              <td>{{delete_pig.transport_qualified}}</td>
-                                              <td>{{delete_pig.time}}</td>
-                                              <td>{{delete_pig.abattoir_name}}</td>
-                                              <td>{{delete_pig.abattoir_location}}</td>
-                                              <td>{{delete_pig.abattoir_qualified}}</td>
-                                              <td>{{delete_pig.peck_time}}</td>
-                                              <td>{{delete_pig.supermarket_name}}</td>
-                                              <td>{{delete_pig.supermarket_qualified}}</td>
-                                              <td>{{delete_pig.price}}</td>
-                                              <td>{{delete_pig.quantity_remaining}}</td>
-                                              <td>{{delete_pig.manufacturing_date}}</td>
-                                              <td>{{delete_pig.expiry_date}}</td>
-                                            </tr>
-                                            
-                                          </table>
-                                          
-                                      </div>-->
-                                  
-          
-                                  <!-- Truy xuất thông tin Farm -->
-                                  <div>
-                                      <button id="toggleMessage" ng-click="toggle=!toggle">
-                                          {{toggle ? 'Ẩn truy xuất thông tin Farm' : 'Truy xuất thông tin Farm'}}
-                                      </button>
-                                      <div id="box" ng-show="toggle">
-                                          <div class="form-group">
-                                            <label>Query All Farm</label>
-                                            <p><input id="queryAllFarm" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllFarm()"></p>
-                                          </div>
-                                          
-                                          <table id="all_farm" class="table" align="center">
-                                            <tr>
-                                              <th>ID</th>
-                                              <th>QRCode</th>
-                                              <th>Famer</th>
-                                              <th>Species</th>
-                                              <th>Food </th>
-                                              <th>Sick_Cure</th>
-                                              <th>Location</th>
-                                              <th>Start_Date</th>
-                                              <th>End_Date</th>
-                                            </tr>
-                                            <tr ng-repeat="farm in all_farm">
-                                              <td>{{farm.Key}}</td>
-                                              <td>{{farm.qrcode}}</td>
-                                              <td>{{farm.famer}}
-                                                <button class="btn btn-primary btn-xs"
-                                                  data-toggle="modal" data-target="#addFamer"
-                                                >
-                                                <i class="far fa-edit"></i>
-                                                    Edit
-                                                </button>
-                                              </td>
-                                              <td>{{farm.species}}</td>
-                                              <td>{{farm.food}}</td>
-                                              <td>{{farm.sick_cure}}
-                                                <button class="btn btn-primary btn-xs"
-                                                    data-toggle="modal" data-target="#addSickCure"
-                                                  >
-                                                  <i class="far fa-edit"></i>
-                                                      Edit
-                                                  </button>
-                                              </td>
-                                              <td>{{farm.farm_location}}</td>
-                                              <td>{{farm.start_date_of_farming}}</td>
-                                              <td>{{farm.end_date_of_farming}}</td>
-                                            </tr>
-                                          </table>
-                                      </div>
-                                  </div>
-                                  
-                                  <!-- modal update addFamer -->
-                                  <div class="modal fade" id="addFamer">
-                                      <div class="modal-dialog">
+                    <div _ngcontent-xxd-c4="" class="intro-head pr-2 pl-2"><h2 _ngcontent-xxd-c4="" translate="home.tab-one.title" ng-reflect-translate="home.tab-one.title">
+                      <center>Trạng thái thành viên</center></h2>
+                    </div>
 
-                                          <!-- Modal content-->
-                                          <div class="modal-content">
-                                              <div class="modal-header">
-                                                  <h4 class="modal-title">Edit value</h4>
-                                              </div>
-
-                                              <!-- <div class="modal-body">
-                                                  <p></p>
-
-                                              </div> -->
-                                              <div class="modal-body1">
-                                                  <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{update_famer}}</h5>
-                                                  <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Id</h5>
-                                                  Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="farm.id">
-                                                  Enter a famer: <input class="form-control" name="assetSelect" placeholder="Ex: hieulinh" ng-model="farm.famer">
-                                                  <!-- <input id="transferSubmit" type="submit" value="Add" class="btn btn-primary" ng-click="updateFamer()"> -->
-
-                                                  <h5>Bạn chắc chắn muốn sửa?</h5>
-
-                                              </div>
-                                              <div class="modal-footer">
-                                                  <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateFamer()">
-                                                  &nbsp;
-                                                  <button type="button" class="btn btn-danger btn-md"
-                                                      data-dismiss="modal">
-                                                      Cancel</button>
-                                                  <!-- Goi ham them va dong modal -->
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <!-- modal update addSickCure -->
-                                  <div class="modal fade" id="addSickCure">
-                                    <div class="modal-dialog">
-
-                                        <!-- Modal content-->
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Edit value</h4>
-                                            </div>
-
-                                            <div class="modal-body">
-                                                <p></p>
-
-                                            </div><div class="modal-body1">
-                                                <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{update_sick_cure}}</h5>
-                                                <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Id</h5>
-                                                Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="farm.id">
-                                                Enter a sick-cure: <input class="form-control" name="assetSelect" placeholder="Ex: hieulinh" ng-model="farm.sick_cure">
-                                                <!-- <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()"> -->
-
-                                                <h5>Bạn chắc chắn muốn sửa?</h5>
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()">
-                                                &nbsp;
-                                                <button type="button" class="btn btn-danger btn-md"
-                                                    data-dismiss="modal">
-                                                    Cancel</button>
-                                                <!-- Goi ham them va dong modal -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Truy xuất thông tin Transport -->
-                                  <!-- <div>
-                                      <button id="toggleMessage" ng-click="toggle1=!toggle1">
-                                          {{toggle1 ? 'Ẩn truy xuất thông tin Transport' : 'Truy xuất thông tin Transport'}}
-                                      </button>
-                                      <div id="box" ng-show="toggle1">
-                                          <div class="form-group">
-                                            <label>Query All Transport</label>
-                                            <p><input id="queryAllTransport" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllTransport()"></p>
-                                          </div>
-                                    
-                                          <table id="all_transport" class="table" align="center">
-                                            <tr>
-                                              <th>STT</th>
-                                              <th>Company</th>
-                                              <th>Transporter</th>
-                                              <th>Vehicle</th>
-                                              <th>Trouble</th>
-                                              <th>Solution</th>
-                                              <th>Qualified</th>
-                                              <th>Time</th>
-                                            </tr>
-                                            <tr ng-repeat="transport in all_transport">
-                                              <td>{{transport.Key}}</td>
-                                              <td>{{transport.company}}</td>
-                                              <td>{{transport.transporter}}</td>
-                                              <td>{{transport.vehicle}}</td>
-                                              <td>{{transport.trouble}}</td>
-                                              <td>{{transport.solution}}</td>
-                                              <td>{{transport.transport_qualified}}</td>
-                                              <td>{{transport.time}}</td>
-                                            </tr>
-                                          </table>
-                                      </div>
-                                  </div> -->
-          
-                                  
-                                  
-                                  <!-- Truy xuất thông tin của 1 sản phẩm cụ thể -->
-                                  <div>
-                                      <button id="toggleMessage" ng-click="toggle3=!toggle3">
-                                          {{toggle3 ? 'Ẩn truy xuất thông tin của 1 sản phẩm cụ thể ' : 'Truy xuất thông tin của 1 sản phẩm cụ thể '}}
-                                      </button>
-                                      <div id="box" ng-show="toggle3">
-                                          <div class="form-group">
-                                            <label>Query a Pork</label><br>
-                                            <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Pig Id</h5>
-                                            
-                                            Enter a ID: <input id="createName" class="form-control" type="text" placeholder="Ex: 3" ng-model="pig_id">
-                                            <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryPig()">
-                                          </div>
-          
-                                          <table id="query_pig" class="table" align="center">
-                                            <tr>
-                                              <td colspan="7" style="font-size: 35px"> <center>Thông tin</center></td>
-                                            </tr>
-                                            
-                                            <tr>
-                                              <th>QRCode</th>
-                                              <th>Famer</th>
-                                              <th>Species</th>
-                                              <th>Food </th>
-                                              <th>Sick_Cure</th>
-                                              <th>Location</th>
-                                              <th>Start_Date</th>
-                                              <th>End_Date</th>
-                                              <th>Company</th>
-                                              <th>Transporter</th>
-                                              <th>Vehicle</th>
-                                              <th>Trouble</th>
-                                              <th>Solution</th>
-                                              <th>Qualified</th>
-                                              <th>Time</th>
-                                              <th>Name</th>
-                                              <th>Location</th>
-                                              <th>Qualified</th>
-                                              <th>Peck_Time</th>
-                                              <th>Supermarket</th>
-                                              <th>Qualified</th>
-                                              <th>Price</th>
-                                              <th>Quantity Remaining</th>
-                                              <th>MFG</th>
-                                              <th>EXP</th>
-                                            </tr>
-                                            
-                                            <tr>
-                                              <td>{{query_pig.qrcode}}</td>
-                                              <td>{{query_pig.famer}}</td>
-                                              <td>{{query_pig.species}}</td>
-                                              <td>{{query_pig.food}}</td>
-                                              <td>{{query_pig.sick_cure}}</td>
-                                              <td>{{query_pig.farm_location}}</td>
-                                              <td>{{query_pig.start_date_of_farming}}</td>
-                                              <td>{{query_pig.end_date_of_farming}}</td>
-                                              <td>{{query_pig.company}}</td>
-                                              <td>{{query_pig.transporter}}</td>
-                                              <td>{{query_pig.vehicle}}</td>
-                                              <td>{{query_pig.trouble}}</td>
-                                              <td>{{query_pig.solution}}</td>
-                                              <td>{{query_pig.transport_qualified}}</td>
-                                              <td>{{query_pig.time}}</td>
-                                              <td>{{query_pig.abattoir_name}}</td>
-                                              <td>{{query_pig.abattoir_location}}</td>
-                                              <td>{{query_pig.abattoir_qualified}}</td>
-                                              <td>{{query_pig.peck_time}}</td>
-                                              <td>{{query_pig.supermarket_name}}</td>
-                                              <td>{{query_pig.supermarket_qualified}}</td>
-                                              <td>{{query_pig.price}}</td>
-                                              <td>{{query_pig.quantity_remaining}}</td>
-                                              <td>{{query_pig.manufacturing_date}}</td>
-                                              <td>{{query_pig.expiry_date}}</td>
-                                            </tr>
-                                            
-                                          </table>
-                                      </div>
-                                  </div>
-          
-                                  <!-- Thêm thông tin của công đoạn Farm-->
-                                  <div>
-                                      <button id="toggleMessage" ng-click="toggle4=!toggle4">
-                                          {{toggle4 ? 'Ẩn thêm thông tin của công đoạn Farm' : 'Thêm thông tin của công đoạn Farm'}}
-                                      </button>
-                                      <div id="box" ng-show="toggle4">
-                                          <div class="form-group">
-                                            <label>Create Farm Record</label>
-                                            <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_tuna}}</h5>
-                                            <!-- <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_tuna}}</h5> -->
-                                            <br>
-                                            Enter Id: <input class="form-control" type="text" ng-model="pig.id">
-                                            Enter QRCode: <input class="form-control" type="text" ng-model="pig.qrcode">
-                                            Enter name of Famer: <input class="form-control" type="text" ng-model="pig.famer">
-                                            Enter Species: <input id="createName" class="form-control" type="text" ng-model="pig.species"> 
-                                            Enter Food: <input id="createName" class="form-control" type="text" ng-model="pig.food">
-                                            Enter Sick_Cure: <input class="form-control" type="text" ng-model="pig.sick_cure">
-                                            Enter  FarmLocation: <input class="form-control" type="text" ng-model="pig.farm_location">
-                                            Enter StartDateOfFarming: <input class="form-control" type="text" ng-model="pig.start_date_of_farming">
-                                            Enter EndDateOfFarming: <input class="form-control" type="text" ng-model="pig.end_date_of_farming">
-                                    
-                                            <input id="createSubmit" type="submit" value="Create" class="btn btn-primary" ng-click="recordFarm()"> 
-                                          </div>
-                                      </div>
-                                  </div>
-          
-                                  <!-- Thêm thông tin của công đoạn Transport-->
-                                  <div>
-                                      <button id="toggleMessage" ng-click="toggle5=!toggle5">
-                                          {{toggle5 ? 'Ẩn thêm thông tin của công đoạn Transport' : 'Thêm thông tin của công đoạn Transport'}}
-                                      </button>
-                                      <div id="box" ng-show="toggle5">
-                                          <div class="form-group">
-                                            <label>Insert Transport Record</label><br>
-                                            <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{insert_transport}}</h5>
-                                            <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Id</h5>
-                                            <!-- <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{insert_transport}}</h5> -->
-                                            <!-- <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Id</h5> -->
-                                            Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="transport.id">
-                                            Enter company: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="transport.company">
-                                            Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="transport.transporter">
-                                            Enter company: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="transport.vehicle">
-                                            Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="transport.trouble">
-                                            Enter company: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="transport.solution">
-                                            Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="transport.transport_qualified">
-                                            Enter company: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="transport.time">
-                                            <input id="transferSubmit" type="submit" value="Change" class="btn btn-primary" ng-click="insertTransport()">
-                                          </div>
-                                      </div>
-                                  </div>
-          
-                                  <!-- Thêm thông tin của công đoạn Abattoir-->
-                                  <div>
-                                      <button id="toggleMessage" ng-click="toggle6=!toggle6">
-                                          {{toggle6 ? 'Ẩn thêm thông tin của công đoạn Abattoir' : 'Thêm thông tin của công đoạn Abattoir'}}
-                                      </button>
-                                      <div id="box" ng-show="toggle6">
-                                          <div class="form-group">
-                                            <label>Insert Abattoir Record</label><br>
-                                            <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{insert_abattoir}}</h5>
-                                            <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Id</h5>
-                                            Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="abattoir.id">
-                                            Enter company: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="abattoir.abattoir_name">
-                                            Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="abattoir.abattoir_location">
-                                            Enter company: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="abattoir.abattoir_qualified">
-                                            Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="abattoir.peck_time">
-                                            <input id="transferSubmit" type="submit" value="Change" class="btn btn-primary" ng-click="insertAbattoir()">
-                                          </div>
-                                      </div>
-                                  </div>
-          
-                                  <!-- Thêm thông tin của công đoạn Supermarket-->
-                                  <div>
-                                      <button id="toggleMessage" ng-click="toggle7=!toggle7">
-                                          {{toggle7 ? 'Ẩn thêm thông tin của công đoạn Supermarket' : 'Thêm thông tin của công đoạn Supermarket'}}
-                                      </button>
-                                      <div id="box" ng-show="toggle7">
-                                          <div class="form-group">
-                                            <label>Insert Supermarket Record</label><br>
-                                            <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{insert_supermarket}}</h5>
-                                            <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Id</h5>
-                                            Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="supermarket.id">
-                                            Enter company: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="supermarket.supermarket_name">
-                                            Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="supermarket.supermarket_qualified">
-                                            Enter company: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="supermarket.price">
-                                            Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="supermarket.quantity_remaining">
-                                            Enter company: <input class="form-control" name="assetSelect" placeholder="Ex: Barry" ng-model="supermarket.manufacturing_date">
-                                            Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="supermarket.expiry_date">
-                                            <input id="transferSubmit" type="submit" value="Change" class="btn btn-primary" ng-click="insertSupermarket()">
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
+                    <!-- Truy xuất thông tin All User -->
+                    <div>
+                      <div id="box">
+                        <div class="form-group" >
+                          <p><input id="queryAllUser" type="hidden" value="Query" class="btn btn-primary" ng-click="queryAllUser()"></p>
+                          <a type="hidden">
+                            {{countChain}}
+                          </a>
                           
-      
-                              <div ng-show="tab.isSet(2)">
-                                  
-                                  <div class="container" id="QR-Code">               
-                                      <div class="panel panel-info">
-                                          <div class="panel-heading">
-                                              <div class="navbar-form navbar-left">
-                                                  <h4>Demo</h4>
-                                              </div>
-                                              <div class="navbar-form navbar-right">
-                                                  <select class="form-control" id="camera-select"></select>
-                                                  <div class="form-group">
-                                                      <input id="image-url" type="text" class="form-control" placeholder="Image url">
-                                                      <button title="Decode Image" class="btn btn-default btn-sm" id="decode-img" type="button" data-toggle="tooltip"><span class="glyphicon glyphicon-upload"></span></button>
-                                                      <button title="Image shoot" class="btn btn-info btn-sm disabled" id="grab-img" type="button" data-toggle="tooltip"><span class="glyphicon glyphicon-picture"></span></button>
-                                                      <button title="Play" class="btn btn-success btn-sm" id="play" type="button" data-toggle="tooltip"><span class="glyphicon glyphicon-play"></span></button>
-                                                      <button title="Pause" class="btn btn-warning btn-sm" id="pause" type="button" data-toggle="tooltip"><span class="glyphicon glyphicon-pause"></span></button>
-                                                      <button title="Stop streams" class="btn btn-danger btn-sm" id="stop" type="button" data-toggle="tooltip"><span class="glyphicon glyphicon-stop"></span></button>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="panel-body text-center">
-                                              <div class="col-md-6">
-                                                  <div class="well" style="position: relative;display: inline-block;">
-                                                      <canvas width="320" height="240" id="webcodecam-canvas"></canvas>
-                                                      <div class="scanner-laser laser-rightBottom" style="opacity: 0.5;"></div>
-                                                      <div class="scanner-laser laser-rightTop" style="opacity: 0.5;"></div>
-                                                      <div class="scanner-laser laser-leftBottom" style="opacity: 0.5;"></div>
-                                                      <div class="scanner-laser laser-leftTop" style="opacity: 0.5;"></div>
-                                                  </div>
-                                                  <div class="well" style="width: 100%;">
-                                                      <label id="zoom-value" width="100">Zoom: 2</label>
-                                                      <input id="zoom" onchange="Page.changeZoom();" type="range" min="10" max="30" value="20">
-                                                      <label id="brightness-value" width="100">Brightness: 0</label>
-                                                      <input id="brightness" onchange="Page.changeBrightness();" type="range" min="0" max="128" value="0">
-                                                      <label id="contrast-value" width="100">Contrast: 0</label>
-                                                      <input id="contrast" onchange="Page.changeContrast();" type="range" min="0" max="64" value="0">
-                                                      <label id="threshold-value" width="100">Threshold: 0</label>
-                                                      <input id="threshold" onchange="Page.changeThreshold();" type="range" min="0" max="512" value="0">
-                                                      <label id="sharpness-value" width="100">Sharpness: off</label>
-                                                      <input id="sharpness" onchange="Page.changeSharpness();" type="checkbox">
-                                                      <label id="grayscale-value" width="100">grayscale: off</label>
-                                                      <input id="grayscale" onchange="Page.changeGrayscale();" type="checkbox">
-                                                      <br>
-                                                      <label id="flipVertical-value" width="100">Flip Vertical: off</label>
-                                                      <input id="flipVertical" onchange="Page.changeVertical();" type="checkbox">
-                                                      <label id="flipHorizontal-value" width="100">Flip Horizontal: off</label>
-                                                      <input id="flipHorizontal" onchange="Page.changeHorizontal();" type="checkbox">
-                                                  </div>
-                                              </div>
-                                              <div class="col-md-6">
-                                                  <div class="thumbnail" id="result">
-                                                      <div class="well" style="overflow: hidden;">
-                                                          <img width="320" height="240" id="scanned-img" src="">
-                                                      </div>
-                                                      <div class="caption">
-                                                          <h3>Scanned result</h3>
-                                                          <p id="scanned-QR"></p>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      
-      
-                                      <div id="body"></div>
-                                      
+                        </div>
+                        <center>
+                            
+                           Tìm kiếm:  <input ng-model="searchKeyword" type="text" placeholder="Search.."> &nbsp;
+                            
+                          </center>
+                          <br>
+                            
+                        <table id="all_user" class="table-approve-user" >
+
+                          <tr class="tr-approve-user">
+                            <!-- <th>autonumber</th> -->
+                            <th>
+                                <a ng-click="orderByField='Key'; reverseSort = !reverseSort">
+                                    <i class="fa fa-sort"></i>
+                                    ID <span ng-show="orderByField == 'Key'"></span>
+                                </a>
+                              
+                            </th>
+                            <th>Tên tài khoản</th>
+                            <th>Mật khẩu</th>
+                            <th>Email</th>
+                            <th colspan="2">
+                              <a ng-click="orderByField='chainid'; reverseSort = !reverseSort">
+                                  <i class="fa fa-sort"></i>
+                                Mã chuỗi <span ng-show="orderByField == 'chainid'">
+                                  <!-- <span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span> -->
+                                </span>
+                              </a>
+                            </th>
+                            <th colspan="2">
+                                <a ng-click="orderByField='roles'; reverseSort = !reverseSort">
+                                    <i class="fa fa-sort"></i>
+                                    Vai trò <span ng-show="orderByField == 'roles'"></span>
+                                  </a>
+                              </th>
+                            <th colspan="2">
+                              <a ng-click="orderByField='status'; reverseSort = !reverseSort">
+                                  <i class="fa fa-sort"></i>
+                                Trạng thái tài khoản <span ng-show="orderByField == 'status'"></span>
+                              </a>
+                            </th>
+                            <th>
+                                <a ng-click="orderByField='approve'; reverseSort = !reverseSort">
+                                    <i class="fa fa-sort"></i>
+                                    Phê Duyệt <span ng-show="orderByField == 'approve'"></span>
+                                  </a>
+                              </th>
+                            <th>Thao tác</th>
+                            
+                          </tr>
+                  
+                          <tr dir-paginate="userquery in all_user  | orderBy:'-Key'| orderBy:'-roles' | orderBy:'-approve' | orderBy:orderByField:reverseSort  | filter: searchKeyword | itemsPerPage:5">
+                            <!-- <td>{{$index + 1}}</td> -->
+                            <td>{{userquery.Key}}</td>
+                            <td>{{userquery.username}}</td>
+                            <td>{{userquery.password}}</td>
+                            <td>{{userquery.email}}</td>
+                            <td>{{userquery.chainid}}</td>
+                            <td>
+                              
+                              <!-- <button type="button" class="btn btn-primary btn-xs" ng-click="changeChainID(userquery.Key, userquery.username, userquery.chainid, userquery.roles)" ng-disabled="formeditchainid.$invalid" >
+                                  <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                  Edit 
+                              </button> -->
+                              <button class="btn btn-primary btn-xs" ng-click="getKeyForUpdateChainId(userquery.Key, userquery.username, userquery.chainid, userquery.roles)" data-toggle="modal" data-target="#editChainID">
+                                  <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                Edit
+                              </button>
+                            </td>
+                            <td >{{userquery.roles}} </td>
+                            <td>
+                              <!-- <button class="btn btn-primary btn-xs" ng-click="changeRole(userquery.Key)" ng-disabled="formeditroles.$invalid">
+                                <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                  Edit 
+                              </button> -->
+                              <!-- <button class="btn btn-primary btn-xs" ng-click="getKeyForUpdateRoles(userquery.Key)" data-toggle="modal" data-target="#editRoles">
+                                  <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                              Edit
+                              </button> -->
+                              
+                            </td>
+                            <td>{{userquery.status}}</td>
+                            <td>
+                                <!-- <button class="btn btn-primary btn-xs" ng-click="changeStatus(userquery.Key)" ng-disabled="formeditstatus.$invalid">
+                                  <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                    Edit 
+                                </button> -->
+                              <button class="btn btn-primary btn-xs" ng-click="getKeyForUpdateStatus(userquery.Key)" data-toggle="modal" data-target="#editStatus">
+                                  <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                Edit
+                              </button>
+                            </td>
+                            <td>{{userquery.approve}}</td>
+                            <td>
+                                <button id="btnApprove" class="btn btn-primary btn-xs" ng-click="changeApprove(userquery.Key, userquery.username, userquery.chainid, userquery.roles, userquery.approve)" >
+                                  <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                  Phê Duyệt 
+                                </button>
+
+                                    <!-- dong duoi de lay gia tri - co the ung dung sau nay -->
+                                    <!-- <input type="text" ng-model="getRole" ng-init="getRole=userquery.Key"> -->
+
+                                    
+                              <!-- <button id="btnApprove" class="btn btn-primary btn-xs" value="Phê Duyệt" data-toggle="modal" data-target="#approveUser">
+                                    
+                                    Phê Duyệt
+                                    </button> -->
+                                    
+                            </td>
+
+                            <td>
+                              <button class="delete" ng-click="deleteUser(userquery.Key)">
+                                <i class="fa fa-trash"></i>
+                              </button>
+                            </td>
+                            
+                          </tr>
+                        </table>
+                        <center>
+                          <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true" >
+                          </dir-pagination-controls>
+                        </center>
+
+                          
+                      </div>
+                    </div>
+
+
+
+
+                    
+                  </div>
+                  <!-- end tab members status -->
+                
+                  <!-- tab chain management -->
+                  <div ng-show="tab.isSet(2)">
+                      
+                    <!-- init chain -->
+                    <!-- <div _ngcontent-xxd-c4="" class="intro-head pr-2 pl-2"><h2 _ngcontent-xxd-c4="" translate="home.tab-one.title" ng-reflect-translate="home.tab-one.title">
+                        <center>Tạo chuỗi mới</center></h2>
+                    </div> -->
+                    
+                    <!-- <div _ngcontent-bfd-c4="" class="search_frm pb-1">
+                        <form _ngcontent-bfd-c4="" name="form" novalidate="" ng-reflect-form="[object Object]" class="ng-pristine ng-invalid ng-touched">
+                          <div _ngcontent-bfd-c4="" class="row numberInfo search-widget">
+                            <div _ngcontent-bfd-c4="" class="col-md-2">
+                              
+                            </div>
+                            <div _ngcontent-bfd-c4="" class="col-md-8">
+                              <div _ngcontent-bfd-c4="" class="row">
+                                <div _ngcontent-bfd-c4="" class="col-sm-8 mb-2">
+                                  <div _ngcontent-bfd-c4="" class="input-custom">
+
+                                    <input _ngcontent-bfd-c4="" formcontrolname="idCer" placeholder="Ex: 1" ng-model="chain.id" type="text" ng-reflect-name="idCer" class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" placeholder="Nhập ID chuỗi" required>
+                                    
+                                    <br>
+                                    
+                                    <div _ngcontent-bfd-c4="" class="input-custom-label ">
+                                      <span _ngcontent-bfd-c4="" class="text-danger">* </span>
+                                      <span _ngcontent-bfd-c4="" translate="home.tab-two.ccsid-label" ng-reflect-translate="home.tab-two.ccsid-label">
+                                        Nhập ID chuỗi
+                                      </span>
+                                    </div>
                                   </div>
+                                </div>
+                                <div _ngcontent-bfd-c4="" class="col-sm-4">
+                                  <button _ngcontent-bfd-c4="" ng-disabled="form.$invalid" ng-click="initChainBtn()"  class="btn btn-primary btn-lg btn-block" type="submit">
+                                    
+                                    <span _ngcontent-bfd-c4="" class="btn-name-search" translate="home.btn-search" ng-reflect-translate="home.btn-search">
+                                      Tạo
+                                    </span>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div _ngcontent-bfd-c4="" class="col-md-2"></div>
+                          </div>
+                          <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_chain}}</h5>
+                          
+
+                        </form>
+                      </div> -->
+                    <!-- end init chain -->
+                    
+
+                    <!-- Truy xuất thông tin All Supply chain -->
+                    <div>
+                      <div id="box" >
+                        <div class="form-group" >
+                          <p><input id="queryAllPig" type="hidden" value="Query" class="btn btn-primary" ng-click="queryAllPig()"></p>                            
+                        </div>
+
+                        <h5 style="color:green;margin-bottom:2%" id="success_create">Success! Tx ID: {{create_chain}}</h5>
+
+                        <!-- Export to Excel -->
+                        <a type="button" class="btn btn-primary" ng-click="Export()">
+                          <i _ngcontent-gwf-c2="" class="fa fa-download mr-2"></i>
+                          Export to Excel
+                        </a> 
+
+                        <br>
+                        <br>
+                        <center>
+                          <button id="toggleMessage" ng-click="toggle15=!toggle15" class="btn btn-primary">
+                              {{toggle15 ? 'ẨN NÔNG TRẠI' : 'XEM NÔNG TRẠI'}}
+                          </button>
+                          <button id="toggleMessage" ng-click="toggle16=!toggle16" class="btn btn-primary">
+                              {{toggle16 ? 'ẨN VẬN CHUYỂN' : 'XEM VẬN CHUYỂN'}}
+                          </button>
+                          <button id="toggleMessage" ng-click="toggle17=!toggle17" class="btn btn-primary">
+                              {{toggle17 ? 'ẨN LÒ MỔ' : 'XEM LÒ MỔ'}}
+                          </button>
+                          <button id="toggleMessage" ng-click="toggle18=!toggle18" class="btn btn-primary">
+                              {{toggle18 ? 'ẨN SIÊU THỊ' : 'XEM SIÊU THỊ'}}
+                          </button>
+                        </center>
+                        <center>
+                          <input ng-model="searchKeyword" type="text" placeholder="Tìm kiếm.." align="center"> &nbsp;
+                        </center>
+                      
+                        <!-- query all chain -->
+                        <table id="all_pig" class="table-status-members" align="center" >
+                          <tr class="tr-status-members"> 
+                            <th colspan="2" ng-show="toggle15">Chain ID</th>
+                            <th colspan="9" ng-show="toggle15">Nông Trại</th>
+                            <th colspan="2" ng-show="toggle16">Chain ID</th>
+                            <th colspan="7" ng-show="toggle16">Vận Chuyển</th>
+                            <th colspan="2" ng-show="toggle17">Chain ID</th>
+                            <th colspan="6" ng-show="toggle17">Lò Mổ</th>
+                            <th colspan="2" ng-show="toggle18">Chain ID</th>
+                            <th colspan="8" ng-show="toggle18">Siêu Thị</th>
+                          </tr>
+                          <tr>
+                            <th ng-show="toggle15">ID</th>
+                            <th ng-show="toggle15">Mã QR</th>
+                            <th ng-show="toggle15">Tài khoản</th>
+                            <th ng-show="toggle15">Người nuôi</th>
+                            <th ng-show="toggle15">Giống</th>
+                            <th ng-show="toggle15">Thức ăn </th>
+                            <th ng-show="toggle15">Bệnh - Chữa trị</th>
+                            <th ng-show="toggle15">Chất lượng</th>
+                            <th ng-show="toggle15">Địa chỉ</th>
+                            <th ng-show="toggle15">Ngày nuôi</th>
+                            <th ng-show="toggle15">Ngày bán</th>
+                            <th ng-show="toggle16">ID</th>
+                            <th ng-show="toggle16">Mã QR</th>
+                            <th ng-show="toggle16">Tài khoản</th>
+                            <th ng-show="toggle16">Tên công ty</th>
+                            <th ng-show="toggle16">Người vận chuyển</th>
+                            <th ng-show="toggle16">Phương tiện</th>
+                            <th ng-show="toggle16">Vấn đề - Giải quyết</th>
+                            <th ng-show="toggle16">Chất lượng</th>
+                            <th ng-show="toggle16">Thời gian</th>
+                            <th ng-show="toggle17">ID</th>
+                            <th ng-show="toggle17">Mã QR</th>
+                            <th ng-show="toggle17">Tài khoản</th>
+                            <th ng-show="toggle17">Tên lò mổ</th>
+                            <th ng-show="toggle17">Vấn đề - Giải quyết</th>
+                            <th ng-show="toggle17">Địa chỉ</th>
+                            <th ng-show="toggle17">Chất lượng</th>
+                            <th ng-show="toggle17">Thời gian mổ</th>
+                            <th ng-show="toggle18">ID</th>
+                            <th ng-show="toggle18">Mã QR</th>
+                            <th ng-show="toggle18">Tài khoản</th>
+                            <th ng-show="toggle18">Tên Siêu thị</th>
+                            <th ng-show="toggle18">Vấn đề - Giải quyết</th>
+                            <th ng-show="toggle18">Chát lượng</th>
+                            <!-- <th ng-show="toggle18">Giá</th>
+                            <th ng-show="toggle18">Số lượng còn lại</th> -->
+                            <th ng-show="toggle18">NSX</th>
+                            <th ng-show="toggle18">HSD</th>
+                          </tr>
+                  
+                          <tr dir-paginate="pig in all_pig | orderBy:'-Key' | filter: searchKeyword | itemsPerPage:5">
+                            <td ng-show="toggle15">{{pig.Key}}</td>
+                            <td ng-show="toggle15">
+                              <label id="text" type="text" 
+                                    value="{{pig.Key}}" style="Width:0%"
+                                    onblur='generateBarCode();' > </label>
+
+                              <img id='barcode' 
+                                    src="https://api.qrserver.com/v1/create-qr-code/?data= Key: {{pig.Key}} | Sick: {{pig.sick_cure}}  | Farm-Qualified: {{pig.farm_qualified}} | Supermarket-Qualified: {{pig.supermarket_qualified}}&amp;size=500x500" 
+                                    alt="" 
+                                    title="HELLO" 
+                                    width="50" 
+                                    height="50" />
+                            </td>
+                            
+                            <td ng-show="toggle15">{{pig.farm_account}}</td>
+                            <td ng-show="toggle15">{{pig.famer}} <br></td>
+                            <td ng-show="toggle15">{{pig.species}}</td>
+                            <td ng-show="toggle15">{{pig.food}}</td>
+                            <td ng-show="toggle15">{{pig.sick_cure}}</td>
+                            <td ng-show="toggle15">{{pig.farm_qualified}}</td>
+                            <td ng-show="toggle15">{{pig.farm_location}}</td>
+                            <td ng-show="toggle15">{{pig.start_date_of_farming}}</td>
+                            <td ng-show="toggle15">{{pig.end_date_of_farming}}</td>
+                            <!-- transport -->
+                            <td ng-show="toggle16">{{pig.Key}}</td>
+                            <td ng-show="toggle16">
+                              <label id="text" type="text" 
+                                    value="{{pig.Key}}" style="Width:0%"
+                                    onblur='generateBarCode();' > </label>
+
+                              <img id='barcode' 
+                                    src="https://api.qrserver.com/v1/create-qr-code/?data= Key: {{pig.Key}} | Sick: {{pig.sick_cure}}  | Farm-Qualified: {{pig.farm_qualified}} | Supermarket-Qualified: {{pig.supermarket_qualified}}&amp;size=500x500" 
+                                    alt="" 
+                                    title="HELLO" 
+                                    width="50" 
+                                    height="50" />
+                            </td>
+                            <td ng-show="toggle16">{{pig.transport_account}}</td>
+                            <td ng-show="toggle16">{{pig.company}}</td>
+                            <td ng-show="toggle16">{{pig.transporter}}</td>
+                            <td ng-show="toggle16">{{pig.vehicle}}</td>
+                            <td ng-show="toggle16">{{pig.transport_trouble_solution}}</td>
+                            <td ng-show="toggle16">{{pig.transport_qualified}}</td>
+                            <td ng-show="toggle16">{{pig.time}}</td>
+                            <!-- lò mổ -->
+                            <td ng-show="toggle17">{{pig.Key}}</td>
+                            <td ng-show="toggle17">
+                              <label id="text" type="text" 
+                                    value="{{pig.Key}}" style="Width:0%"
+                                    onblur='generateBarCode();' > </label>
+
+                              <img id='barcode' 
+                                    src="https://api.qrserver.com/v1/create-qr-code/?data= Key: {{pig.Key}} | Sick: {{pig.sick_cure}}  | Farm-Qualified: {{pig.farm_qualified}} | Supermarket-Qualified: {{pig.supermarket_qualified}}&amp;size=500x500" 
+                                    alt="" 
+                                    title="HELLO" 
+                                    width="50" 
+                                    height="50" />
+                            </td>
+                            <td ng-show="toggle17">{{pig.abattoir_account}}</td>
+                            <td ng-show="toggle17">{{pig.abattoir_name}}</td>
+                            <td ng-show="toggle17">{{pig.abattoir_trouble_solution}}</td>
+                            <td ng-show="toggle17">{{pig.abattoir_location}}</td>
+                            <td ng-show="toggle17">{{pig.abattoir_qualified}}</td>
+                            <td ng-show="toggle17">{{pig.peck_time}}</td>
+                            <!-- siêu thị -->
+                            <td ng-show="toggle18">{{pig.Key}}</td>
+                            <td ng-show="toggle18">
+                              <label id="text" type="text" 
+                                    value="{{pig.Key}}" style="Width:0%"
+                                    onblur='generateBarCode();' > </label>
+
+                              <img id='barcode' 
+                                    src="https://api.qrserver.com/v1/create-qr-code/?data= Key: {{pig.Key}} | Sick: {{pig.sick_cure}}  | Farm-Qualified: {{pig.farm_qualified}} | Supermarket-Qualified: {{pig.supermarket_qualified}}&amp;size=500x500" 
+                                    alt="" 
+                                    title="HELLO" 
+                                    width="70" 
+                                    height="70" />
+                            </td>
+                            <td ng-show="toggle18">{{pig.supermarket_account}}</td>
+                            <td ng-show="toggle18">{{pig.supermarket_name}}</td>
+                            <td ng-show="toggle18">{{pig.supermarket_trouble_solution}}</td>
+                            <td ng-show="toggle18">{{pig.supermarket_qualified}}</td>
+                            <!-- <td ng-show="toggle18">{{pig.price}}</td>
+                            <td ng-show="toggle18">{{pig.quantity_remaining}}</td> -->
+                            <td ng-show="toggle18">{{pig.manufacturing_date}}</td>
+                            <td ng-show="toggle18">{{pig.expiry_date}}</td>
+                          </tr>
+
+
+                        </table>
+                        <center>
+                          <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true" >
+                          </dir-pagination-controls>
+                        </center>
+                        <!-- end query all chain -->
+
+                        
+                      </div>
+                    </div>
+
+
+                  </div>
+                   <!-- end tab chain management -->
+
+                  <!-- tab set3 -->
+                  <div ng-show="tab.isSet(3)">
+                      <div _ngcontent-xxd-c4="" class="intro-head pr-2 pl-2"><h2 _ngcontent-xxd-c4="" translate="home.tab-one.title" ng-reflect-translate="home.tab-one.title">
+                          <center>Lịch sử tương tác với dữ liệu trong Ledger</center></h2>
+                        </div>
+
+                    <!-- Truy xuất thông tin All User -->
+                    <div>
+                        <div id="box">
+                          <div class="form-group" >
+                            <p><input id="queryAllHistoryTxID" type="hidden" value="queryAllHistoryTxID" class="btn btn-primary" ng-click="queryAllHistoryTxID()"></p>
+                            
+                            
+                          </div>
+                          <center>
+                            Tìm kiếm:  <input ng-model="searchKeyword" type="text" placeholder="Search.."> &nbsp;
+                          </center>
+                              
+                          <table id="all_history_txid" class="table-approve-user" >
+
+                              <tr class="tr-approve-user">
+                                <th>STT</th>
+                                <!-- <th>ID</th> -->
+                                <th>Tx ID</th>
+                                <th>Tên tài khoản</th>
+                                <th>Thao tác</th>
+                                
+                                <th >Thời điểm</th>
+
+                                
+                              </tr>
+                            <tbody dir-paginate="history in all_history_txid | orderBy:'-create_time' | filter: searchKeyword | itemsPerPage:5">
+                              <tr >
+                                <td>{{$index + 1}}</td>
+                                <!-- <td>{{history.Key}}</td> -->
+                                <td>{{history.txid}}</td>
+                                <td>{{history.account}}</td>
+                                <td>{{history.job}}</td>
+                                <td>{{history.create_time}}</td>
+                                <!-- <td>{{timeAgo}}</td> -->
+                                
+                              </tr>
+                            </tbody>
+                            
+                          </table>
+                          <center>
+                            <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true" >
+                            </dir-pagination-controls>
+                          </center>
+                            
+  
+                            
+                        </div>
+                      </div>
+
+                    </form>
+                  </div> 
+
+                  </div>
+                  <!-- end tab set3 -->
+
+                  <!-- MODAL -->
+                  <!-- modal view farm -->
+                  <div class="modal fade" id="viewFarm">
+                      <div class="modal-dialog">
+                          
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close"
+                                    data-dismiss="modal">x
+                                  </button>
+                                  <h4 class="modal-title">Edit Chain ID</h4> <br>
                               </div>
                               
+  
+                              
+                              <div class="modal-body">
+                                  <!-- <h5 style="color:green;margin-bottom:2%" id="success_editChainID">Success! Tx ID: {{edit_chainid}}</h5> -->
+                                  <!-- <div class="form-group" >
+                                    <p><input id="queryAllUser" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllUser()"></p>
+                                  </div> -->
+                                  <!-- <h5 style="color:red;margin-bottom:2%" id="error_editChainID">Error: Please enter a valid Id</h5> -->
+                                  <!-- <table id="all_pig" class="table-status-members" align="center">
+                                  <tr class="tr-status-members"> 
+                                    
+                                    <th colspan="7" >Nông Trại</th>
+                                    
+                                  </tr>
+                                  <tr>
+                                    
+                                    <th >Famer</th>
+                                    <th >Species</th>
+                                    <th >Food </th>
+                                    <th >Sick_Cure</th>
+                                    <th >Location</th>
+                                    <th >Start_Date</th>
+                                    <th >End_Date</th>
+                                    
+                                  </tr>
+                          
+                                  <tr ng-repeat="pig in all_pig | orderBy:'-Key'">
+                                    
+                                    
+                    
+                                    <td >{{pig.famer}}</td>
+                                    <td >{{pig.species}}</td>
+                                    <td >{{pig.food}}</td>
+                                    <td >{{pig.sick_cure}}</td>
+                                    <td >{{pig.farm_location}}</td>
+                                    <td >{{pig.start_date_of_farming}}</td>
+                                    <td >{{pig.end_date_of_farming}}</td>
+                                    
+                                  </tr>
+                                </table> -->
+  
+                                  <h5>Bạn đã chắc chắn?</h5>
+  
+                              </div>
+                              <div class="modal-footer">
+                                  <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="changeChainID()" >
+                                  &nbsp;
+                                  <button type="button" class="btn btn-danger btn-md"
+                                      data-dismiss="modal">
+                                      Cancel</button>
+                                  
+                              </div>
                           </div>
                       </div>
-                    </ngb-tabset>
+                  </div>
+  
+                  
+
+                  <!-- Modal view result query 1 id-->
+                  <div class="modal fade" id="myModal" role="dialog">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Thông tin</h4></br>
+                            <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Pig Id</h5>
+                          </div>
+                          <div class="modal-body">
+                              <div _ngcontent-lpg-c4="" class="row search-widget">
+                                  <div >
+
+                                    <table id="query_pig" class="table" align="center">
+                                      <tr bgcolor="#007bff" >
+                                        <th colspan="2" > Heo ở Nông trại </th>
+                                      </tr>
+                                      </tr>
+                                      
+                                      <tr> 
+                                          <th> QRCode </th>
+                                          <th > 
+                                              <label id="text" type="text" 
+                                              value="{{pig_id}}" style="Width:20%"
+                                              onblur='generateBarCode();' > </label>
+
+                                        <img id='barcode' 
+                                              src="https://api.qrserver.com/v1/create-qr-code/?data= Key: {{pig_id}}&amp;size=50x50" 
+                                              alt="" 
+                                              title="HELLO" 
+                                              width="50" 
+                                              height="50" />
+                                              
+                                          </th>
+                                      </tr>
+
+                                      <tr> 
+                                        <th> Tài khoản </th>
+                                        <th > {{query_pig.farm_account}}</th>
+                                      </tr>
+                                        
+                                      <tr> 
+                                        <th> Người nuôi </th>
+                                        <th> {{query_pig.famer}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Giống</th>
+                                        <th > {{query_pig.species}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Thức ăn</th>
+                                        <th > {{query_pig.food}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Bệnh - Chữa trị</th>
+                                        <th > {{query_pig.sick_cure}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Chất lượng</th>
+                                        <th > {{query_pig.farm_qualified}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Địa chỉ</th>
+                                        <th > {{query_pig.farm_location}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Ngày nuôi</th>
+                                        <th > {{query_pig.start_date_of_farming}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Ngày bán</th>
+                                        <th > {{query_pig.end_date_of_farming}}</th>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                  <div >
+                                    <br>
+                                    <table id="query_pig" class="table" align="center">
+                                      <tr bgcolor="#007bff" >
+                                        <th colspan="2" > Heo lúc Vận chuyển </th>
+                                      </tr>
+                                      <tr>
+                                        <th> Tài khoản</th>
+                                        <th > {{query_pig.transport_account}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Tên công ty</th>
+                                        <th > {{query_pig.company}}</th>
+                                      </tr>
+                                      <tr> 
+                                        <th> Người vận chuyển </th>
+                                        <th > {{query_pig.transporter}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Phương tiện</th>
+                                        <th > {{query_pig.vehicle}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Vấn đề</th>
+                                        <th > {{query_pig.trouble}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Giải quyết</th>
+                                        <th > {{query_pig.solution}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Chất lượng</th>
+                                        <th > {{query_pig.transport_qualified}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Thời gian</th>
+                                        <th > {{query_pig.time}}</th>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                  <div >
+                                    <table id="query_pig" class="table" align="center">
+                                      <tr bgcolor="#007bff" >
+                                        <th colspan="2" > Heo ở lò mổ </th>
+                                      </tr>
+                                      <tr>
+                                        <th> Tài khoản</th>
+                                        <th > {{query_pig.abattoir_account}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Tên lò mổ</th>
+                                        <th > {{query_pig.abattoir_name}}</th>
+                                      </tr>
+                                      <tr> 
+                                        <th> Địa chỉ </th>
+                                        <th > {{query_pig.abattoir_location}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Chất lượng</th>
+                                        <th > {{query_pig.abattoir_qualified}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Thời gian mổ</th>
+                                        <th > {{query_pig.peck_time}}</th>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                  <div >
+                                    <table id="query_pig" class="table" align="center">
+                                      <tr bgcolor="#007bff" >
+                                        <th colspan="2" > Heo ở Siêu thị </th>
+                                      </tr>
+                                      <tr>
+                                        <th> Tài khoản</th>
+                                        <th > {{query_pig.supermaket_account}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Tên Siêu thị</th>
+                                        <th > {{query_pig.supermarket_name}}</th>
+                                      </tr>
+                                      <tr> 
+                                        <th> Chất lượng </th>
+                                        <th > {{query_pig.supermarket_qualified}}</th>
+                                      </tr>
+                                      <!-- <tr>
+                                        <th> Giá($/kg)</th>
+                                        <th > {{query_pig.price}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> Số lượng còn lại(kg)</th>
+                                        <th > {{query_pig.quantity_remaining}}</th>
+                                      </tr> -->
+                                      <tr>
+                                        <th> NSX</th>
+                                        <th> {{query_pig.manufacturing_date}}</th>
+                                      </tr>
+                                      <tr>
+                                        <th> HSD</th>
+                                        <th > {{query_pig.expiry_date}}</th>
+                                      </tr>
+                              
+                                    </table>
+                                  </div>
+                                </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  
+                  <!--Modal view user-->
+                  <div class="modal fade" id="viewUserModal">
+                      <div class="modal-dialog">
+
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close"
+                                      data-dismiss="modal">x</button>
+                                  <h4 class="modal-title">Thông tin người dùng</h4> <br>
+                              </div>
+                              <div class="modal-body" style="overflow-x:auto;">
+                                  <div class="form-group" >
+                                    <p><input id="queryViewUser" type="hidden" value="Query" class="btn btn-primary" ng-click="queryViewUser()"></p>
+                                  </div>
+                                  
+                                  <table border="0!important" id="query_view_user" align="center"  > 
+                        
+                                      <tr >
+                                        <th class="th">
+                                            ID: 
+                                        </th>
+                                        <th class="th">
+                                            {{iduserLocalStorage}}
+                                        </th>
+                                      </tr>
+
+                                      <tr >
+                                        <th class="th">
+                                            Username:
+                                        </th>
+                                        <th class="th">
+                                            {{query_view_user.username}}
+                                        </th>
+                                      </tr>
+
+                                      <tr >
+                                        <th class="th">
+                                            Password:
+                                        </th>
+                                        <th class="th">
+                                            {{query_view_user.password}}
+                                        </th>
+                                        <th class="th">
+                                            <button class="btn btn-primary btn-xs" ng-click="getKeyForUpdateWhenUpdatePassword(iduserLocalStorage)" data-toggle="modal" data-target="#editPassword">
+                                                <i
+                                                class="fa fa-edit"></i>
+                                                Edit
+                                              </button>
+                                        </th>
+                                      </tr>
+
+                                      <tr>
+                                        <th class="th">
+                                            Email:
+                                        </th>
+                                        <th class="th">
+                                            {{query_view_user.email}}
+                                        </th>
+                                        <th class="th">
+                                            <button class="btn btn-primary btn-xs" ng-click="getKeyForUpdateWhenUpdateEmail(iduserLocalStorage)" data-toggle="modal" data-target="#editEmail">
+                                                <i
+                                                class="fa fa-edit"></i>
+                                                Edit
+                                              </button>
+                                        </th>
+                                      </tr>
+
+                                      <tr >
+                                        <th class="th">
+                                          
+                                            Chain ID:
+                                        </th>
+                                        <th class="th">
+                                            {{query_view_user.chainid}}
+                                        </th>
+                                      </tr>
+
+                                      <tr >
+                                        <th class="th">
+                                            Roles:
+                                        </th>
+                                        <th class="th">
+                                            {{query_view_user.roles}}
+                                        </th>
+                                      </tr>
+
+                                      <tr >
+                                        <th class="th">
+                                            Status:
+                                        </th>
+                                        <th class="th">
+                                          {{query_view_user.status}}
+                                        </th>
+                                        
+                                      </tr>
+                                      
+                                      <tr>
+                                        <th class="th">
+                                            Approve:
+                                        </th>
+                                        <th class="th">
+                                            {{query_view_user.approve}}
+                                        </th>
+                                      </tr>
+                                      
+                                  </table>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!--End modal view user-->
+                  
+                  
+                  <!-- modal editChainID -->
+                  <div class="modal fade" id="editChainID">
+                      <div class="modal-dialog">
+                          
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close"
+                                    data-dismiss="modal">x
+                                  </button>
+                                  <h4 class="modal-title">Edit Chain ID</h4> <br>
+                              </div>
+                              
+
+                              
+                              <div id="all_user" class="modal-body">
+                                  <h5 style="color:green;margin-bottom:2%" id="success_editChainID">Success! Tx ID: {{edit_chainid}}</h5>
+                                  <!-- <div class="form-group" >
+                                    <p><input id="queryAllUser" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllUser()"></p>
+                                  </div> -->
+                                  <!-- <h5 style="color:red;margin-bottom:2%" id="error_editChainID">Error: Please enter a valid Id</h5> -->
+                                  <!-- Id cần cấp mã chuỗi:  -->
+                                  <!-- <input class="form-control" name="assetSelect" placeholder="Ex: user1" ng-model="user.id"> -->
+                                  <!-- <br> -->
+                                  <!-- <select  class="form-control" name="assetSelect" ng-model="user.id">
+                                    <option value="" disabled selected>Id cần cấp mã chuỗi </option>
+                                    <option ng-repeat="user in all_user" value="{{user.Key}}">{{user.Key}}</option>
+                                  </select> -->
+                                  Mã chuỗi: 
+                                  <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="user.chainid">
+                                  <br>
+
+                                  <h5>Bạn đã chắc chắn?</h5>
+
+                              </div>
+                              <div class="modal-footer">
+                                  <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="changeChainID()" >
+                                  &nbsp;
+                                  <button type="button" class="btn btn-danger btn-md"
+                                      data-dismiss="modal">
+                                      Cancel</button>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <!-- modal editRoles -->
+                  <div class="modal fade" id="editRoles">
+                      <div class="modal-dialog">
+
+                          
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close"
+                                    data-dismiss="modal">x
+                                  </button>
+                                  <h4 class="modal-title">Edit Role</h4> <br>
+                              </div>
+                              
+                              
+                              <div class="modal-body">
+                                  <h5 style="color:green;margin-bottom:2%" id="success_editRoles">Success! Tx ID: {{edit_roles}}</h5>
+                                  <!-- <h5 style="color:red;margin-bottom:2%" id="error_editRoles">Error: Please enter a valid Id</h5> -->
+                                  <!-- Id cần cấp quyền: <input class="form-control" name="assetSelect" placeholder="Ex: user1" ng-model="user.id"> -->
+                                  
+                                  Roles: 
+                                  <select id="all_user" class="form-control" name="assetSelect" ng-model="user.role">
+                                      <option value="Admin">Admin</option>
+                                      <option value="Farm">Farm</option>
+                                      <option value="Transport">Transport</option>
+                                      <option value="Abattoir">Abattoir</option>
+                                      <option value="Supermarket">Supermarket</option>
+                                  </select>
+                                  <br>
+
+                                  <h5>Bạn đã chắc chắn?</h5>
+
+                              </div>
+                              <div class="modal-footer">
+                                  <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="changeRole()" >
+                                  &nbsp;
+                                  <button type="button" class="btn btn-danger btn-md"
+                                      data-dismiss="modal">
+                                      Cancel</button>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- modal editStatus -->
+                  <div class="modal fade" id="editStatus">
+                      <div class="modal-dialog">
+
+                          
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close"
+                                    data-dismiss="modal">x
+                                  </button>
+                                  <h4 class="modal-title">Change Status</h4> <br>
+                              </div>
+                              
+
+                              
+                              <div class="modal-body">
+                                  <h5 style="color:green;margin-bottom:2%" id="success_editStatus">Success! Tx ID: {{edit_status}}</h5>
+                                  <!-- <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Id</h5> -->
+                                  <!-- Id cần thay đổi trạng thái: <input class="form-control" name="assetSelect" placeholder="Ex: user1" ng-model="user.id"> -->
+                                  
+                                  Chọn trạng thái: 
+                                  <select class="form-control" name="assetSelect" ng-model="user.status">
+                                      <option value="ENABLE">ENABLE</option>
+                                      <option value="DISABLE">DISABLE</option>
+                                  </select>
+                                  
+                                  <br>
+                                  <h5>Bạn đã chắc chắn?</h5>
+
+                              </div>
+                              <div class="modal-footer">
+                                  <input id="transferSubmit" type="submit" value="Change" class="btn btn-primary" ng-click="changeStatus()" >
+                                  &nbsp;
+                                  <button type="button" class="btn btn-danger btn-md"
+                                      data-dismiss="modal">
+                                      Cancel</button>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- modal approveUser -->
+                  <div class="modal fade" id="approveUser">
+                      <div class="modal-dialog">
+
+                          
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close"
+                                    data-dismiss="modal">x
+                                  </button>
+                                  <h4 class="modal-title">Edit value</h4> <br>
+                              </div>
+
+                              
+                              <div class="modal-body">
+                                  <!-- <h5 style="color:green;margin-bottom:2%" id="success_approveUser">Success! Tx ID: {{approve_user}}</h5> -->
+                                  <h5 style="color:red;margin-bottom:2%" id="error_approveUser">Error: Please enter a valid Id</h5>
+                                  Id cần phê duyệt: <input class="form-control"  name="assetSelect" placeholder="Ex: user1" ng-model="user.id">
+                                  
+                                  <br>
+                                  <h5>Bạn muốn phê duyệt?</h5>
+
+                              </div>
+                              <div class="modal-footer">
+                                  <input id="transferSubmit" type="submit"  class="btn btn-primary" ng-click="changeApprove()" >
+                                  &nbsp;
+                                  <button type="button" class="btn btn-danger btn-md"
+                                      data-dismiss="modal">
+                                      Cancel</button>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- modal editPassword -->
+                  <div class="modal fade" id="editPassword">
+                      <div class="modal-dialog">
+                          
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close"
+                                    data-dismiss="modal">x
+                                  </button>
+                                  <h4 class="modal-title">Đổi mật khẩu</h4> <br>
+                              </div>
+                              
+
+                              
+                              <div class="modal-body">
+                                <form name="liveForm">
+                                  <!-- <h5 style="color:green;margin-bottom:2%" id="success_editChainID">Success! Tx ID: {{edit_chainid}}</h5> -->
+                                  <h5 style="color:red;margin-bottom:2%" id="error_editPassword">Error: Please enter a valid Id</h5>
+                                  <!-- <label>Id cần đổi mật khẩu:</label>  
+                                  <input class="form-control" name="assetSelect" placeholder="Ex: user1" ng-model="user.id">
+                                  <br> -->
+                                  <br>
+
+                                  <label>Mật khẩu mới:</label>  
+                                  <input class="form-control" name="user.password" placeholder="Mật khẩu" ng-model="user.password">
+                                  <br>
+
+                                  <label>Nhập lại mật khẩu:</label>  
+
+                                  <input type="password" name="repeatPass" ng-model="repeatPass" required compare-to="user.password" class="form-control" />   
+
+                                  <span class="error text-danger" ng-show="liveForm.repeatPass.$error.compareTo">  
+
+                                      Passwords don't match.  
+
+                                  </span>
+                                </form>
+
+                                  <h5 align="right">Bạn đã chắc chắn?</h5>
+
+                              </div>
+                              <div class="modal-footer">
+                                  <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="changePassword()" >
+                                  &nbsp;
+                                  <button type="button" class="btn btn-danger btn-md"
+                                      data-dismiss="modal">
+                                      Cancel</button>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                
+                    <!-- modal editEmail -->
+                    <div class="modal fade" id="editEmail">
+                        <div class="modal-dialog">
+                            
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close"
+                                      data-dismiss="modal">x
+                                    </button>
+                                    <h4 class="modal-title">Chỉnh sửa Email</h4> <br>
+                                </div>
+                                
+
+                                
+                                <div class="modal-body">
+                                  <!-- <form name="liveForm"> -->
+                                    <!-- <h5 style="color:green;margin-bottom:2%" id="success_editChainID">Success! Tx ID: {{edit_chainid}}</h5> -->
+                                    <h5 style="color:red;margin-bottom:2%" id="error_editEmail">Error: Please enter a valid Id</h5>
+                                    <!-- <span>Id cần đổi email:</span>
+                                    
+                                    <input class="form-control" name="assetSelect" placeholder="Ex: user1" ng-model="user.id">
+                                     -->
+                                    <span>Email mới:</span><br>
+                                    
+                                    <input class="form-control" name="user.email" placeholder="Email" ng-model="user.email">
+                                    <br>
+
+                                    
+                                  <!-- </form> -->
+
+                                    <h5>Bạn đã chắc chắn?</h5>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="changeEmail()" >
+                                    &nbsp;
+                                    <button type="button" class="btn btn-danger btn-md"
+                                        data-dismiss="modal">
+                                        Cancel</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  <!-- END MODAL -->
+                    
                 </div>
+                <!-- end tabpanel -->
+
               </div>
-            </div>  
-        </app-home>
-      </div>
+              <!-- end tabcontent -->
+            </ngb-tabset>
 
-      <app-footer-home-main _ngcontent-plj-c1="" _nghost-plj-c3="">
-        <footer _ngcontent-plj-c3="" class="col-lg-12 text-center">
-          <p _ngcontent-plj-c3="" class="text-muted small mb-0 flex-1 text-left">© PSC 2019. Hiếu Linh Lâm.</p>
-          <!-- <div _ngcontent-plj-c3="" class="row justify-content-md-right">
-            <div _ngcontent-plj-c3="" class="col-auto row">
-              <a _ngcontent-plj-c3="" href="https://apps.apple.com/us/app/x%C3%A1c-minh-v%C4%83n-b%E1%BA%B1ng-vdb/id1468072081?ls=1">
-                <img _ngcontent-plj-c3="" alt="VDB - Xác minh văn bằng - Appstore" class="dw-icon col-auto" src="assets/img/icon/appstore1.png">
-              </a>
-              <a _ngcontent-plj-c3="" href="https://play.google.com/store/apps/details?id=com.vnpt.kv3.vdb">
-                <img _ngcontent-plj-c3="" alt="VDB - Xác minh văn bằng - GooglePlay" class="dw-icon col-auto" src="assets/img/icon/chplay1.png">
-              </a>
-            </div>
-          </div> -->
-        </footer>
-      </app-footer-home-main>
-      <!-- <div class="container" width="100px">
-        <h2>AngularJS Simple Login Example</h2>
-        <div ui-view></div>
-        </div> -->
+          </div>
+        </div>
+      </div>  
+    
+    </app-home>
+  
+  </div>
 
-  </body>
-  <!-- requiring the angular page -->
-  <script type="text/javascript" src="app.js"> </script>
-  <script type="text/javascript">
-    function generateBarCode()
-    {
-        var nric = $('#text').val();
-        var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + nric + '&amp;size=50x50';
-        $('#barcode').attr('src', url);
-    }
-  </script>
-  <script type="text/javascript" src="js/filereader.js"></script>
-  <script type="text/javascript" src="js/qrcodelib.js"></script>
-  <script type="text/javascript" src="js/webcodecamjs.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
-  <!-- <script type="text/javascript" src="views/js/mobiscroll.angularjs.min.js"></script> -->
-  <!-- <script type="text/javascript" src="js/angular-ui-router.js"></script> -->
-  <!-- <script type="text/javascript" src="js/angular-route.min.js"></script> -->
-  <!-- <script src="login/loginController.js"></script>
-  <script src="login/homeController.js"></script>
-  <script src="login/loginService.js"></script> -->
-</html>
+  <app-footer-home-main _ngcontent-plj-c1="" _nghost-plj-c3="">
+    <footer _ngcontent-plj-c3="" class="col-lg-12 text-center">
+
+    </footer>
+  </app-footer-home-main>
+    
+</div>

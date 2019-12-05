@@ -16,7 +16,6 @@
 /**
  * Context for a SHA-512 operation in progress.
  * @constructor
- * @class Secure Hash Algorithm, 512 bits.
  */
 sjcl.hash.sha512 = function (hash) {
   if (!this._key[0]) { this._precompute(); }
@@ -69,8 +68,22 @@ sjcl.hash.sha512.prototype = {
     var i, b = this._buffer = sjcl.bitArray.concat(this._buffer, data),
         ol = this._length,
         nl = this._length = ol + sjcl.bitArray.bitLength(data);
-    for (i = 1024+ol & -1024; i <= nl; i+= 1024) {
-      this._block(b.splice(0,32));
+    if (nl > 9007199254740991){
+      throw new sjcl.exception.invalid("Cannot hash more than 2^53 - 1 bits");
+    }
+
+    if (typeof Uint32Array !== 'undefined') {
+        var c = new Uint32Array(b);
+        var j = 0;
+        for (i = 1024+ol - ((1024+ol) & 1023); i <= nl; i+= 1024) {
+            this._block(c.subarray(32 * j, 32 * (j+1)));
+            j += 1;
+        }
+        b.splice(0, 32 * j);
+    } else {
+        for (i = 1024+ol - ((1024+ol) & 1023); i <= nl; i+= 1024) {
+            this._block(b.splice(0,32));
+        }
     }
     return this;
   },
@@ -179,43 +192,58 @@ sjcl.hash.sha512.prototype = {
   _precompute: function () {
     // XXX: This code is for precomputing the SHA256 constants, change for
     //      SHA512 and re-enable.
-    var i = 0, prime = 2, factor;
+    var i = 0, prime = 2, factor , isPrime;
 
     function frac(x)  { return (x-Math.floor(x)) * 0x100000000 | 0; }
     function frac2(x) { return (x-Math.floor(x)) * 0x10000000000 & 0xff; }
 
-    outer: for (; i<80; prime++) {
+    for (; i<80; prime++) {
+      isPrime = true;
       for (factor=2; factor*factor <= prime; factor++) {
         if (prime % factor === 0) {
-          // not a prime
-          continue outer;
+          isPrime = false;
+          break;
         }
       }
-
-      if (i<8) {
-        this._init[i*2] = frac(Math.pow(prime, 1/2));
-        this._init[i*2+1] = (frac2(Math.pow(prime, 1/2)) << 24) | this._initr[i];
+      if (isPrime) {
+        if (i<8) {
+          this._init[i*2] = frac(Math.pow(prime, 1/2));
+          this._init[i*2+1] = (frac2(Math.pow(prime, 1/2)) << 24) | this._initr[i];
+        }
+        this._key[i*2] = frac(Math.pow(prime, 1/3));
+        this._key[i*2+1] = (frac2(Math.pow(prime, 1/3)) << 24) | this._keyr[i];
+        i++;
       }
-      this._key[i*2] = frac(Math.pow(prime, 1/3));
-      this._key[i*2+1] = (frac2(Math.pow(prime, 1/3)) << 24) | this._keyr[i];
-      i++;
     }
   },
 
   /**
    * Perform one cycle of SHA-512.
-   * @param {bitArray} words one block of words.
+   * @param {Uint32Array|bitArray} words one block of words.
    * @private
    */
   _block:function (words) {
     var i, wrh, wrl,
-        w = words.slice(0),
         h = this._h,
         k = this._key,
         h0h = h[ 0], h0l = h[ 1], h1h = h[ 2], h1l = h[ 3],
         h2h = h[ 4], h2l = h[ 5], h3h = h[ 6], h3l = h[ 7],
         h4h = h[ 8], h4l = h[ 9], h5h = h[10], h5l = h[11],
         h6h = h[12], h6l = h[13], h7h = h[14], h7l = h[15];
+    var w;
+    if (typeof Uint32Array !== 'undefined') {
+	// When words is passed to _block, it has 32 elements. SHA512 _block
+	// function extends words with new elements (at the end there are 160 elements). 
+	// The problem is that if we use Uint32Array instead of Array, 
+	// the length of Uint32Array cannot be changed. Thus, we replace words with a 
+	// normal Array here.
+        w = Array(160); // do not use Uint32Array here as the instantiation is slower
+        for (var j=0; j<32; j++){
+    	    w[j] = words[j]; 
+        }
+    } else {
+	w = words;
+    } 
 
     // Working variables
     var ah = h0h, al = h0l, bh = h1h, bl = h1l,

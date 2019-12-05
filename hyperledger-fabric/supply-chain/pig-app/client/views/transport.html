@@ -13,7 +13,7 @@
         <button _ngcontent-vyn-c2="" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span _ngcontent-vyn-c2="" class="navbar-toggler-icon"></span></button>
 
 
-        <div _ngcontent-qht-c2="" class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div _ngcontent-qht-c2="" class="collapseadmin navbar-collapseadmin" id="navbarSupportedContent">
           <ul _ngcontent-qht-c2="" class="navbar-nav mr-auto">
             <li _ngcontent-qht-c2="" class="nav-item d-none d-lg-inline-block">
               <a _ngcontent-qht-c2="" class="nav-link">Phần mềm truy xuất nguồn gốc thịt lợn</a>
@@ -22,17 +22,25 @@
           </ul>
 
           <!-- current username -->
-          <ul _ngcontent-gwf-c2="" class="nav navbar-nav ml-auto">
-            <li _ngcontent-gwf-c2="" class="nav-item ">
-              <a _ngcontent-gwf-c2="" id="clickCurrentUser" ng-click="loadCurrentUser()" class="nav-link btn btn-outline-primary" data-toggle="modal" data-target="#viewUserModal">
-                <i _ngcontent-gwf-c2="" class="fa fa-user"></i>
-                <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
-                    {{message}}
-                </span>
-              </a>
-              
-            </li>
-            <li _ngcontent-gwf-c2="" class="nav-item ">
+          <ul _ngcontent-gwf-c2="" class="nav navbar-nav ml-auto-admin">
+              <li _ngcontent-gwf-c2="" class="nav-item-an ">
+                  <a _ngcontent-gwf-c2="" id="clickCurrentUser" class="nav-link btn btn-outline-primary" ng-click="loadCurrentUser()"  data-toggle="modal" data-target="#viewUserModal">
+                    <!-- <i _ngcontent-gwf-c2="" class="fa fa-user"></i> -->
+                    
+                      <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
+                          {{message}}
+                      </span>
+                  </a>
+                </li>
+                <li _ngcontent-gwf-c2="" class="nav-item ">
+                    <a _ngcontent-gwf-c2="" id="clickCurrentUser" class="nav-link btn btn-outline-primary" ng-click="loadCurrentUser()"  data-toggle="modal" data-target="#viewUserModal">
+                        <img id="blah" src="#" alt="your image" class="img-small"/>
+                        <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
+                            <input id="currentUser" class="currentUser" type="button" value="">
+                        </span>
+                    </a>
+                </li>
+            <li _ngcontent-gwf-c2="" class="nav-item-an">
               <a _ngcontent-gwf-c2="" id="clickCurrentUser" ng-click="loadCurrentUser()" class="nav-link btn btn-outline-primary" >
                 <!-- <i _ngcontent-gwf-c2="" class="fa fa-sign-in mr-2"></i> -->
                 <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
@@ -40,6 +48,22 @@
                 </span>
               </a>
               
+            </li>
+          </li>
+          <li _ngcontent-gwf-c2="" class="nav-item-an">
+            <a _ngcontent-gwf-c2="" id="clickCurrentUser" ng-click="loadCurrentUser()" class="nav-link btn btn-outline-primary" >
+              <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
+                  <input id="chainIdUser" class="currentUser" type="button" value="">
+              </span>
+            </a>
+          </li>
+            <li _ngcontent-gwf-c2="" class="nav-item-an ">
+                <a _ngcontent-gwf-c2="" id="clickCurrentUser" class="nav-link btn btn-outline-primary" ng-click="loadCurrentUser()"  data-toggle="modal" data-target="#viewUserModal">
+                    
+                    <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
+                        <input id="getIdUserCurrent" class="currentUser" type="button" value="">
+                    </span>
+                </a>
             </li>
             <li _ngcontent-gwf-c2="" class="nav-item">
                 <a _ngcontent-gwf-c2="" class="nav-link btn btn-outline-primary bg-white text-dark" routerlink="/signup" style="color:#007bff!important" ng-reflect-router-link="/signup" href="#/">
@@ -67,7 +91,6 @@
                     
                       <ul class="nav nav-pills">
                           <li ng-class="{active:tab.isSet(1)}"><a href ng-click="tab.setTab(1)">Thêm thông tin chuỗi</a></li>
-                          <li ng-class="{active:tab.isSet(2)}"><a href ng-click="tab.setTab(2)">...</a></li>
                       </ul>
 
                   </ul>
@@ -82,331 +105,344 @@
                             <center>Quản lý thông tin Vận chuyển</center></h2>
                         </div>
                             
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#insertTransport">
+                        <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#insertTransport">
                           <i class="fa fa-plus"></i>
                           Thêm
-                        </button>
+                        </button> -->
 
-                            
-                        <!-- Truy xuất thông tin Transport -->
-                        <center>
-                          <div>
-                              
-                              <div id="box">
-                                  <div class="form-group">
-                                    <!-- <label>Thêm thông tin Vận chuyển </label> -->
-                                    <p><input id="queryTransport" type="hidden" value="Query" class="btn btn-primary" ng-click="queryTransport()"></p>
-                                  </div>
-                                  <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Id</h5>
+                        <!-- xai nha -->
+                        <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#addPigWithAccountTransport">
+                          <i class="fa fa-plus"></i>
+                          Thêm mới mẫu tin Vận chuyển
+                        </button> -->
 
-                                  <!-- <table id="query_transport" class="table-query-farm" align="center">
-                                    <tr class="tr-query-farm">
-                                      <th>Mã chuỗi</th>
-                                      <th colspan="2">Tên Công ty</th>
-                                      <th colspan="2">Người vận chuyển</th>
-                                      <th colspan="2">Phương tiện</th>
-                                      <th colspan="2">Vấn đề </th>
-                                      <th colspan="2">Giải quyết vấn đề</th>
-                                      <th colspan="2">Chất lượng vận chuyển</th>
-                                      <th colspan="2">Thời gian vận chuyển</th>
-                                    </tr>
-                                    <tr>
-                                      <td>{{chainidLocalStorage}}</td>
-                                      <td>{{query_transport.company}}</td>
-                                      <td ng-repeat="kkk in query_transport">
-                                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addCompany">
-                                            Sửa
-                                        </button>
-                                        <input type="text" ng-model="getCompany" ng-init="getCompany=kkk.company">
-                                      </td>
-                                      <td>{{query_transport.transporter}}</td>
-                                      <td>
-                                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addTransporter">
-                                            Sửa
-                                        </button>
-                                      </td>
-                                      <td>{{query_transport.vehicle}}</td>
-                                      <td>
-                                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addVehicle">
-                                            Sửa
-                                        </button>
-                                      </td>
-                                      <td>{{query_transport.trouble}}</td>
-                                      <td>
-                                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addTrouble">
-                                            Sửa
-                                        </button>
-                                      </td>
-                                      <td>{{query_transport.solution}}</td>
-                                      <td>
-                                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addSolution">
-                                            Sửa
-                                        </button>
-                                      </td>
-                                      <td>{{query_transport.transport_qualified}}</td>
-                                      <td>
-                                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addTransportQualified">
-                                            Sửa
-                                        </button>
-                                      </td>
-                                      <td>{{query_transport.time}}</td>
-                                      <td>
-                                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addTime">
-                                            Sửa
-                                        </button>
-                                      </td>
-                                    </tr>
-                                  </table> -->
 
-                                  <table id="query_transport" class="table-query-farm" align="center" > 
+                        <!-- Truy xuất thông tin Farm với username -->
+                        <div>
                                       
-                                      
-                                      <tr >
-                                        <th >
-                                            Mã chuỗi
-                                        </th>
-                                        <th class="th-members">
-                                            {{chainidLocalStorage}}
-                                        </th>
-                                      </tr>
-                                      <!-- <tr ng-repeat="x in query_transport">aaa</tr> -->
-                                      <tr >
-                                        <th >
-                                          Tên Công ty
-                                        </th>
-                                        <th ng-model="getCompany" id="thcompany" class="th-members">
-                                          {{query_transport.company}}
-                                          
-                                        </th>
-                                        <th >
-                                          
-                                          <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addCompany">
-                                              Sửa - {{query_transport.company}} 
-                                          </button>
-                                          
-                                          <input ng-model="searchText" type="text" ng-init="searchText=message"/>
-                                          <!-- modal update addCompany -->
-                                          <div class="modal fade" id="addCompany">
-                                            <div class="modal-dialog">
+                            <div id="box">
 
-                                                <!-- Modal content-->
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Chỉnh sửa tên Công ty</h4> <br>
-                                                    </div>
+                                <div class="form-group">
+                                  <p><input id="queryAllPigWithAccountTransport" type="hidden" value="queryAllPigWithAccountTransport" class="btn btn-primary" ng-click="queryAllPigWithAccountTransport()"></p>
+                                  
+                                </div>
 
-                                                    <!-- <div class="modal-body">
-                                                        <p></p>
+                                <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Pig Id</h5>
+                                <center>
 
-                                                    </div> -->
-                                                    <div class="modal-body">
-                                                        <h5 style="color:green;margin-bottom:2%" id="success_update_company">Success! Tx ID: {{update_company}}</h5>
-                                                        <h5 style="color:red;margin-bottom:2%" id="error_update_company">Error: Please enter a valid Id</h5>
-                                                        Nhập tên Công ty: <input class="form-control" type="text" ng-model="transport.company" ng-init="transport.company=query_transport.company" placeholder="Ex: TNHH 1TV">
-                                                        <input type="text" ng-model="getRole" ng-init="getRole=query_transport.company">
-                                                        {{query_transport.company}}
-                                                        <h5>Bạn chắc chắn muốn sửa?</h5>
+                                  <label for="search"> Tìm kiếm:</label>
+                                  <input ng-model="q" id="search" class="input-custom-control-search form-control-lg-search"  placeholder="Tìm">
+                                  <label for="search"> Hiển thị: </label>
+                                  <select ng-model="pageSize" id="pageSize" class="select-custum-control">
+                                      <option value="3">3</option>
+                                      <option value="5">5</option>
+                                      <option value="15">15</option>
+                                      <option value="100">All</option>
+                                  </select>
+                                </center>
 
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <input type="submit" value="Sửa" class="btn btn-primary" ng-click="updateCompany()">
-                                                        &nbsp;
-                                                        <button type="button" class="btn btn-danger btn-md"
-                                                            data-dismiss="modal">
-                                                            Cancel</button>
-                                                        <!-- Goi ham them va dong modal -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        </th>
-                                      </tr>
+                                <table id="all_pig_with_account_transport" class="table-query-farm">
+                                  
+                                 
 
-                                      <tr>
-                                        <th >
-                                          Người vận chuyển
-                                        </th>
-                                        <th class="th-members">
-                                          {{query_transport.transporter}}
-                                        </th>
-                                        <th>
-                                          <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addTransporter">
-                                              Sửa
-                                          </button>
-                                        </th>
-                                      </tr>
+                                  <tr class="tr-query-farm">
+                                    <th>STT</th>
+                                    <th>Mã chuỗi</th>
+                                    <th>Mã QR</th>
+                                    <th>Tên tài khoản</th>
+                                    <th >Tên Công ty</th>
+                                    <th >Người vận chuyển</th>
+                                    <th >Phương tiện</th>
+                                    <th >Vấn đề  - Giải quyết</th>
+                                    <th >Chất lượng vận chuyển</th>
+                                    <th >Thời gian vận chuyển</th>
+                                    
+                                  </tr>
+                                  
+                                  <tr ng-repeat="pig in all_pig_with_account_transport | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize">
+                                    
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{pig.Key}}</td>
 
-                                      <tr>
-                                        <th >
-                                          Phương tiện
-                                        </th>
-                                        <th class="th-members">
-                                          {{query_transport.vehicle}}
-                                        </th>
-                                        <th>
-                                          <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addVehicle">
-                                              Sửa
-                                          </button>
-                                        </th>
-                                      </tr>
+                                    <td>
+                                      <label id="text" type="text" 
+                                              value="{{pig.Key}}" style="Width:0%"
+                                              onblur='generateBarCode();' > </label>
 
-                                      <tr >
-                                        <th >
-                                          
-                                          Vấn đề
-                                        </th>
-                                        <th class="th-members">
-                                          {{query_transport.trouble}}
-                                        </th>
-                                        <th>
-                                          <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addTrouble">
-                                              Sửa
-                                          </button>
-                                        </th>
-                                      </tr>
+                                              <img id='barcode'
+                                                src="https://api.qrserver.com/v1/create-qr-code/?data= Key: {{pig.Key}} | Sick: {{pig.sick_cure}}  | Farm-Qualified: {{pig.farm_qualified}} | Supermarket-Qualified: {{pig.supermarket_qualified}}&amp;size=500x500" 
+                                                alt="" 
+                                                title="HELLO" 
+                                                width="50" 
+                                                height="50" />
+                                    </td>
 
-                                      <tr >
-                                        <th >
-                                          Giải quyết vấn đề
-                                        </th>
-                                        <th class="th-members">
-                                          {{query_transport.solution}}
-                                        </th>
-                                        <th>
-                                          <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addSolution">
-                                              Sửa
-                                          </button>
-                                        </th>
-                                      </tr>
+                                    <td >{{pig.transport_account}}</td>
+                                    <td >{{pig.company}} <br>
+                                        <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdateCompany(pig.Key)" data-toggle="modal" data-target="#addCompany" >
+                                            <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                            Sửa 
+                                        </button>
+                                    </td>
+                                    <td >{{pig.transporter}} <br>
+                                      <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdateTransporter(pig.Key)" data-toggle="modal" data-target="#addTransporter" >
+                                          <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                          Sửa 
+                                      </button>
+                                    </td>
+                                    
 
-                                      <tr >
-                                        <th >
-                                          Chất lượng vận chuyển
-                                        </th>
-                                        <th class="th-members">
-                                          {{query_transport.transport_qualified}}
-                                        </th>
-                                        <th>
-                                          <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addTransportQualified">
-                                              Sửa
-                                          </button>
-                                        </th>
-                                        
-                                      </tr>
-                                      
-                                      <tr>
-                                        <th >
-                                          Thời gian vận chuyển
-                                        </th>
-                                        <th class="th-members">
-                                          {{query_transport.time}}
-                                        </th>
-                                        <th>
-                                          <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addTime">
-                                              Sửa
-                                          </button>
-                                        </th>
-                                      </tr>
-                                      
-                                  </table>
+                                    <td>{{pig.vehicle}}<br>
+                                      <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdateVehicle(pig.Key)" data-toggle="modal" data-target="#addVehicle" >
+                                          <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                          Sửa 
+                                      </button>
+                                    </td>
+                                    
 
-                              </div>
-                          </div>
-                        </center>
+                                    <td>{{pig.transport_trouble_solution}} <br>
+                                      <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdateTransportTroubleSolution(pig.Key)" data-toggle="modal" data-target="#addTransportTroubleSolution" >
+                                        <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                        Thêm 
+                                      </button>
+                                    </td>
+                                    
+
+                                    <td>{{pig.transport_qualified}}<br>
+                                      <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdateTransportQualified(pig.Key)" data-toggle="modal" data-target="#addTransportQualified" >
+                                          <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                          Edit 
+                                      </button>
+                                    </td>
+                                    
+
+                                    <td>{{pig.time}}<br>
+                                      <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdateTime(pig.Key)" data-toggle="modal" data-target="#addTime" >
+                                          <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                          Edit 
+                                      </button>
+                                    </td>
+                                    
+
+                                  </tr>
+                                  
+
+                                </table>
+
+                                <center>
+                                  <!-- <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls> -->
+                                  <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+                                    Previous
+                                  </button>
+                                  {{currentPage+1}}/{{numberOfPages()}}
+                                  <button ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1">
+                                      Next
+                                  </button>
+                                </center>
+
+                            </div>
+                        </div>
+                        <!-- End Truy xuất thông tin Farm với username -->
+
+                       
+                        </center> -->
                               
                       </div>
 
-                      <!-- Insert thông tin của công đoạn Farm-->
-                      <!-- <div class="col-md-6 col-md-offset-3"> -->
-                        
-                      <!-- tab set 2  -->
-                      <div ng-show="tab.isSet(2)">
-                      
-                          <!-- Truy xuất thông tin của 1 sản phẩm cụ thể -->
-                          <center>
-                          <div>
-                              <button id="toggleMessage" ng-click="toggle3=!toggle3">
-                                  {{toggle3 ? 'Ẩn truy xuất thông tin của 1 sản phẩm cụ thể ' : 'Truy xuất thông tin của 1 sản phẩm cụ thể '}}
-                              </button>
-                              <div id="box" ng-show="toggle3">
-                                  <div class="form-group">
-                                    <label>Query a Pork</label><br>
-                                    <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Pig Id</h5>
-                                    
-                                    Enter a ID: <input id="createName" class="form-control" type="text" placeholder="Ex: 3" ng-model="pig_id">
-                                    <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryPig()">
-                                  </div>
-  
-                                  <table id="query_pig" class="table" align="center">
-                                    <tr>
-                                      <td colspan="7" style="font-size: 35px"> <center>Thông tin</center></td>
-                                    </tr>
-                                    
-                                    <tr>
-                                      <th>QRCode</th>
-                                      <th>Famer</th>
-                                      <th>Species</th>
-                                      <th>Food </th>
-                                      <th>Sick_Cure</th>
-                                      <th>Location</th>
-                                      <th>Start_Date</th>
-                                      <th>End_Date</th>
-                                      <th>Company</th>
-                                      <th>Transporter</th>
-                                      <th>Vehicle</th>
-                                      <th>Trouble</th>
-                                      <th>Solution</th>
-                                      <th>Qualified</th>
-                                      <th>Time</th>
-                                      <th>Name</th>
-                                      <th>Location</th>
-                                      <th>Qualified</th>
-                                      <th>Peck_Time</th>
-                                      <th>Supermarket</th>
-                                      <th>Qualified</th>
-                                      <th>Price</th>
-                                      <th>Quantity Remaining</th>
-                                      <th>MFG</th>
-                                      <th>EXP</th>
-                                    </tr>
-                                    
-                                    <tr>
-                                      <td>{{query_pig.qrcode}}</td>
-                                      <td>{{query_pig.famer}}</td>
-                                      <td>{{query_pig.species}}</td>
-                                      <td>{{query_pig.food}}</td>
-                                      <td>{{query_pig.sick_cure}}</td>
-                                      <td>{{query_pig.farm_location}}</td>
-                                      <td>{{query_pig.start_date_of_farming}}</td>
-                                      <td>{{query_pig.end_date_of_farming}}</td>
-                                      <td>{{query_pig.company}}</td>
-                                      <td>{{query_pig.transporter}}</td>
-                                      <td>{{query_pig.vehicle}}</td>
-                                      <td>{{query_pig.trouble}}</td>
-                                      <td>{{query_pig.solution}}</td>
-                                      <td>{{query_pig.transport_qualified}}</td>
-                                      <td>{{query_pig.time}}</td>
-                                      <td>{{query_pig.abattoir_name}}</td>
-                                      <td>{{query_pig.abattoir_location}}</td>
-                                      <td>{{query_pig.abattoir_qualified}}</td>
-                                      <td>{{query_pig.peck_time}}</td>
-                                      <td>{{query_pig.supermarket_name}}</td>
-                                      <td>{{query_pig.supermarket_qualified}}</td>
-                                      <td>{{query_pig.price}}</td>
-                                      <td>{{query_pig.quantity_remaining}}</td>
-                                      <td>{{query_pig.manufacturing_date}}</td>
-                                      <td>{{query_pig.expiry_date}}</td>
-                                    </tr>
-                                    
-                                  </table>
-                              </div>
-                          </div>
-                          </center>
-                      </div>
-                        <!-- end tabset2 -->
                             
                     </div>
                     <!-- end tabpanel -->
+
+                    
+                      
+                    <!--Modal view user-->
+                      <div class="modal fade" id="viewUserModal">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close"
+                                        data-dismiss="modal">x</button>
+                                    <h4 class="modal-title">Thông tin người dùng</h4> <br>
+                                </div>
+                                <div class="modal-body" style="overflow-x:auto;">
+                                    <div class="form-group" >
+                                      <p><input id="queryViewUser" type="hidden" value="Query" class="btn btn-primary" ng-click="queryViewUser()"></p>
+                                    </div>
+
+                                    
+                                    
+                                    <table border="0!important" id="query_view_user" align="center"  > 
+
+                                        <tr >
+                                          <th class="th">
+                                              Avatar
+                                          </th>
+                                          <th class="th">
+                                            <form  >
+                                              <fieldset>
+                                                <legend></legend>
+                                                <input type="file" name="photo" id="photo" ng-model="imageSrc" ng-file-select="onFileSelect($files)" ng-click="getKeyForUpdateWhenUpdatePassword(iduserLocalStorage)">
+                                                <button type="button" onclick="upload()" >Tải lên</button>
+                                                <br>
+                                                <h5 style="color:green;margin-bottom:2%" id="success_upload">Cập nhật thành công</h5>
+
+                                                <input id="hashImg" name="hashImg" type="hidden" value="" >
+
+                                                <input id="clickAddImg" type="hidden" ng-click="changeImg()" ><br>
+
+                                                <a id="url" target="_blank"></a>
+                                              </br>
+                                              </br>
+                                              </fieldset>
+                                            </form>
+                                          </th>
+                                        </tr>
+
+                                        <tr >
+                                          <th class="th">
+
+                                              
+                                              <input id="hash" name="hash" type="hidden" value="https://ipfs.io/ipfs/{{query_view_user.img}}"> 
+                                          </th>
+                                          <th class="th"  >
+                                            <center>
+                                              <img id="blah2" src="#" alt="your image" />
+                                            </center>
+                                          </th>
+                                        </tr>
+
+                                        <!-- <tr >
+                                          <th class="th">
+                                              ID: 
+                                          </th>
+                                          <th class="th">
+                                              {{iduserLocalStorage}}
+                                          </th>
+                                        </tr> -->
+
+                                        <tr >
+                                          <th class="th">
+                                              Username:
+                                          </th>
+                                          <th class="th">
+                                              {{query_view_user.username}}
+                                          </th>
+                                        </tr>
+
+                                        <tr >
+                                          <th class="th">
+                                              Password:
+                                          </th>
+                                          <th class="th">
+                                              {{query_view_user.password}}
+                                          </th>
+                                          <th class="th">
+                                              <button class="btn btn-primary btn-xs" ng-click="getKeyForUpdateWhenUpdatePassword(iduserLocalStorage)" data-toggle="modal" data-target="#editPassword">
+                                                  <i
+                                                  class="fa fa-edit"></i>
+                                                  Edit
+                                                </button>
+                                          </th>
+                                        </tr>
+
+                                        <tr>
+                                          <th class="th">
+                                              Email:
+                                          </th>
+                                          <th class="th">
+                                              {{query_view_user.email}}
+                                          </th>
+                                          <th class="th">
+                                              <button class="btn btn-primary btn-xs" ng-click="getKeyForUpdateWhenUpdateEmail(iduserLocalStorage)" data-toggle="modal" data-target="#editEmail">
+                                                  <i
+                                                  class="fa fa-edit"></i>
+                                                  Edit
+                                                </button>
+                                          </th>
+                                        </tr>
+
+                                        <tr >
+                                          <th class="th">
+                                            
+                                              Chain ID:
+                                          </th>
+                                          <th class="th">
+                                              {{query_view_user.chainid}}
+                                          </th>
+                                        </tr>
+
+                                        <tr >
+                                          <th class="th">
+                                              Roles:
+                                          </th>
+                                          <th class="th">
+                                              {{query_view_user.roles}}
+                                          </th>
+                                        </tr>
+
+                                        <tr >
+                                          <th class="th">
+                                              Status:
+                                          </th>
+                                          <th class="th">
+                                            {{query_view_user.status}}
+                                          </th>
+                                          
+                                        </tr>
+                                        
+                                        <tr>
+                                          <th class="th">
+                                              Approve:
+                                          </th>
+                                          <th class="th">
+                                              {{query_view_user.approve}}
+                                          </th>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    <!--End modal view user-->
+
+                    <!-- modal update addCompany -->
+                    <div class="modal fade" id="addCompany">
+                      <div class="modal-dialog">
+
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h4 class="modal-title">Chỉnh sửa tên Công ty</h4> <br>
+                              </div>
+
+                              <!-- <div class="modal-body">
+                                  <p></p>
+
+                              </div> -->
+                              <div class="modal-body">
+                                  <div class="modal-body-getkey"></div>
+                                  <h5 style="color:green;margin-bottom:2%" id="success_update_company">Success! Tx ID: {{update_company}}</h5>
+                                  <h5 style="color:red;margin-bottom:2%" id="error_update_company">Error: Please enter a valid Id</h5>
+                                  Nhập tên Công ty: <input class="form-control" type="text" ng-model="transport.company" placeholder="Ex: TNHH 1TV">
+                                  <!-- <input type="text" ng-model="getRole" ng-init="getRole=query_transport.company"> -->
+                                  <!-- {{query_transport.company}} -->
+                                  <h5>Bạn chắc chắn muốn sửa?</h5>
+
+                              </div>
+                              <div class="modal-footer">
+                                  <input type="submit" value="Sửa" class="btn btn-primary" ng-click="updateCompany()">
+                                  &nbsp;
+                                  <button type="button" class="btn btn-danger btn-md"
+                                      data-dismiss="modal">
+                                      Cancel</button>
+                                  <!-- Goi ham them va dong modal -->
+                              </div>
+                          </div>
+                      </div>
+                    </div>
 
                     <!-- modal insertTransport -->
                     <div class="modal fade" id="insertTransport">
@@ -486,120 +522,6 @@
                             </div>
                         </div>
                     </div>
-                      
-                      
-                    <!--Modal view user-->
-                    <div class="modal fade" id="viewUserModal">
-                        <div class="modal-dialog">
-
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close"
-                                        data-dismiss="modal">x</button>
-                                    <h4 class="modal-title">Thông tin</h4> <br>
-                                </div>
-                                <div class="modal-body" style="overflow-x:auto;">
-                                    <div class="form-group" >
-                                      <p><input id="queryViewUser" type="hidden" value="Query" class="btn btn-primary" ng-click="queryViewUser()"></p>
-                                    </div>
-                                    
-                                    <table id="query_view_user" class="table-approve-user" align="center" > 
-                          
-                                        <tr >
-                                          <th >
-                                              ID 
-                                          </th>
-                                          <th class="th">
-                                              {{iduserLocalStorage}}
-                                          </th>
-                                        </tr>
-
-                                        <tr>
-                                          <th >
-                                              Username
-                                          </th>
-                                          <th class="th">
-                                              {{query_view_user.username}}
-                                          </th>
-                                        </tr>
-
-                                        <tr>
-                                          <th >
-                                              Password
-                                          </th>
-                                          <th class="th">
-                                              {{query_view_user.password}}
-                                          </th>
-                                          <th>
-                                              <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editPassword">
-                                                  <i
-                                                  class="fa fa-edit"></i>
-                                                  Edit
-                                                </button>
-                                          </th>
-                                        </tr>
-
-                                        <tr>
-                                          <th >
-                                              Email
-                                          </th>
-                                          <th class="th">
-                                              {{query_view_user.email}}
-                                          </th>
-                                          <th>
-                                              <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editEmail">
-                                                  <i
-                                                  class="fa fa-edit"></i>
-                                                  Edit
-                                                </button>
-                                          </th>
-                                        </tr>
-
-                                        <tr >
-                                          <th >
-                                            
-                                              Chain ID 
-                                          </th>
-                                          <th class="th">
-                                              {{query_view_user.chainid}}
-                                          </th>
-                                        </tr>
-
-                                        <tr >
-                                          <th >
-                                              Roles
-                                          </th>
-                                          <th class="th">
-                                              {{query_view_user.roles}}
-                                          </th>
-                                        </tr>
-
-                                        <tr >
-                                          <th >
-                                              Status
-                                          </th>
-                                          <th class="th">
-                                            {{query_view_user.status}}
-                                          </th>
-                                          
-                                        </tr>
-                                        
-                                        <tr>
-                                          <th >
-                                              Approve
-                                          </th>
-                                          <th class="th">
-                                              {{query_view_user.approve}}
-                                          </th>
-                                        </tr>
-                                        
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End modal view user-->
 
                     <!-- modal editPassword -->
                     <div class="modal fade" id="editPassword">
@@ -614,18 +536,21 @@
                               </div>
                               
 
-                              
+                             
+
                               <div class="modal-body">
+                                
+                                  <div class="modal-body-getkey"></div>
                                 <form name="liveForm">
                                   <!-- <h5 style="color:green;margin-bottom:2%" id="success_editChainID">Success! Tx ID: {{edit_chainid}}</h5> -->
                                   <h5 style="color:red;margin-bottom:2%" id="error_editPassword">Error: Please enter a valid Id</h5>
-                                  
-                                  <label>Id cần đổi mật khẩu:</label>  
+                                  <!-- <label>Id cần đổi mật khẩu:</label>  
                                   <input class="form-control" name="assetSelect" placeholder="Ex: user1" ng-model="user.id">
+                                  <br> -->
                                   <br>
 
                                   <label>Mật khẩu mới:</label>  
-                                  <input class="form-control" name="user.password" placeholder="Mật khẩu" ng-model="user.password">
+                                  <input class="form-control" type="password" name="user.password" placeholder="Mật khẩu" ng-model="user.password">
                                   <br>
 
                                   <label>Nhập lại mật khẩu:</label>  
@@ -653,7 +578,7 @@
                           </div>
                       </div>
                     </div>
-                    
+                
                     <!-- modal editEmail -->
                     <div class="modal fade" id="editEmail">
                         <div class="modal-dialog">
@@ -669,20 +594,21 @@
 
                                 
                                 <div class="modal-body">
-                                  <!-- <form name="liveForm"> -->
+                                    <div class="modal-body-getkey"></div>
+                                  <form name="liveForm">
                                     <!-- <h5 style="color:green;margin-bottom:2%" id="success_editChainID">Success! Tx ID: {{edit_chainid}}</h5> -->
                                     <h5 style="color:red;margin-bottom:2%" id="error_editEmail">Error: Please enter a valid Id</h5>
-                                    <span>Id cần đổi email:</span>
+                                    <!-- <span>Id cần đổi email:</span>
                                     
                                     <input class="form-control" name="assetSelect" placeholder="Ex: user1" ng-model="user.id">
-                                    
+                                     -->
                                     <span>Email mới:</span><br>
                                     
-                                    <input class="form-control" name="user.email" placeholder="Email" ng-model="user.email">
+                                    <input  class="form-control" name="user.email" placeholder="Email" ng-model="user.email">
                                     <br>
 
                                     
-                                  <!-- </form> -->
+                                  </form>
 
                                     <h5>Bạn đã chắc chắn?</h5>
 
@@ -695,84 +621,11 @@
                                         Cancel</button>
                                     
                                 </div>
+
                             </div>
                         </div>
                     </div>
     
-                            
-                    <!-- modal update addFamer -->
-                    <div class="modal fade" id="addFamer">
-                      <div class="modal-dialog">
-
-                          <!-- Modal content-->
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <h4 class="modal-title">Edit value</h4> <br>
-                              </div>
-
-                              <!-- <div class="modal-body">
-                                  <p></p>
-
-                              </div> -->
-                              <div class="modal-body">
-                                  <h5 style="color:green;margin-bottom:2%" id="success_update_famer">Success! Tx ID: {{update_famer}}</h5>
-                                  <h5 style="color:red;margin-bottom:2%" id="error_update_famer">Error: Please enter a valid Id</h5>
-                                  Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="farm.id">
-                                  Enter a famer: <input class="form-control" name="assetSelect" placeholder="Ex: hieulinh" ng-model="farm.famer">
-                                  <!-- <input id="transferSubmit" type="submit" value="Add" class="btn btn-primary" ng-click="updateFamer()"> -->
-
-                                  <h5>Bạn chắc chắn muốn sửa?</h5>
-
-                              </div>
-                              <div class="modal-footer">
-                                  <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateFamer()">
-                                  &nbsp;
-                                  <button type="button" class="btn btn-danger btn-md"
-                                      data-dismiss="modal">
-                                      Cancel</button>
-                                  <!-- Goi ham them va dong modal -->
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-
-                    <!-- modal update addSickCure -->
-                    <div class="modal fade" id="addSickCure">
-                      <div class="modal-dialog">
-
-                          <!-- Modal content-->
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <button type="button" class="close"
-                                    data-dismiss="modal">x
-                                  </button>
-                                  <h4 class="modal-title">Edit value</h4> <br>
-                              </div>
-
-                              <div class="modal-body">
-                                  <p></p>
-
-                              </div><div class="modal-body">
-                                  <h5 style="color:green;margin-bottom:2%" id="success_update_sick_cure">Success! Tx ID: {{update_sick_cure}}</h5>
-                                  <h5 style="color:red;margin-bottom:2%" id="error_update_sick_cure">Error: Please enter a valid Id</h5>
-                                  Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="farm.id">
-                                  Enter a sick-cure: <input class="form-control" name="assetSelect" placeholder="Ex: hieulinh" ng-model="farm.sick_cure">
-                                  <!-- <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()"> -->
-
-                                  <h5>Bạn chắc chắn muốn sửa?</h5>
-
-                              </div>
-                              <div class="modal-footer">
-                                  <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()">
-                                  &nbsp;
-                                  <button type="button" class="btn btn-danger btn-md"
-                                      data-dismiss="modal">
-                                      Cancel</button>
-                                  <!-- Goi ham them va dong modal -->
-                              </div>
-                          </div>
-                      </div>
-                    </div>
 
                     
 
@@ -787,6 +640,7 @@
                                 </div>
 
                                 <div class="modal-body">
+                                    <div class="modal-body-getkey"></div>
                                     <h5 style="color:green;margin-bottom:2%" id="success_update_transporter">Success! Tx ID: {{update_transporter}}</h5>
                                     <h5 style="color:red;margin-bottom:2%" id="error_update_transporter">Error: Please enter a valid Id</h5>
                                     Nhập tên Người vận chuyển: <input class="form-control" placeholder="Ex: Hiếu Linh Lâm" ng-model="transport.transporter">
@@ -818,6 +672,7 @@
                                 </div>
 
                                 <div class="modal-body">
+                                    <div class="modal-body-getkey"></div>
                                     <h5 style="color:green;margin-bottom:2%" id="success_update_vehicle">Success! Tx ID: {{update_vehicle}}</h5>
                                     <h5 style="color:red;margin-bottom:2%" id="error_update_vehicle">Error: Please enter a valid Id</h5>
                                     Nhập tên Phương tiện: <input class="form-control" placeholder="Ex: Xe tải" ng-model="transport.vehicle">
@@ -839,7 +694,7 @@
                     </div>
 
                     <!-- modal update addTrouble -->
-                    <div class="modal fade" id="addTrouble">
+                    <div class="modal fade" id="addTransportTroubleSolution">
                         <div class="modal-dialog">
   
                             <!-- Modal content-->
@@ -849,6 +704,7 @@
                                 </div>
 
                                 <div class="modal-body">
+                                    <div class="modal-body-getkey"></div>
                                     <h5 style="color:green;margin-bottom:2%" id="success_update_trouble">Success! Tx ID: {{update_trouble}}</h5>
                                     <h5 style="color:red;margin-bottom:2%" id="error_update_trouble">Error: Please enter a valid Id</h5>
                                     Nhập tên tên vấn đề: <input class="form-control" placeholder="Ex: vấn đề" ng-model="transport.trouble">
@@ -880,6 +736,7 @@
                                 </div>
 
                                 <div class="modal-body">
+                                    <div class="modal-body-getkey"></div>
                                     <h5 style="color:green;margin-bottom:2%" id="success_update_solution">Success! Tx ID: {{update_solution}}</h5>
                                     <h5 style="color:red;margin-bottom:2%" id="error_update_solution">Error: Please enter a valid Id</h5>
                                     Nhập cách giải quyết: <input class="form-control" placeholder="Ex: giải quyết" ng-model="transport.solution">
@@ -911,9 +768,10 @@
                                 </div>
 
                                 <div class="modal-body">
-                                    <h5 style="color:green;margin-bottom:2%" id="success_update_transportqualified">Success! Tx ID: {{update_transportqualified}}</h5>
-                                    <h5 style="color:red;margin-bottom:2%" id="error_update_transportqualified">Error: Please enter a valid Id</h5>
-                                    Nhập chất lượng vận chuyển: <input class="form-control" placeholder="Ex: 5 sao" ng-model="transport.transportqualified">
+                                    <div class="modal-body-getkey"></div>
+                                    <!-- <h5 style="color:green;margin-bottom:2%" id="success_update_transport_trouble_solution">Success! Tx ID: {{update_transport_trouble_solution}}</h5> -->
+                                    <!-- <h5 style="color:red;margin-bottom:2%" id="error_update_transport_trouble_solution">Error: Please enter a valid Id</h5> -->
+                                    Nhập chất lượng vận chuyển: <input class="form-control" placeholder="Ex:*****" ng-model="transport.transport_qualified">
   
                                     <h5>Bạn chắc chắn muốn sửa?</h5>
   
@@ -942,9 +800,10 @@
                                 </div>
 
                                 <div class="modal-body">
+                                    <div class="modal-body-getkey"></div>
                                     <h5 style="color:green;margin-bottom:2%" id="success_update_time">Success! Tx ID: {{update_time}}</h5>
                                     <h5 style="color:red;margin-bottom:2%" id="error_update_time">Error: Please enter a valid Id</h5>
-                                    Nhập thời gian vận chuyển: <input type="date" name="bday" class="form-control" placeholder="Ex: 5 sao" ng-model="transport.time">
+                                    Nhập thời gian vận chuyển: <input type="datetime-local" name="bdaytime" class="form-control" placeholder="Ex: 5 sao" ng-model="transport.time">
   
                                     <h5>Bạn chắc chắn muốn sửa?</h5>
   

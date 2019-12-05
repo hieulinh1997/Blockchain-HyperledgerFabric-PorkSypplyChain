@@ -1,67 +1,90 @@
 <!-- SPDX-License-Identifier: Apache-2.0 -->
   
 <!-- <body _ngcontent-hms-c1 ng-app="application" ng-controller="appController as tab"> -->
-    <div _ngcontent-hms-c1 ng-controller="appController as tab">
-        <!-- <div ng-view></div> -->
-      <app-header-home _ngcontent-qht-c1="" _nghost-qht-c2="">
-        <nav _ngcontent-qht-c2="" class="navbar navbar-expand-lg navbar-dark bg-primary">
-          <!-- button home -->
-          <a _ngcontent-abn-c2="" class="navbar-brand" routerlink="/home" ng-reflect-router-link="/home" href="../index.html">
-            <i _ngcontent-gwf-c2="" class="fa fa-home mr-2"></i>
-            <span>PSC</span>
-            <!-- <img _ngcontent-abn-c2="" alt="SCP" class="brand-image " height="25px" src="home.png" style="opacity: 1"> -->
-          </a>
+<div _ngcontent-hms-c1 ng-controller="appController as tab">
+      <!-- <div ng-view></div> -->
+    <app-header-home _ngcontent-qht-c1="" _nghost-qht-c2="">
+      <nav _ngcontent-qht-c2="" class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <!-- button home -->
+        <a _ngcontent-abn-c2="" class="navbar-brand" routerlink="/home" ng-reflect-router-link="/home" href="../index.html">
+          <i _ngcontent-gwf-c2="" class="fa fa-home mr-2"></i>
+          <span>PSC</span>
+          <!-- <img _ngcontent-abn-c2="" alt="SCP" class="brand-image " height="25px" src="home.png" style="opacity: 1"> -->
+        </a>
 
-          <button _ngcontent-vyn-c2="" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span _ngcontent-vyn-c2="" class="navbar-toggler-icon"></span></button>
+        <button _ngcontent-vyn-c2="" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span _ngcontent-vyn-c2="" class="navbar-toggler-icon"></span></button>
 
 
-          <div _ngcontent-qht-c2="" class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul _ngcontent-qht-c2="" class="navbar-nav mr-auto">
-              <li _ngcontent-qht-c2="" class="nav-item d-none d-lg-inline-block">
-                <a _ngcontent-qht-c2="" class="nav-link">Phần mềm truy xuất nguồn gốc thịt lợn</a>
-              </li>
-  
-            </ul>
-  
-            <!-- current username -->
-            <ul _ngcontent-gwf-c2="" class="nav navbar-nav ml-auto">
-              <li _ngcontent-gwf-c2="" class="nav-item ">
-                <a _ngcontent-gwf-c2="" id="clickCurrentUser" ng-click="loadCurrentUser()" class="nav-link btn btn-outline-primary" data-toggle="modal" data-target="#viewUserModal">
-                  <i _ngcontent-gwf-c2="" class="fa fa-user"></i>
-                  <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
-                      {{message}}
-                  </span>
-                </a>
-                
-              </li>
-              <li _ngcontent-gwf-c2="" class="nav-item ">
-                <a _ngcontent-gwf-c2="" id="clickCurrentUser" ng-click="loadCurrentUser()" class="nav-link btn btn-outline-primary" >
-                  <!-- <i _ngcontent-gwf-c2="" class="fa fa-sign-in mr-2"></i> -->
-                  <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
-                      ChainID: {{chainidLocalStorage}}
-                  </span>
-                </a>
-                
-              </li>
-              <li _ngcontent-gwf-c2="" class="nav-item">
-                  <a _ngcontent-gwf-c2="" class="nav-link btn btn-outline-primary bg-white text-dark" routerlink="/signup" style="color:#007bff!important" ng-reflect-router-link="/signup" href="#/">
-                    <span _ngcontent-gwf-c2="" translate="signup" ng-reflect-translate="signup">Logout</span>
+        <div _ngcontent-qht-c2="" class="collapseadmin navbar-collapseadmin" id="navbarSupportedContent">
+          <ul _ngcontent-qht-c2="" class="navbar-nav mr-auto">
+            <li _ngcontent-qht-c2="" class="nav-item d-none d-lg-inline-block">
+              <a _ngcontent-qht-c2="" class="nav-link">Phần mềm truy xuất nguồn gốc thịt lợn</a>
+            </li>
+
+          </ul>
+
+          <!-- current username -->
+          <ul _ngcontent-gwf-c2="" class="nav navbar-nav ml-auto-admin">
+              <li _ngcontent-gwf-c2="" class="nav-item-an ">
+                  <a _ngcontent-gwf-c2="" id="clickCurrentUser" class="nav-link btn btn-outline-primary" ng-click="loadCurrentUser()"  data-toggle="modal" data-target="#viewUserModal">
+                    <!-- <i _ngcontent-gwf-c2="" class="fa fa-user"></i> -->
+                    
+                      <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
+                          {{message}}
+                      </span>
                   </a>
                 </li>
-            </ul>
-  
-          </div>
-        </nav>    
-  
-      </app-header-home>
-  
-      <div _ngcontent-hms-c1="" class="content-wrapper-search">
-        <router-outlet _ngcontent-hms-c1=""></router-outlet>
-        <app-home _nghost-xxd-c4="">
-            <div _ngcontent-xxd-c4="" class="row">
-              <div _ngcontent-xxd-c4="" class="col-sm-12">
-                <div _ngcontent-xxd-c4="" class="card card-primary">
-                  
+                <li _ngcontent-gwf-c2="" class="nav-item ">
+                    <a _ngcontent-gwf-c2="" id="clickCurrentUser" class="nav-link btn btn-outline-primary" ng-click="loadCurrentUser()"  data-toggle="modal" data-target="#viewUserModal">
+                        <img id="blah" src="#" alt="your image" class="img-small"/>
+                        <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
+                            <input id="currentUser" class="currentUser" type="button" value="">
+                        </span>
+                    </a>
+                </li>
+            <li _ngcontent-gwf-c2="" class="nav-item-an">
+              <a _ngcontent-gwf-c2="" id="clickCurrentUser" ng-click="loadCurrentUser()" class="nav-link btn btn-outline-primary" >
+                <!-- <i _ngcontent-gwf-c2="" class="fa fa-sign-in mr-2"></i> -->
+                <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
+                    ChainID: {{chainidLocalStorage}}
+                </span>
+              </a>
+            </li>
+            <li _ngcontent-gwf-c2="" class="nav-item-an">
+                <a _ngcontent-gwf-c2="" id="clickCurrentUser" ng-click="loadCurrentUser()" class="nav-link btn btn-outline-primary" >
+                  <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
+                      <input id="chainIdUser" class="currentUser" type="button" value="">
+                  </span>
+                </a>
+              </li>
+              <li _ngcontent-gwf-c2="" class="nav-item-an ">
+                <a _ngcontent-gwf-c2="" id="clickCurrentUser" class="nav-link btn btn-outline-primary" ng-click="loadCurrentUser()"  data-toggle="modal" data-target="#viewUserModal">
+                    
+                    <span _ngcontent-gwf-c2="" translate="signin" ng-reflect-translate="signin">
+                        <input id="getIdUserCurrent" class="currentUser" type="button" value="">
+                    </span>
+                </a>
+            </li>
+
+            <li _ngcontent-gwf-c2="" class="nav-item">
+                <a _ngcontent-gwf-c2="" class="nav-link btn btn-outline-primary bg-white text-dark" routerlink="/signup" style="color:#007bff!important" ng-reflect-router-link="/signup" href="#/">
+                  <span _ngcontent-gwf-c2="" translate="signup" ng-reflect-translate="signup">Logout</span>
+                </a>
+              </li>
+          </ul>
+
+        </div>
+      </nav>    
+
+    </app-header-home>
+
+    <div _ngcontent-hms-c1="" class="content-wrapper-search">
+      <router-outlet _ngcontent-hms-c1=""></router-outlet>
+      <app-home _nghost-xxd-c4="">
+          <div _ngcontent-xxd-c4="" class="row">
+            <div _ngcontent-xxd-c4="" class="col-sm-12">
+              <div _ngcontent-xxd-c4="" class="card card-primary">
+                
                   <ngb-tabset _ngcontent-xxd-c4="" class="nav-tab-custom-home">
 
                     <!-- tablist -->
@@ -82,15 +105,124 @@
                                   <center>Quản lý thông tin Lò Mổ</center></h2>
                               </div>
                                     
-                              <button class="btn btn-primary"
-                                data-toggle="modal" data-target="#insertAbattoir">
-                                <i class="fa fa-plus"></i>
-                                Thêm
-                                
-                              </button>
+
+                              <!-- Truy xuất thông tin Transport với username -->
+                              <div>
+                                  <div id="box">
+
+                                      <div class="form-group">
+                                        <p><input id="queryAllPigWithAccountAbattoir" type="hidden" value="queryAllPigWithAccountAbattoir" class="btn btn-primary" ng-click="queryAllPigWithAccountAbattoir()"></p>
+                                        
+                                      </div>
+
+                                      <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Pig Id</h5>
+                                      <center>
+
+                                        <label for="search"> Tìm kiếm:</label>
+                                        <input ng-model="q" id="search" class="input-custom-control-search form-control-lg-search"  placeholder="Tìm">
+                                        <label for="search"> Hiển thị: </label>
+                                        <select ng-model="pageSize" id="pageSize" class="select-custum-control">
+                                            <option value="3">3</option>
+                                            <option value="5">5</option>
+                                            <option value="15">15</option>
+                                            <option value="100">All</option>
+                                        </select>
+                                      </center>
+
+                                      <table id="all_pig_with_account_abattoir" class="table-query-farm">
+                                        
+
+                                        <tr class="tr-query-farm">
+                                          <th>STT</th>
+                                          <th> Mã chuỗi</th>
+                                          <th>Mã QR</th>
+                                          <th>Tên tài khoản</th>
+                                          <th>Tên lò mổ</th>
+                                          <th >Vấn đề  - Giải quyết</th>
+                                          <th >Địa chỉ</th>
+                                          <th >Chất lượng lò mổ</th>
+                                          <th >Thời gian mổ </th>
+                                          
+                                        </tr>
+                                        
+                                        <tr ng-repeat="pig in all_pig_with_account_abattoir | filter:q | startFrom:currentPage*pageSize | limitTo:pageSize">
+                                          
+                                          <td>{{$index + 1}}</td>
+                                          <td>{{pig.Key}}</td>
+
+                                          <td>
+                                            <label id="text" type="text" 
+                                                    value="{{pig.Key}}" style="Width:0%"
+                                                    onblur='generateBarCode();' > </label>
+
+                                                    <img id='barcode'
+                                                      src="https://api.qrserver.com/v1/create-qr-code/?data= Key: {{pig.Key}} | Sick: {{pig.sick_cure}}  | Farm-Qualified: {{pig.farm_qualified}} | Supermarket-Qualified: {{pig.supermarket_qualified}}&amp;size=500x500" 
+                                                      alt="" 
+                                                      title="HELLO" 
+                                                      width="50" 
+                                                      height="50" />
+                                          </td>
+                                          <th>{{pig.abattoir_account}}</th>
+
+                                          <td >{{pig.abattoir_name}}<br>
+                                            <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdateAbattoirName(pig.Key)" data-toggle="modal" data-target="#addAbattoirName" >
+                                              <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                              Sửa 
+                                          </button>
+                                          </td>
+                                          <td >{{pig.abattoir_trouble_solution}}<br>
+                                            <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdateAbattoirTroubleSolution(pig.Key)" data-toggle="modal" data-target="#addAbattoirTroubleSolution" >
+                                              <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                              Thêm 
+                                          </button>
+                                          </td>
+                                          <td >{{pig.abattoir_location}} <br>
+                                              <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdateAbattoirLocation(pig.Key)" data-toggle="modal" data-target="#addAbattoirLocation" >
+                                                  <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                                  Sửa 
+                                              </button>
+                                          </td>
+
+                                          <td>{{pig.abattoir_qualified}}<br>
+                                            
+                                            <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdateAbattoirQualified(pig.Key)" data-toggle="modal" data-target="#addAbattoirQualified" >
+                                                <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                                Sửa 
+                                            </button>
+                                          </td>
+
+                                          <td>{{pig.peck_time}} <br>
+                                          
+                                            <button type="button" class="btn btn-primary btn-xs" ng-click="getKeyForUpdatePeckTime(pig.Key)" data-toggle="modal" data-target="#addPeckTime" >
+                                                <i _ngcontent-gwf-c2="" class="fa fa-edit"></i>
+                                                Sửa 
+                                              </button>
+                                          </td>
+                                          
+
+                                        </tr>
+                                        
+
+                                      </table>
+
+                                      <center>
+                                        <!-- <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls> -->
+                                        <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+                                          Previous
+                                        </button>
+                                        {{currentPage+1}}/{{numberOfPages()}}
+                                        <button ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1">
+                                            Next
+                                        </button>
+                                      </center>
+
+
+                                  </div>
+                              </div>
+                              
 
                               <!-- Truy xuất thông tin Transport -->
-                              <div>
+                              <!-- <div>
                                       
                                   <div id="box">
                                       <div class="form-group">
@@ -115,15 +247,11 @@
                                         </tr>
                                       </table>
                                   </div>
-                              </div>
-                              <!-- </center> -->
-                                    
+                              </div> -->
+                              
                             </div>
 
-                            <!-- Insert thông tin của công đoạn Farm-->
-                            <!-- <div class="col-md-6 col-md-offset-3"> -->
                                   
-                            <!-- <center> -->
                             <div ng-show="tab.isSet(2)">
                     
                               <!-- Truy xuất thông tin của 1 sản phẩm cụ thể -->
@@ -211,233 +339,218 @@
                         </div>
 
                                 
-                        <!-- modal insertTransport -->
-                        <div class="modal fade" id="insertAbattoir">
-                            <div class="modal-dialog">
+                        
+                            
+                            
+                        <!--Modal view user-->
+                      <div class="modal fade" id="viewUserModal">
+                        <div class="modal-dialog">
 
-                                <!-- Modal content-->
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close"
+                                        data-dismiss="modal">x</button>
+                                    <h4 class="modal-title">Thông tin người dùng</h4> <br>
+                                </div>
+                                <div class="modal-body" style="overflow-x:auto;">
+                                    <div class="form-group" >
+                                      <p><input id="queryViewUser" type="button" value="Query" class="btn btn-primary" ng-click="queryViewUser()"></p>
+                                    </div>
+
+                                    
+                                    
+                                    <table border="0!important" id="query_view_user" align="center"  > 
+
+                                        <tr >
+                                          <th class="th">
+                                              Avatar
+                                          </th>
+                                          <th class="th">
+                                            <form  >
+                                              <fieldset>
+                                                <legend></legend>
+                                                <input type="file" name="photo" id="photo" ng-model="imageSrc" ng-file-select="onFileSelect($files)" ng-click="getKeyForUpdateWhenUpdatePassword(iduserLocalStorage)">
+                                                <button type="button" onclick="upload()" >Tải lên</button>
+                                                <br>
+                                                <h5 style="color:green;margin-bottom:2%" id="success_upload">Cập nhật thành công</h5>
+
+                                                <input id="hashImg" name="hashImg" type="hidden" value="" >
+
+                                                <input id="clickAddImg" type="hidden" ng-click="changeImg()" ><br>
+
+                                                <a id="url" target="_blank"></a>
+                                              </br>
+                                              </br>
+                                              </fieldset>
+                                            </form>
+                                          </th>
+                                        </tr>
+
+                                        <tr >
+                                          <th class="th">
+
+                                              
+                                              <input id="hash" name="hash" type="hidden" value="https://ipfs.io/ipfs/{{query_view_user.img}}"> 
+                                          </th>
+                                          <th class="th"  >
+                                            <center>
+                                              <img id="blah2" src="#" alt="your image" />
+                                            </center>
+                                          </th>
+                                        </tr>
+
+                                        <!-- <tr >
+                                          <th class="th">
+                                              ID: 
+                                          </th>
+                                          <th class="th">
+                                              {{iduserLocalStorage}}
+                                          </th>
+                                        </tr> -->
+
+                                        <tr >
+                                          <th class="th">
+                                              Username:
+                                          </th>
+                                          <th class="th">
+                                              {{query_view_user.username}}
+                                          </th>
+                                        </tr>
+
+                                        <tr >
+                                          <th class="th">
+                                              Password:
+                                          </th>
+                                          <th class="th">
+                                              {{query_view_user.password}}
+                                          </th>
+                                          <th class="th">
+                                              <button class="btn btn-primary btn-xs" ng-click="getKeyForUpdateWhenUpdatePassword(iduserLocalStorage)" data-toggle="modal" data-target="#editPassword">
+                                                  <i
+                                                  class="fa fa-edit"></i>
+                                                  Edit
+                                                </button>
+                                          </th>
+                                        </tr>
+
+                                        <tr>
+                                          <th class="th">
+                                              Email:
+                                          </th>
+                                          <th class="th">
+                                              {{query_view_user.email}}
+                                          </th>
+                                          <th class="th">
+                                              <button class="btn btn-primary btn-xs" ng-click="getKeyForUpdateWhenUpdateEmail(iduserLocalStorage)" data-toggle="modal" data-target="#editEmail">
+                                                  <i
+                                                  class="fa fa-edit"></i>
+                                                  Edit
+                                                </button>
+                                          </th>
+                                        </tr>
+
+                                        <tr >
+                                          <th class="th">
+                                            
+                                              Chain ID:
+                                          </th>
+                                          <th class="th">
+                                              {{query_view_user.chainid}}
+                                          </th>
+                                        </tr>
+
+                                        <tr >
+                                          <th class="th">
+                                              Roles:
+                                          </th>
+                                          <th class="th">
+                                              {{query_view_user.roles}}
+                                          </th>
+                                        </tr>
+
+                                        <tr >
+                                          <th class="th">
+                                              Status:
+                                          </th>
+                                          <th class="th">
+                                            {{query_view_user.status}}
+                                          </th>
+                                          
+                                        </tr>
+                                        
+                                        <tr>
+                                          <th class="th">
+                                              Approve:
+                                          </th>
+                                          <th class="th">
+                                              {{query_view_user.approve}}
+                                          </th>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    <!--End modal view user-->
+
+                        <!-- modal editPassword -->
+                        <div class="modal fade" id="editPassword">
+                            <div class="modal-dialog">
+                                
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close"
                                           data-dismiss="modal">x
                                         </button>
-                                        <h4 class="modal-title" > Thêm thông tin Lò mổ</h4> <br>
+                                        <h4 class="modal-title">Đổi mật khẩu</h4> <br>
                                     </div>
+                                    
 
-                                    <!-- <div class="modal-body">
-                                        <p></p>
+                                  
 
-                                    </div> -->
                                     <div class="modal-body">
-                                        <form name="form">
-                                            <!-- <h2 _ngcontent-xxd-c4="" translate="home.tab-one.title" ng-reflect-translate="home.tab-one.title">
-                                                    <center>Thêm thông tin chuỗi Lò mổ</center>
-                                            </h2> -->
-                                            </center>
-                                            <!-- <label>Thêm thông tin chuỗi</label><br> -->
-                                            <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{insert_abattoir}}</h5>
-                                            <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Id</h5>
-                                            <input _ngcontent-bfd-c4="" 
-                                              ng-model="abattoir.abattoir_name" type="text" 
-                                              class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
-                                              placeholder="Tên lò mổ " required> <br> 
-                                            <input _ngcontent-bfd-c4="" 
-                                              ng-model="abattoir.abattoir_location" type="text" 
-                                              class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
-                                              placeholder="Địa chỉ" required> <br>
-                                            <input _ngcontent-bfd-c4="" 
-                                              ng-model="abattoir.abattoir_qualified" type="text" 
-                                              class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
-                                              placeholder="Chất lượng lò mổ" required> <br>
-                                            <input _ngcontent-bfd-c4="" 
-                                              ng-model="abattoir.peck_time" type="text" 
-                                              class="input-custom-control form-control form-control-lg ng-pristine ng-invalid ng-touched" 
-                                              placeholder="Thời gian mổ" required> <br>
-                                            </center>
-                                          </form>
+                                      
+                                        <div class="modal-body-getkey"></div>
+                                      <form name="liveForm">
+                                        <!-- <h5 style="color:green;margin-bottom:2%" id="success_editChainID">Success! Tx ID: {{edit_chainid}}</h5> -->
+                                        <h5 style="color:red;margin-bottom:2%" id="error_editPassword">Error: Please enter a valid Id</h5>
+                                        <!-- <label>Id cần đổi mật khẩu:</label>  
+                                        <input class="form-control" name="assetSelect" placeholder="Ex: user1" ng-model="user.id">
+                                        <br> -->
+                                        <br>
 
-                                        <h5>Bạn chắc chắn muốn thêm?</h5>
+                                        <label>Mật khẩu mới:</label>  
+                                        <input class="form-control" type="password" name="user.password" placeholder="Mật khẩu" ng-model="user.password">
+                                        <br>
+
+                                        <label>Nhập lại mật khẩu:</label>  
+
+                                        <input type="password" name="repeatPass" ng-model="repeatPass" required compare-to="user.password" class="form-control" />   
+
+                                        <span class="error text-danger" ng-show="liveForm.repeatPass.$error.compareTo">  
+
+                                            Passwords don't match.  
+
+                                        </span>
+                                      </form>
+
+                                        <h5 align="right">Bạn đã chắc chắn?</h5>
 
                                     </div>
                                     <div class="modal-footer">
-                                        <input id="transferSubmit" type="submit" ng-disabled="form.$invalid" value="Add" class="btn btn-primary" ng-click="insertAbattoir()">
+                                        <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="changePassword()" >
                                         &nbsp;
                                         <button type="button" class="btn btn-danger btn-md"
                                             data-dismiss="modal">
                                             Cancel</button>
-                                        <!-- Goi ham them va dong modal -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            
-                            
-                          <!--Modal view user-->
-                        <div class="modal fade" id="viewUserModal">
-                            <div class="modal-dialog">
-
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close"
-                                            data-dismiss="modal">x</button>
-                                        <h4 class="modal-title">Thông tin</h4> <br>
-                                    </div>
-                                    <div class="modal-body" style="overflow-x:auto;">
-                                        <div class="form-group" >
-                                          <p><input id="queryViewUser" type="hidden" value="Query" class="btn btn-primary" ng-click="queryViewUser()"></p>
-                                        </div>
                                         
-                                        <table id="query_view_user" class="table-approve-user" align="center" > 
-                              
-                                            <tr >
-                                              <th >
-                                                  ID 
-                                              </th>
-                                              <th class="th">
-                                                  {{iduserLocalStorage}}
-                                              </th>
-                                            </tr>
-
-                                            <tr>
-                                              <th >
-                                                  Username
-                                              </th>
-                                              <th class="th">
-                                                  {{query_view_user.username}}
-                                              </th>
-                                            </tr>
-
-                                            <tr>
-                                              <th >
-                                                  Password
-                                              </th>
-                                              <th class="th">
-                                                  {{query_view_user.password}}
-                                              </th>
-                                              <th>
-                                                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editPassword">
-                                                      <i
-                                                      class="fa fa-edit"></i>
-                                                      Edit
-                                                    </button>
-                                              </th>
-                                            </tr>
-
-                                            <tr>
-                                              <th >
-                                                  Email
-                                              </th>
-                                              <th class="th">
-                                                  {{query_view_user.email}}
-                                              </th>
-                                              <th>
-                                                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editEmail">
-                                                      <i
-                                                      class="fa fa-edit"></i>
-                                                      Edit
-                                                    </button>
-                                              </th>
-                                            </tr>
-
-                                            <tr >
-                                              <th >
-                                                
-                                                  Chain ID 
-                                              </th>
-                                              <th class="th">
-                                                  {{query_view_user.chainid}}
-                                              </th>
-                                            </tr>
-
-                                            <tr >
-                                              <th >
-                                                  Roles
-                                              </th>
-                                              <th class="th">
-                                                  {{query_view_user.roles}}
-                                              </th>
-                                            </tr>
-
-                                            <tr >
-                                              <th >
-                                                  Status
-                                              </th>
-                                              <th class="th">
-                                                {{query_view_user.status}}
-                                              </th>
-                                              
-                                            </tr>
-                                            
-                                            <tr>
-                                              <th >
-                                                  Approve
-                                              </th>
-                                              <th class="th">
-                                                  {{query_view_user.approve}}
-                                              </th>
-                                            </tr>
-                                            
-                                        </table>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--End modal view user-->
-
-                        <!-- modal editPassword -->
-                        <div class="modal fade" id="editPassword">
-                          <div class="modal-dialog">
-                              
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                      <button type="button" class="close"
-                                        data-dismiss="modal">x
-                                      </button>
-                                      <h4 class="modal-title">Đổi mật khẩu</h4> <br>
-                                  </div>
-                                  
-
-                                  
-                                  <div class="modal-body">
-                                    <form name="liveForm">
-                                      <!-- <h5 style="color:green;margin-bottom:2%" id="success_editChainID">Success! Tx ID: {{edit_chainid}}</h5> -->
-                                      <h5 style="color:red;margin-bottom:2%" id="error_editPassword">Error: Please enter a valid Id</h5>
-                                      
-                                      <label>Id cần đổi mật khẩu:</label>  
-                                      <input class="form-control" name="assetSelect" placeholder="Ex: user1" ng-model="user.id">
-                                      <br>
-
-                                      <label>Mật khẩu mới:</label>  
-                                      <input class="form-control" name="user.password" placeholder="Mật khẩu" ng-model="user.password">
-                                      <br>
-
-                                      <label>Nhập lại mật khẩu:</label>  
-
-                                      <input type="password" name="repeatPass" ng-model="repeatPass" required compare-to="user.password" class="form-control" />   
-
-                                      <span class="error text-danger" ng-show="liveForm.repeatPass.$error.compareTo">  
-
-                                          Passwords don't match.  
-
-                                      </span>
-                                    </form>
-
-                                      <h5 align="right">Bạn đã chắc chắn?</h5>
-
-                                  </div>
-                                  <div class="modal-footer">
-                                      <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="changePassword()" >
-                                      &nbsp;
-                                      <button type="button" class="btn btn-danger btn-md"
-                                          data-dismiss="modal">
-                                          Cancel</button>
-                                      
-                                  </div>
-                              </div>
                           </div>
-                        </div>
-                    
+                      
                         <!-- modal editEmail -->
                         <div class="modal fade" id="editEmail">
                             <div class="modal-dialog">
@@ -453,20 +566,21 @@
 
                                     
                                     <div class="modal-body">
-                                      <!-- <form name="liveForm"> -->
+                                        <div class="modal-body-getkey"></div>
+                                      <form name="liveForm">
                                         <!-- <h5 style="color:green;margin-bottom:2%" id="success_editChainID">Success! Tx ID: {{edit_chainid}}</h5> -->
                                         <h5 style="color:red;margin-bottom:2%" id="error_editEmail">Error: Please enter a valid Id</h5>
-                                        <span>Id cần đổi email:</span>
+                                        <!-- <span>Id cần đổi email:</span>
                                         
                                         <input class="form-control" name="assetSelect" placeholder="Ex: user1" ng-model="user.id">
-                                        
+                                        -->
                                         <span>Email mới:</span><br>
                                         
-                                        <input class="form-control" name="user.email" placeholder="Email" ng-model="user.email">
+                                        <input  class="form-control" name="user.email" placeholder="Email" ng-model="user.email">
                                         <br>
 
                                         
-                                      <!-- </form> -->
+                                      </form>
 
                                         <h5>Bạn đã chắc chắn?</h5>
 
@@ -482,45 +596,9 @@
                                 </div>
                             </div>
                         </div>
-    
-                            
-                        <!-- modal update addFamer -->
-                        <div class="modal fade" id="addFamer">
-                            <div class="modal-dialog">
 
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Edit value</h4>
-                                    </div>
-
-                                    <!-- <div class="modal-body">
-                                        <p></p>
-
-                                    </div> -->
-                                    <div class="modal-body1">
-                                        <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{update_famer}}</h5>
-                                        <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Id</h5>
-                                        Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="farm.id">
-                                        Enter a famer: <input class="form-control" name="assetSelect" placeholder="Ex: hieulinh" ng-model="farm.famer">
-                                        <!-- <input id="transferSubmit" type="submit" value="Add" class="btn btn-primary" ng-click="updateFamer()"> -->
-
-                                        <h5>Bạn chắc chắn muốn sửa?</h5>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateFamer()">
-                                        &nbsp;
-                                        <button type="button" class="btn btn-danger btn-md"
-                                            data-dismiss="modal">
-                                            Cancel</button>
-                                        <!-- Goi ham them va dong modal -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- modal update addSickCure -->
-                        <div class="modal fade" id="addSickCure">
+                        <!-- modal update addAbattoirName -->
+                        <div class="modal fade" id="addAbattoirName">
                           <div class="modal-dialog">
 
                               <!-- Modal content-->
@@ -529,24 +607,22 @@
                                       <button type="button" class="close"
                                         data-dismiss="modal">x
                                       </button>
-                                      <h4 class="modal-title">Edit value</h4>
+                                      <h4 class="modal-title">Chỉnh sửa tên lò mổ</h4> <br>
                                   </div>
 
-                                  <div class="modal-body">
-                                      <p></p>
-
-                                  </div><div class="modal-body1">
-                                      <h5 style="color:green;margin-bottom:2%" id="success_holder">Success! Tx ID: {{update_sick_cure}}</h5>
-                                      <h5 style="color:red;margin-bottom:2%" id="error_holder">Error: Please enter a valid Id</h5>
-                                      Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="farm.id">
-                                      Enter a sick-cure: <input class="form-control" name="assetSelect" placeholder="Ex: hieulinh" ng-model="farm.sick_cure">
+                                <div class="modal-body">
+                                    <div class="modal-body-getkey"></div>
+                                      <h5 style="color:green;margin-bottom:2%" id="success_update_abattoir_name">Success! Tx ID: {{update_abattoir_name}}</h5>
+                                      <h5 style="color:red;margin-bottom:2%" id="error_update_abattoir_name">Error: Please enter a valid Id</h5>
+                                      <!-- Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="transport.id"> -->
+                                      Nhập tên lò mổ: <input class="form-control"  placeholder="Ex: hieulinh" ng-model="abattoir.abattoir_name">
                                       <!-- <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()"> -->
-
+                                      <br>
                                       <h5>Bạn chắc chắn muốn sửa?</h5>
 
                                   </div>
                                   <div class="modal-footer">
-                                      <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()">
+                                      <input id="transferSubmit" type="submit" value="Sửa" class="btn btn-primary" ng-click="updateAbattoirName()">
                                       &nbsp;
                                       <button type="button" class="btn btn-danger btn-md"
                                           data-dismiss="modal">
@@ -556,33 +632,172 @@
                               </div>
                           </div>
                         </div>
+                        
+                        <!-- modal update addAbattoirLocation -->
+                        <div class="modal fade" id="addAbattoirLocation">
+                          <div class="modal-dialog">
+
+                              <!-- Modal content-->
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close"
+                                        data-dismiss="modal">x
+                                      </button>
+                                      <h4 class="modal-title">Chỉnh sửa địa chỉ lò mổ</h4><br>
+                                  </div>
+
+                                <div class="modal-body">
+                                    <div class="modal-body-getkey"></div>
+                                      <h5 style="color:green;margin-bottom:2%" id="success_update_abattoir_location">Success! Tx ID: {{update_abattoir_location}}</h5>
+                                      <h5 style="color:red;margin-bottom:2%" id="error_update_abattoir_location">Error: Please enter a valid Id</h5>
+                                      <!-- Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="transport.id"> -->
+                                      Nhập địa chỉ lò mổ: <input class="form-control" name="assetSelect" placeholder="Ex: số-ấp-xã-tx-tp" ng-model="abattoir.abattoirlocation">
+                                      <!-- <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()"> -->
+                                      <br>
+                                      <h5>Bạn chắc chắn muốn sửa?</h5>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <input type="submit" value="Edit" class="btn btn-primary" ng-click="updateAbattoirLocation()">
+                                      &nbsp;
+                                      <button type="button" class="btn btn-danger btn-md"
+                                          data-dismiss="modal">
+                                          Cancel</button>
+                                      <!-- Goi ham them va dong modal -->
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                        
+                        <!-- modal update addAbattoirQualified -->
+                        <div class="modal fade" id="addAbattoirQualified">
+                          <div class="modal-dialog">
+
+                              <!-- Modal content-->
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close"
+                                        data-dismiss="modal">x
+                                      </button>
+                                      <h4 class="modal-title">Chỉnh sửa chất lượng lò mổ</h4><br>
+                                  </div>
+
+                                <div class="modal-body">
+                                    <div class="modal-body-getkey"></div>
+                                      <h5 style="color:green;margin-bottom:2%" id="success_update_abattoir_qualified">Success! Tx ID: {{update_abattoir_qualified}}</h5>
+                                      <h5 style="color:red;margin-bottom:2%" id="error_update_abattoir_qualified">Error: Please enter a valid Id</h5>
+                                      <!-- Enter a id: <input class="form-control" name="assetSelect" placeholder="Ex: 1" ng-model="transport.id"> -->
+                                      Nhập chất lượng lò mổ: <input class="form-control" placeholder="Ex: 5 sao" ng-model="abattoir.abattoirqualified">
+                                      <!-- <input id="transferSubmit" type="submit" value="Edit" class="btn btn-primary" ng-click="updateSickCure()"> -->
+                                      <br>
+                                      <h5>Bạn chắc chắn muốn sửa?</h5>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <input type="submit" value="Edit" class="btn btn-primary" ng-click="updateAbattoirQualified()">
+                                      &nbsp;
+                                      <button type="button" class="btn btn-danger btn-md"
+                                          data-dismiss="modal">
+                                          Cancel</button>
+                                      <!-- Goi ham them va dong modal -->
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                        
+                        <!-- modal update addPeckTime -->
+                        <div class="modal fade" id="addPeckTime">
+                          <div class="modal-dialog">
+
+                              <!-- Modal content-->
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close"
+                                        data-dismiss="modal">x
+                                      </button>
+                                      <h4 class="modal-title">Chỉnh sửa thời gian mổ</h4><br>
+                                  </div>
+
+                                <div class="modal-body">
+                                    <div class="modal-body-getkey"></div>
+                                      <h5 style="color:green;margin-bottom:2%" id="success_update_abattoir_pecktime">Success! Tx ID: {{update_abattoir_pecktime}}</h5>
+                                      Nhập thời gian mổ: 
+                                      <input type="datetime-local" name="bdaytime" class="form-control" placeholder="Ex: 07/09/1997" ng-model="abattoir.pecktime">
+                                      <br>
+                                      <h5>Bạn chắc chắn muốn sửa?</h5>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <input type="submit" value="Edit" class="btn btn-primary" ng-click="updateAbattoirPeckTime()">
+                                      &nbsp;
+                                      <button type="button" class="btn btn-danger btn-md"
+                                          data-dismiss="modal">
+                                          Cancel</button>
+                                      <!-- Goi ham them va dong modal -->
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <!-- modal update addTrouble -->
+                    <div class="modal fade" id="addAbattoirTroubleSolution">
+                        <div class="modal-dialog">
+  
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Thêm vấn đề, giải quyết</h4> <br>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="modal-body-getkey"></div>
+                                    <!-- <h5 style="color:green;margin-bottom:2%" id="success_update_abattoir_trouble_solution">Success! Tx ID: {{update_abattoir_trouble_solution}}</h5> -->
+                                    <!-- <h5 style="color:red;margin-bottom:2%" id="error_update_abattoir_trouble_solution">Error: Please enter a valid Id</h5> -->
+                                    Nhập tên tên vấn đề, giải quyết: : <input class="form-control" placeholder="Ex: vấn đề" ng-model="abattoir.abattoirtrouble">
+  
+                                    <h5>Bạn chắc chắn muốn sửa?</h5>
+  
+                                </div>
+
+                                <div class="modal-footer">
+                                    <input type="submit" value="Sửa" class="btn btn-primary" ng-click="updateAbattoirTrouble()">
+                                    &nbsp;
+                                    <button type="button" class="btn btn-danger btn-md"
+                                        data-dismiss="modal">
+                                        Cancel</button>
+                                    <!-- Goi ham them va dong modal -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                                 
                     </div>
                               
                   </ngb-tabset>
-                </div>
+                  
               </div>
-            </div>  
-        </app-home>
-      </div>
-  
-      <app-footer-home-main _ngcontent-plj-c1="" _nghost-plj-c3="">
-          <footer _ngcontent-plj-c3="" class="col-lg-12 text-center">
-            <p _ngcontent-plj-c3="" class="text-muted small mb-0 flex-1 text-left">© PSC 2019. Hiếu Linh Lâm.</p>
-            <!-- <div _ngcontent-plj-c3="" class="row justify-content-md-right">
-              <div _ngcontent-plj-c3="" class="col-auto row">
-                <a _ngcontent-plj-c3="" href="https://apps.apple.com/us/app/x%C3%A1c-minh-v%C4%83n-b%E1%BA%B1ng-vdb/id1468072081?ls=1">
-                  <img _ngcontent-plj-c3="" alt="VDB - Xác minh văn bằng - Appstore" class="dw-icon col-auto" src="assets/img/icon/appstore1.png">
-                </a>
-                <a _ngcontent-plj-c3="" href="https://play.google.com/store/apps/details?id=com.vnpt.kv3.vdb">
-                  <img _ngcontent-plj-c3="" alt="VDB - Xác minh văn bằng - GooglePlay" class="dw-icon col-auto" src="assets/img/icon/chplay1.png">
-                </a>
-              </div>
-            </div> -->
-          </footer>
-      </app-footer-home-main>
-  
-  </div>
+            </div>
+          </div>  
+      </app-home>
+    </div>
+
+    <app-footer-home-main _ngcontent-plj-c1="" _nghost-plj-c3="">
+        <footer _ngcontent-plj-c3="" class="col-lg-12 text-center">
+          <p _ngcontent-plj-c3="" class="text-muted small mb-0 flex-1 text-left">© PSC 2019. Hiếu Linh Lâm.</p>
+          <!-- <div _ngcontent-plj-c3="" class="row justify-content-md-right">
+            <div _ngcontent-plj-c3="" class="col-auto row">
+              <a _ngcontent-plj-c3="" href="https://apps.apple.com/us/app/x%C3%A1c-minh-v%C4%83n-b%E1%BA%B1ng-vdb/id1468072081?ls=1">
+                <img _ngcontent-plj-c3="" alt="VDB - Xác minh văn bằng - Appstore" class="dw-icon col-auto" src="assets/img/icon/appstore1.png">
+              </a>
+              <a _ngcontent-plj-c3="" href="https://play.google.com/store/apps/details?id=com.vnpt.kv3.vdb">
+                <img _ngcontent-plj-c3="" alt="VDB - Xác minh văn bằng - GooglePlay" class="dw-icon col-auto" src="assets/img/icon/chplay1.png">
+              </a>
+            </div>
+          </div> -->
+        </footer>
+    </app-footer-home-main>
+
+</div>
   <!-- <script type="text/javascript" src="../js/filereader.js"></script>
   <script type="text/javascript" src="../js/qrcodelib.js"></script>
   <script type="text/javascript" src="../js/webcodecamjs.js"></script>

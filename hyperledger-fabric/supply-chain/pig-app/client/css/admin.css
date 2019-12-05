@@ -1,3 +1,114 @@
+.lb-getkey{
+    text-align: center;
+}
+.p-getkey{
+    text-align: center;
+    font-size: 16px;
+    color: #007bff;
+}
+img{width:100px; height:100px;}
+
+.img-small {
+    width: 30px; height: 30px;
+}
+/* form signup and login */
+.currentUser{
+    background-color: #007bff;
+    text-align: #fff;
+    border-top-style: hidden;
+      border-right-style: hidden;
+      border-left-style: hidden;
+      border-bottom-style: groove;
+}
+.form-control-signup {
+    display: block;
+    width: 400px!important;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    box-shadow: inset 0 0 0 transparent;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.form-control-lg-signup {
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+    width: 400px!important;
+}
+.form-control-lg-search {
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+    width: 200px!important;
+}
+.form-control-lg-farm {
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+    width: 230px!important;
+    white-space:nowrap;
+}
+.div-farm {
+    white-space:nowrap;
+}
+.sign-up-form{
+    width: 500px;
+    /* box-shadow: 0 0 3px 0 rgba(0,0,0,0.3); */
+    background: #fff;
+    padding: 20px;
+    margin: 8% auto 0;
+    text-align: center;
+    margin-top: 10px;
+}
+.sign-up-form h1{
+    color: #1c8abd;
+    margin-bottom: 30px;
+}
+.input-custom-control-signup[_ngcontent-bfd-c4] {
+    font-family: "Roboto","Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 17px;
+    font-weight: 400;
+    width: 400px!important;
+    
+    border: 1px solid #007bff;
+}
+
+/* .input-custom-control-search[_ngcontent-bfd-c4] {
+    font-family: "Roboto","Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 17px;
+    font-weight: 400;
+    width: 200px!important;
+    
+    border: 1px solid #007bff;
+} */
+
+.input-custom-control-search {
+    font-family: "Roboto","Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 17px;
+    font-weight: 20;
+    height: 30px;
+    width: 200px!important;
+    background-color: white;
+    border: 1px solid #007bff;
+}
+
+.input-custom-control-farm[_ngcontent-bfd-c4] {
+    font-family: "Roboto","Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 17px;
+    font-weight: 400;
+    width: 230px!important;
+    white-space:nowrap;
+    border: 1px solid #007bff;
+}
+
 /* form edit */
 .form-inline {  
     display: flex;
@@ -217,15 +328,15 @@ body[_ngcontent-gwf-c1] {
     .d-lg-inline-block {
         display: inline-block!important;
     }
-    .navbar-expand-lg .navbar-collapse {
+    .navbar-expand-lg .navbar-collapseadmin {
         display: flex!important;
         flex-basis: auto;
     }
 }
-.collapse:not(.show) {
+.collapseadmin:not(.show) {
     display: none;
 }
-.navbar-collapse {
+.navbar-collapseadmin {
     flex-basis: 100%;
     flex-grow: 1;
     align-items: center;
@@ -237,11 +348,11 @@ body[_ngcontent-gwf-c1] {
     margin-right: auto!important;
 }
 .ml-auto, .mx-auto {
-    margin-left: 700px !important;
+    margin-left: 60% !important;
 
 }
 .ml-auto-admin {
-    margin-left: 65% !important;
+    margin-left: auto !important;
 
 }
 .navbar-nav {
@@ -713,6 +824,15 @@ button, input {
     font-weight: 400;
     border: 1px solid #007bff;
 }
+.select-custum-control {
+    font-family: "Roboto","Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 17px;
+    font-weight: 30;
+    height: 30px;
+    width: 60px;;
+    background-color: white;
+    border: 1px solid #007bff;
+}
 .input-custom {
     position: relative;
 }
@@ -773,6 +893,11 @@ form {
     color: #495057 !important;
     background-color: #fff !important;
     border-color: #dee2e6 #dee2e6 #fff !important;
+}
+
+.nav-item-an {
+
+    display:none!important;  
 }
 /* .nav>li>a:hover {
     text-decoration: none;

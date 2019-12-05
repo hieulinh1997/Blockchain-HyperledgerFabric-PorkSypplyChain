@@ -20,15 +20,11 @@ console.log("submit recording of a farm: ");
 var array = req.params.pig.split("-");
 
 var key = array[0]
-// var timestamp = array[2]
-// var location = array[1]
-// var vessel = array[4]
-// var holder = array[3]
-var qrcode = array[1]
-var famer = array[2]
-var species = array[3]
-var food = array[4]
-var sick_cure = array[5]
+var famer = array[1]
+var species = array[2]
+var food = array[3]
+var sick_cure = array[4]
+var farm_qualified = array[5]
 var farm_location = array[6]
 var start_date_of_farming = array[7]
 var end_date_of_farming = array[8]
@@ -79,7 +75,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
         //targets : --- letting this default to the peers assigned to the channel
         chaincodeId: 'pig-app',
         fcn: 'recordFarm',
-        args: [key, qrcode, famer, species, food, sick_cure, farm_location, start_date_of_farming, end_date_of_farming],
+        args: [key, famer, species, food, sick_cure, farm_qualified, farm_location, start_date_of_farming, end_date_of_farming],
         chainId: 'mychannel',
         txId: tx_id
     };
